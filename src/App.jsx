@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import SatisfiedClients from './components/SatisfiedClients';
 import Services from './components/Services';
 import PastWork from './components/PastWork';
 import BillingShowcase from './components/BillingShowcase';
@@ -42,9 +41,6 @@ export default function App() {
           currency={currency} 
           onOpenEnquiry={handleOpenEnquiry} 
         />
-
-        {/* Satisfied Clients & Domain Experience */}
-        <SatisfiedClients />
 
         {/* Core Services Section with "Starting with ₹xxxx" */}
         <Services 
