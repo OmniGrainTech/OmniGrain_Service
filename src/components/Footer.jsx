@@ -37,7 +37,7 @@ export default function Footer({ onOpenEnquiry, onNavigate }) {
                 <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center p-1">
                   <img 
                     src="/logo.png" 
-                    alt="Omnigrain Tech Logo" 
+                    alt="Omnigrain Tech - Software, Apps & Tech Consulting Agency" 
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.style.display = 'none';

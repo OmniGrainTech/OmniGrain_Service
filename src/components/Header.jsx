@@ -53,7 +53,7 @@ export default function Header({
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-1">
                 <img 
                   src="/logo.png" 
-                  alt="Omnigrain Tech Logo" 
+                  alt="Omnigrain Tech - Mobile App & Custom Software Development Agency" 
                   className="w-full h-full object-contain filter group-hover:scale-105 transition-transform"
                   onError={(e) => {
                     e.target.style.display = 'none';
