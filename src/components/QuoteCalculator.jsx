@@ -5,12 +5,13 @@ import {
   Check, 
   ArrowRight, 
   Clock, 
-  DollarSign, 
   ShieldCheck, 
   MessageCircle,
   Smartphone,
-  Globe,
+  ShoppingBag,
   Receipt,
+  Compass,
+  Globe,
   Layout,
   Cpu
 } from 'lucide-react';
@@ -21,22 +22,23 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
   const [scale, setScale] = useState('pro');
   const [selectedAddons, setSelectedAddons] = useState(['auth', 'payment']);
 
-  // Base pricing maps
+  // Base pricing maps in INR
   const baseRatesINR = {
-    website: { starter: 9999, pro: 18999, enterprise: 34999, time: "3 - 7 Days" },
+    mobile: { starter: 24999, pro: 49999, enterprise: 89999, time: "2 - 4 Weeks" },
+    ecommerce: { starter: 14999, pro: 29999, enterprise: 54999, time: "1 - 2 Weeks" },
     billing: { starter: 19999, pro: 34999, enterprise: 64999, time: "1 - 3 Weeks" },
-    webapp: { starter: 29999, pro: 54999, enterprise: 99999, time: "2 - 4 Weeks" },
-    mobile: { starter: 34999, pro: 69999, enterprise: 129999, time: "3 - 6 Weeks" },
-    api: { starter: 14999, pro: 29999, enterprise: 54999, time: "1 - 2 Weeks" },
+    consulting: { starter: 4999, pro: 14999, enterprise: 29999, time: "1 - 5 Days" },
+    webapp: { starter: 24999, pro: 49999, enterprise: 89999, time: "2 - 4 Weeks" },
+    website: { starter: 9999, pro: 18999, enterprise: 34999, time: "3 - 7 Days" },
   };
 
   const addonsList = [
-    { id: 'auth', label: 'User Auth & Role Management', inr: 4999, usd: 70 },
-    { id: 'payment', label: 'Payment Gateway (Razorpay/Stripe)', inr: 5999, usd: 85 },
-    { id: 'whatsapp', label: 'WhatsApp Alerts & Notification Bot', inr: 4999, usd: 70 },
-    { id: 'hardware', label: 'Barcode Scanner & Thermal Printer Driver', inr: 6999, usd: 99 },
-    { id: 'admin', label: 'Dedicated Admin CMS & Data Analytics', inr: 8999, usd: 125 },
-    { id: 'cloud', label: 'AWS / Cloud Production Auto-Deploy & SSL', inr: 4999, usd: 70 },
+    { id: 'auth', label: 'User Auth & Role Management', inr: 3999, usd: 55 },
+    { id: 'payment', label: 'Payment Gateway (Razorpay/Stripe/UPI)', inr: 4999, usd: 70 },
+    { id: 'whatsapp', label: 'WhatsApp Order & Alert Automation', inr: 3999, usd: 55 },
+    { id: 'hardware', label: 'Barcode Scanner & Thermal Printer Driver', inr: 5999, usd: 85 },
+    { id: 'admin', label: 'Admin CMS Dashboard & Data Analytics', inr: 6999, usd: 99 },
+    { id: 'cloud', label: 'AWS / Cloud Production Auto-Deploy & SSL', inr: 3999, usd: 55 },
   ];
 
   const toggleAddon = (addonId) => {
@@ -54,7 +56,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
   }, 0);
 
   const totalEstimateINR = baseINR + addonsTotalINR;
-  const inrToUsdRate = 75; // standard agency conversion divisor
+  const inrToUsdRate = 72;
   const totalEstimateUSD = Math.round(totalEstimateINR / inrToUsdRate);
 
   const estimatedTimeline = baseRatesINR[serviceType].time;
@@ -64,61 +66,63 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
     : `$${totalEstimateUSD.toLocaleString('en-US')}`;
 
   const serviceLabels = {
-    mobile: "Mobile App (Android & iOS)",
+    mobile: "Android & iOS Mobile App",
+    ecommerce: "E-Commerce Business Setup",
     billing: "Custom Billing & POS Software",
-    webapp: "Custom Web App / SaaS",
-    website: "High-Converting Website",
-    api: "API & Backend Microservices"
+    consulting: "Tech Consulting & Architecture",
+    webapp: "Custom Web App / SaaS / CRM",
+    website: "High-Speed Website / Landing Page"
   };
 
   const generateWhatsAppMessage = () => {
     const serviceName = serviceLabels[serviceType];
     const addonsStr = selectedAddons.join(', ');
-    const msg = `Hello Omnigrain Tech LLP! I calculated a project estimate on your website:%0A- Service: ${serviceName}%0A- Scale: ${scale.toUpperCase()}%0A- Selected Features: ${addonsStr}%0A- Estimated Cost: ${displayTotal}%0A- Timeline: ${estimatedTimeline}%0APlease share detailed proposal & discount.`;
+    const msg = `Hello Omnigrain Tech! I calculated an estimate on your website:%0A*Service:* ${serviceName}%0A*Scale:* ${scale.toUpperCase()}%0A*Features:* ${addonsStr}%0A*Estimate:* ${displayTotal}%0A*Timeline:* ${estimatedTimeline}%0APlease share detailed scope & discount.`;
     return `https://wa.me/${companyInfo.whatsappRaw}?text=${msg}`;
   };
 
   return (
-    <section id="calculator" className="py-20 lg:py-28 bg-brand-dark/95 border-b border-slate-800/80 relative">
+    <section id="calculator" className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-extrabold uppercase tracking-wider mb-3">
             <Calculator className="w-3.5 h-3.5" />
             <span>Interactive Cost & Timeline Estimator</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Estimate Your Project Cost <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-blue-400 to-indigo-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               In Less Than 30 Seconds
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            No endless sales waiting periods. Select your service requirements below to get an instant transparent starting estimate and project roadmap.
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
+            No long waiting times. Select your requirements below to calculate an honest, transparent estimate with delivery timelines.
           </p>
         </div>
 
         {/* Calculator Main Box */}
-        <div className="rounded-3xl bg-slate-900/90 border border-slate-700/80 shadow-2xl p-6 sm:p-10 max-w-5xl mx-auto backdrop-blur-xl">
+        <div className="rounded-3xl bg-white border border-slate-200 shadow-xl p-6 sm:p-9 max-w-5xl mx-auto">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Controls (Left 7 Cols) */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-7 space-y-6">
               
               {/* Step 1: Service Type */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-brand-accent block mb-3">
-                  Step 1: Select Primary Service
+                <label className="text-xs font-extrabold uppercase tracking-wider text-slate-700 block mb-2.5">
+                  Step 1: Select Your Service Need
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                   {[
                     { id: 'mobile', label: 'Mobile App', sub: 'Android & iOS', icon: Smartphone },
+                    { id: 'ecommerce', label: 'E-Commerce', sub: 'Setup & Store', icon: ShoppingBag },
                     { id: 'billing', label: 'Billing Software', sub: 'POS & Invoicing', icon: Receipt },
-                    { id: 'webapp', label: 'Custom SaaS', sub: 'Web Platform', icon: Globe },
-                    { id: 'website', label: 'Website / Lander', sub: 'Speed & SEO', icon: Layout },
-                    { id: 'api', label: 'API & Database', sub: 'Backend Microservices', icon: Cpu },
+                    { id: 'consulting', label: 'Tech Consulting', sub: 'Architecture', icon: Compass },
+                    { id: 'webapp', label: 'Web App / SaaS', sub: 'CRM & Portals', icon: Globe },
+                    { id: 'website', label: 'Website / Lander', sub: 'Ad Conversion', icon: Layout },
                   ].map((item) => {
                     const Icon = item.icon;
                     return (
@@ -126,15 +130,15 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                         key={item.id}
                         type="button"
                         onClick={() => setServiceType(item.id)}
-                        className={`p-3 rounded-xl border text-left transition ${
+                        className={`p-3 rounded-2xl border text-left transition ${
                           serviceType === item.id
-                            ? 'bg-brand-accent/20 border-brand-accent text-white shadow-md shadow-brand-accent/20'
-                            : 'bg-brand-dark border-slate-800 text-slate-300 hover:border-slate-700'
+                            ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-sm'
+                            : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300'
                         }`}
                       >
-                        <Icon className={`w-5 h-5 mb-2 ${serviceType === item.id ? 'text-brand-accent' : 'text-slate-400'}`} />
+                        <Icon className={`w-5 h-5 mb-1.5 ${serviceType === item.id ? 'text-blue-600' : 'text-slate-500'}`} />
                         <div className="text-xs font-bold leading-tight">{item.label}</div>
-                        <div className="text-[10px] text-slate-400">{item.sub}</div>
+                        <div className="text-[10px] text-slate-500">{item.sub}</div>
                       </button>
                     );
                   })}
@@ -143,27 +147,29 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
 
               {/* Step 2: Scale */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-brand-accent block mb-3">
+                <label className="text-xs font-extrabold uppercase tracking-wider text-slate-700 block mb-2.5">
                   Step 2: Choose Project Scale
                 </label>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2.5">
                   {[
-                    { id: 'starter', label: 'MVP / Starter', desc: 'Core essentials & launch' },
-                    { id: 'pro', label: 'Professional', desc: 'Full custom features' },
-                    { id: 'enterprise', label: 'Enterprise', desc: 'High concurrency & scale' }
+                    { id: 'starter', label: 'MVP / Starter', desc: 'Core features' },
+                    { id: 'pro', label: 'Standard / Pro', desc: 'Full custom design' },
+                    { id: 'enterprise', label: 'Enterprise', desc: 'High scale & SLA' }
                   ].map((item) => (
                     <button
                       key={item.id}
                       type="button"
                       onClick={() => setScale(item.id)}
-                      className={`p-3 rounded-xl border text-center transition ${
+                      className={`p-3 rounded-2xl border text-center transition ${
                         scale === item.id
-                          ? 'bg-blue-600/20 border-blue-500 text-white shadow-md'
-                          : 'bg-brand-dark border-slate-800 text-slate-300 hover:border-slate-700'
+                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
                       <div className="text-xs font-bold">{item.label}</div>
-                      <div className="text-[10px] text-slate-400 mt-0.5">{item.desc}</div>
+                      <div className={`text-[10px] mt-0.5 ${scale === item.id ? 'text-blue-100' : 'text-slate-500'}`}>
+                        {item.desc}
+                      </div>
                     </button>
                   ))}
                 </div>
@@ -171,8 +177,8 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
 
               {/* Step 3: Feature Add-ons */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-brand-accent block mb-3">
-                  Step 3: Select Essential Capabilities
+                <label className="text-xs font-extrabold uppercase tracking-wider text-slate-700 block mb-2.5">
+                  Step 3: Select Essential Features
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {addonsList.map((addon) => {
@@ -183,19 +189,17 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                         onClick={() => toggleAddon(addon.id)}
                         className={`p-2.5 rounded-xl border cursor-pointer flex items-center justify-between transition ${
                           isSelected
-                            ? 'bg-slate-800/90 border-brand-accent/50 text-white'
-                            : 'bg-brand-dark/80 border-slate-800/80 text-slate-400 hover:border-slate-700'
+                            ? 'bg-blue-50/70 border-blue-400 text-slate-900 font-semibold'
+                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
                         }`}
                       >
                         <div className="flex items-center space-x-2 text-xs">
                           <div className={`w-4 h-4 rounded border flex items-center justify-center ${
-                            isSelected ? 'bg-brand-accent border-brand-accent text-slate-950 font-bold' : 'border-slate-700'
+                            isSelected ? 'bg-blue-600 border-blue-600 text-white font-bold' : 'border-slate-300'
                           }`}>
                             {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                           </div>
-                          <span className={isSelected ? 'text-slate-100 font-medium' : 'text-slate-400'}>
-                            {addon.label}
-                          </span>
+                          <span>{addon.label}</span>
                         </div>
                       </div>
                     );
@@ -206,7 +210,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
             </div>
 
             {/* Live Quote Result Card (Right 5 Cols) */}
-            <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-brand-card via-slate-900 to-brand-card border border-brand-accent/40 shadow-xl space-y-6">
+            <div className="lg:col-span-5 rounded-3xl bg-slate-900 text-white p-6 sm:p-7 shadow-xl flex flex-col justify-between space-y-6">
               
               <div className="space-y-4">
                 
@@ -214,7 +218,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                   <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">
                     Estimated Proposal
                   </span>
-                  <span className="text-[10px] bg-brand-accent/15 text-brand-accent border border-brand-accent/30 px-2 py-0.5 rounded font-mono font-bold">
+                  <span className="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded font-mono font-bold">
                     Fixed Price Guarantee
                   </span>
                 </div>
@@ -222,18 +226,18 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                 {/* Main Estimated Cost */}
                 <div>
                   <span className="text-xs text-slate-400 block font-medium">Estimated Starting Investment:</span>
-                  <div className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-300 to-white mt-1">
+                  <div className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-white mt-1">
                     {displayTotal}
                   </div>
                   <span className="text-[11px] text-slate-400 mt-1 block">
-                    + Inclusive of Architecture, Code Review, Testing & Handover
+                    + Architecture, Code Review, Testing & Handover Included
                   </span>
                 </div>
 
                 {/* Timeline badge */}
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800/80 flex items-center justify-between text-xs">
+                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
                   <span className="text-slate-400 flex items-center">
-                    <Clock className="w-3.5 h-3.5 mr-1.5 text-brand-accent" /> Est. Development Timeline:
+                    <Clock className="w-3.5 h-3.5 mr-1.5 text-blue-400" /> Est. Development Timeline:
                   </span>
                   <span className="font-mono font-bold text-white">{estimatedTimeline}</span>
                 </div>
@@ -241,39 +245,39 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                 {/* Summary checklist */}
                 <div className="space-y-2 text-xs text-slate-300 pt-1">
                   <div className="flex items-center space-x-2">
-                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 stroke-[3]" />
                     <span>Selected: <strong>{serviceLabels[serviceType]}</strong></span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>100% Source Code & Database Ownership</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 stroke-[3]" />
+                    <span>100% Source Code Ownership & IP</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Free Post-Launch Bug Warranty & Support</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 stroke-[3]" />
+                    <span>Free Post-Launch Bug Warranty & Training</span>
                   </div>
                 </div>
 
               </div>
 
               {/* CTAs */}
-              <div className="space-y-2.5 pt-4 border-t border-slate-800">
+              <div className="space-y-2.5 pt-3 border-t border-slate-800">
                 <a
                   href={generateWhatsAppMessage()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-emerald-600/20 transition flex items-center justify-center space-x-2"
+                  className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white/20" />
-                  <span>Lock Estimate via WhatsApp</span>
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>Lock Estimate via WhatsApp ({companyInfo.phoneDisplay})</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => onOpenEnquiry(`Calculator Estimate: ${serviceLabels[serviceType]} (${displayTotal})`)}
-                  className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-brand-accent/20 transition flex items-center justify-center space-x-1.5"
+                  className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5"
                 >
-                  <span>Request Full SOW Proposal</span>
+                  <span>Request Written SOW Proposal</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

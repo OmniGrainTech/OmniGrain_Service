@@ -11,32 +11,38 @@ export default {
       },
       colors: {
         brand: {
-          deep: '#070C18',       /* Deep cosmic space background */
-          dark: '#0B1120',       /* Navy slate dark surface */
-          surface: '#111C31',    /* Elevated panel surface */
-          card: '#152035',       /* Rich slate card */
-          cardHover: '#1B2945',  /* Hover card surface */
-          border: '#1E293B',     /* Subtle slate border */
-          accent: '#06B6D4',     /* Tech electric cyan / teal */
-          accentHover: '#0891B2',/* Darker teal */
-          accentLight: '#22D3EE',/* Bright electric cyan */
-          blue: '#3B82F6',       /* Vibrant tech blue */
-          indigo: '#6366F1',     /* Electric indigo */
-          gold: '#F59E0B',       /* Premium conversion gold */
-          goldLight: '#FBBF24',
-          muted: '#94A3B8',      /* Soft gray body text */
-          silver: '#CBD5E1',     /* High contrast body text */
+          bg: '#F8FAFC',          /* Crisp snow slate background */
+          surface: '#FFFFFF',     /* Pure white card surface */
+          surfaceAlt: '#F1F5F9',  /* Soft tinted card surface */
+          border: '#E2E8F0',      /* Subtle crisp border */
+          borderHover: '#CBD5E1',
+          navy: '#0F172A',        /* Rich midnight navy text */
+          slate: '#334155',       /* Deep body slate text */
+          muted: '#64748B',       /* Subtle subtitle text */
+          accent: '#0284C7',      /* Vibrant tech electric cyan-blue */
+          accentHover: '#0369A1',
+          accentLight: '#E0F2FE', /* Light cyan pill background */
+          cyan: '#06B6D4',
+          blue: '#2563EB',        /* Trust royal blue */
+          blueDark: '#1D4ED8',
+          amber: '#F59E0B',       /* High-contrast star & badge gold */
+          amberLight: '#FEF3C7',
+          emerald: '#10B981',     /* WhatsApp & conversion green */
+          emeraldHover: '#059669',
+          emeraldLight: '#D1FAE5',
         }
       },
       boxShadow: {
-        'glow-cyan': '0 0 35px -5px rgba(6, 182, 212, 0.25)',
-        'glow-blue': '0 0 35px -5px rgba(59, 130, 246, 0.25)',
-        'glow-gold': '0 0 35px -5px rgba(245, 158, 11, 0.25)',
-        'card-elevated': '0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05)',
+        'clean': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+        'clean-md': '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
+        'clean-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03)',
+        'clean-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03)',
+        'cta-glow': '0 10px 30px -5px rgba(37, 99, 235, 0.35)',
+        'whatsapp-glow': '0 10px 30px -5px rgba(16, 185, 129, 0.4)',
       },
       animation: {
         'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float-slow': 'floatSlow 6s ease-in-out infinite',
+        'float-slow': 'floatSlow 5s ease-in-out infinite',
       },
       keyframes: {
         pulseSubtle: {
@@ -45,7 +51,7 @@ export default {
         },
         floatSlow: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
+          '50%': { transform: 'translateY(-6px)' },
         }
       }
     },

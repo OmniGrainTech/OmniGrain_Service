@@ -7,7 +7,8 @@ import {
   ExternalLink, 
   ShieldCheck, 
   Smartphone,
-  Heart
+  Heart,
+  MessageCircle
 } from 'lucide-react';
 import { companyInfo, redPdfProduct } from '../data/websiteData';
 
@@ -17,69 +18,69 @@ export default function Footer({ onOpenEnquiry }) {
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 text-xs">
+    <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 text-xs">
       
       {/* Top Footer Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-9">
           
           {/* Brand Col (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-accent to-blue-600 p-[1px]">
-                <div className="w-full h-full bg-brand-deep rounded-[10px] flex items-center justify-center p-1">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 p-[1px]">
+                <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center p-1">
                   <img 
                     src="/logo.png" 
                     alt="Omnigrain Tech Logo" 
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.parentNode.innerHTML = '<span class="text-brand-accent font-black text-sm">OG</span>';
+                      e.target.parentNode.innerHTML = '<span class="text-blue-400 font-black text-sm">OG</span>';
                     }}
                   />
                 </div>
               </div>
               <div>
-                <span className="text-lg font-black text-white tracking-wider">OMNIGRAIN TECH LLP</span>
-                <span className="block text-[10px] text-brand-accent tracking-[0.2em] font-bold uppercase">
-                  SOFTWARE & APP STUDIO
+                <span className="text-lg font-black text-white tracking-wider">OMNIGRAIN TECH</span>
+                <span className="block text-[10px] text-blue-400 tracking-[0.2em] font-bold uppercase">
+                  SOFTWARE, APPS & TECH CONSULTING
                 </span>
               </div>
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              We engineer revenue-generating mobile apps, bespoke billing systems, web applications, and scalable cloud architectures. Helping businesses eliminate bloated SaaS fees and scale with full IP ownership.
+              We engineer revenue-generating Android & iOS mobile apps, complete E-Commerce business setups, custom Billing Software, and provide strategic Tech Consulting at best market rates with 100% source code ownership.
             </p>
 
-            <div className="pt-2 flex items-center space-x-3 text-slate-400">
-              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-[11px] text-emerald-400">
+            <div className="pt-1 flex flex-wrap items-center gap-2 text-slate-400">
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 text-[11px] text-emerald-400 font-medium">
                 <ShieldCheck className="w-3.5 h-3.5 mr-1" />
-                <span>Registered Tech LLP</span>
+                <span>100% Source Code Ownership</span>
               </span>
-              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-[11px] text-brand-accent">
-                <span>100% Code Handover</span>
+              <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 text-[11px] text-blue-400 font-medium">
+                <span>Mutual Legal NDA</span>
               </span>
             </div>
           </div>
 
           {/* Col 2: Services */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Services</h4>
-            <ul className="space-y-2.5">
-              <li><a href="#services" className="hover:text-brand-accent transition">Mobile App Development</a></li>
-              <li><a href="#billing-software" className="hover:text-brand-accent transition">Custom Billing Software</a></li>
-              <li><a href="#services" className="hover:text-brand-accent transition">Web Apps & Custom SaaS</a></li>
-              <li><a href="#services" className="hover:text-brand-accent transition">High-Speed Websites</a></li>
-              <li><a href="#services" className="hover:text-brand-accent transition">API & Microservices</a></li>
-              <li><a href="#services" className="hover:text-brand-accent transition">Database Optimization</a></li>
-              <li><a href="#services" className="hover:text-brand-accent transition">Cloud & DevOps Hosting</a></li>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Services</h4>
+            <ul className="space-y-2">
+              <li><a href="#services" className="hover:text-blue-400 transition">Android & iOS Mobile Apps</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">E-Commerce Business Setup</a></li>
+              <li><a href="#billing-software" className="hover:text-blue-400 transition">Custom Billing & POS Software</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">Tech Consulting Services</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">Web Apps, SaaS & CRM</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">High-Speed Websites</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">Cloud & DevOps Hosting</a></li>
             </ul>
           </div>
 
-          {/* Col 3: In-House Products & Solutions */}
+          {/* Col 3: Past Work & Products */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Products & Portals</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Products & Work</h4>
+            <ul className="space-y-2">
               <li>
                 <a 
                   href={redPdfProduct.playStoreUrl} 
@@ -91,46 +92,42 @@ export default function Footer({ onOpenEnquiry }) {
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
-              <li><a href="#billing-software" className="hover:text-brand-accent transition">OmniBilling POS Engine</a></li>
-              <li><a href="#calculator" className="hover:text-brand-accent transition">Instant Cost Estimator</a></li>
-              <li><a href="#pricing" className="hover:text-brand-accent transition">Transparent Pricing</a></li>
-              <li><a href="#reviews" className="hover:text-brand-accent transition">Client Testimonials</a></li>
-              <li>
-                <button 
-                  onClick={() => onOpenEnquiry('Footer SOW Request')} 
-                  className="text-brand-accent hover:underline text-left"
-                >
-                  Request Architecture Review
-                </button>
-              </li>
+              <li><a href="#past-work" className="hover:text-blue-400 transition">AuraFit E-Commerce Setup</a></li>
+              <li><a href="#billing-software" className="hover:text-blue-400 transition">OmniBilling POS Demo</a></li>
+              <li><a href="#calculator" className="hover:text-blue-400 transition">Instant Cost Estimator</a></li>
+              <li><a href="#pricing" className="hover:text-blue-400 transition">Transparent Pricing Plans</a></li>
+              <li><a href="#reviews" className="hover:text-blue-400 transition">Verified Client Reviews</a></li>
             </ul>
           </div>
 
-          {/* Col 4: Corporate Contact */}
+          {/* Col 4: Corporate Contact Desk */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Contact Desk</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Contact Desk</h4>
             <ul className="space-y-2.5">
               <li className="flex items-start space-x-2">
-                <MapPin className="w-3.5 h-3.5 text-brand-accent shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
                 <span>Bandra Kurla Complex (BKC), Mumbai, India</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Mail className="w-3.5 h-3.5 text-brand-accent shrink-0" />
-                <a href={`mailto:${companyInfo.email}`} className="hover:text-white transition">{companyInfo.email}</a>
+                <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <a href={`tel:${companyInfo.phone}`} className="hover:text-white font-bold transition">
+                  {companyInfo.phoneDisplay} (Call Direct)
+                </a>
               </li>
               <li className="flex items-center space-x-2">
-                <Phone className="w-3.5 h-3.5 text-brand-accent shrink-0" />
-                <a href={`tel:${companyInfo.phone}`} className="hover:text-white transition">{companyInfo.phone}</a>
-              </li>
-              <li className="pt-2">
+                <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <a 
-                  href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech%20LLP`} 
-                  target="_blank" 
+                  href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech`}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 transition text-xs font-semibold"
+                  className="hover:text-emerald-300 text-emerald-400 font-bold transition"
                 >
-                  <span>WhatsApp: {companyInfo.whatsapp}</span>
+                  WhatsApp: {companyInfo.phoneDisplay}
                 </a>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <a href={`mailto:${companyInfo.email}`} className="hover:text-white transition">{companyInfo.email}</a>
               </li>
             </ul>
           </div>
@@ -139,24 +136,24 @@ export default function Footer({ onOpenEnquiry }) {
       </div>
 
       {/* Bottom Legal / Copyright Bar */}
-      <div className="border-t border-slate-900 bg-black/60 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
+      <div className="border-t border-slate-800 bg-black/40 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
           <div>
-            © {new Date().getFullYear()} <strong>Omnigrain Tech LLP</strong>. All rights reserved. Registered Indian Technology Partnership.
+            © {new Date().getFullYear()} <strong>Omnigrain Tech</strong>. All rights reserved. Registered Technology Partnership.
           </div>
           
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-5">
             <span className="hover:text-slate-300 transition">Privacy Policy</span>
             <span className="hover:text-slate-300 transition">Terms of Service</span>
-            <span className="hover:text-slate-300 transition">Non-Disclosure Agreement (NDA)</span>
+            <span className="hover:text-slate-300 transition">Mutual NDA Guarantee</span>
             
             <button
               type="button"
               onClick={scrollToTop}
-              className="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition border border-slate-800"
+              className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700"
               title="Scroll back to top"
             >
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

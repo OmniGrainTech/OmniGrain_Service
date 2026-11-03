@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, MessageCircle, ShieldCheck, CheckCircle2, Clock, Check } from 'lucide-react';
+import { X, Send, MessageCircle, ShieldCheck, CheckCircle2, Clock, Check, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
 
@@ -9,10 +9,24 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [service, setService] = useState(initialSubject || 'Mobile App Development');
+  const [company, setCompany] = useState('');
+  const [need, setNeed] = useState(initialSubject || 'Android & iOS Mobile Application');
   const [details, setDetails] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const needOptions = [
+    'Android & iOS Mobile Application',
+    'E-Commerce Business Setup & Website',
+    'Custom Billing & POS Software',
+    'Tech Consulting & Architecture',
+    'Custom Web App / SaaS Platform',
+    'High-Converting Website / Landing Page',
+    'Custom CRM & Automation',
+    'API & Database Optimization',
+    'Cloud & DevOps Hosting',
+    'Other (Custom Requirement)'
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,52 +37,52 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
       setLoading(false);
       setSubmitted(true);
       try {
-        confetti({ particleCount: 75, spread: 60, origin: { y: 0.5 } });
+        confetti({ particleCount: 85, spread: 65, origin: { y: 0.5 } });
       } catch (err) {}
-    }, 500);
+    }, 450);
   };
 
   const getWhatsAppLink = () => {
-    const msg = `Hi Omnigrain Tech LLP!%0A*Name:* ${name || 'Visitor'}%0A*Phone:* ${phone || 'Not provided'}%0A*Subject:* ${service}%0A*Notes:* ${details || 'Interested in quote'}`;
+    const msg = `Hi Omnigrain Tech!%0A*Name:* ${name || 'Client'}%0A*Phone:* ${phone || 'Not provided'}%0A*Company:* ${company || 'Individual'}%0A*Service Needed:* ${need}%0A*Notes:* ${details || 'Interested in quote'}`;
     return `https://wa.me/${companyInfo.whatsappRaw}?text=${msg}`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-3xl bg-brand-card border border-slate-700/80 p-6 sm:p-8 shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-150">
+      <div className="relative w-full max-w-lg rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
         
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         {submitted ? (
-          <div className="text-center py-8 space-y-4">
-            <div className="w-14 h-14 bg-emerald-500/10 border-2 border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
+          <div className="text-center py-7 space-y-3.5">
+            <div className="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold text-white">Inquiry Received!</h3>
-            <p className="text-xs text-slate-300 max-w-xs mx-auto">
-              Our lead developer is reviewing your requirement. We'll message you on WhatsApp or call you shortly.
+            <h3 className="text-xl font-black text-slate-900">Inquiry Received!</h3>
+            <p className="text-xs text-slate-600 max-w-xs mx-auto">
+              Our Senior Tech Lead is reviewing your requirement. We'll message you on WhatsApp or call you on your number within 15 minutes.
             </p>
             <div className="pt-2 flex flex-col gap-2">
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow"
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center space-x-1.5 shadow"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Continue on WhatsApp Now</span>
               </a>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-xs text-slate-400 hover:text-white underline pt-1"
+                className="text-xs text-slate-500 hover:text-slate-800 underline pt-1"
               >
                 Close window
               </button>
@@ -76,66 +90,88 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
           </div>
         ) : (
           <div>
-            <div className="mb-5">
-              <span className="text-[10px] text-brand-accent font-bold uppercase tracking-wider block">
+            <div className="mb-4">
+              <span className="text-[10px] text-blue-600 font-extrabold uppercase tracking-wider block">
                 Instant Priority Quote
               </span>
-              <h3 className="text-xl font-black text-white mt-0.5">Let's Discuss Your Project</h3>
-              <p className="text-xs text-slate-400 mt-1">
-                Fill this quick form or send a direct WhatsApp message to our lead software architect.
+              <h3 className="text-xl font-black text-slate-900 mt-0.5">Let's Discuss Your Project</h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Fill this quick form or connect directly with our Lead Tech Architect at <strong>{companyInfo.phoneDisplay}</strong>.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5">
               <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Your Name *</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Your Full Name *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Vikram Singhania"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-bold text-slate-700 block mb-1">Mobile / WhatsApp No. *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 8850164531"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold text-slate-700 block mb-1">Company Name (Optional)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Acme Corp"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Phone / WhatsApp Number *</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">Email Address (Optional)</label>
                 <input
-                  type="tel"
-                  required
-                  placeholder="+91 98765 43210"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent"
+                  type="email"
+                  placeholder="vikram@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Service / Requirement</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">What Service Do You Need?</label>
                 <select
-                  value={service}
-                  onChange={(e) => setService(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-accent"
+                  value={need}
+                  onChange={(e) => setNeed(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:border-blue-600"
                 >
-                  <option value="Mobile App (Android & iOS)">Mobile App (Android & iOS)</option>
-                  <option value="Custom Billing Software / POS">Custom Billing Software / POS</option>
-                  <option value="Web App / SaaS Platform">Web App / SaaS Platform</option>
-                  <option value="Website / High-Converting Landing Page">Website / High-Converting Landing Page</option>
-                  <option value="API Development & Database Design">API Development & Database Design</option>
-                  <option value="Cloud DevOps & Server Hosting">Cloud DevOps & Server Hosting</option>
-                  <option value="General Software Consultation">General Software Consultation</option>
+                  {needOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Brief Details (Optional)</label>
+                <label className="text-xs font-bold text-slate-700 block mb-1">What do you want to build? / Notes</label>
                 <textarea
                   rows="2"
-                  placeholder="Any specific features or deadlines..."
+                  placeholder="Tell us any specific features, budget, or ideas..."
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent resize-none"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 resize-none"
                 ></textarea>
               </div>
 
@@ -143,7 +179,7 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 font-extrabold text-xs shadow-lg transition flex items-center justify-center space-x-1.5"
+                  className="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs shadow-md transition flex items-center justify-center space-x-1.5"
                 >
                   {loading ? <span>Submitting...</span> : <span>Send Project Enquiry</span>}
                 </button>
@@ -152,16 +188,16 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
                   href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 font-bold text-xs border border-emerald-500/30 transition flex items-center justify-center space-x-1"
+                  className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition flex items-center justify-center space-x-1"
                 >
-                  <MessageCircle className="w-3.5 h-3.5" />
-                  <span>WhatsApp</span>
+                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                  <span>WhatsApp Directly</span>
                 </a>
               </div>
 
-              <div className="text-[10px] text-center text-slate-400 flex items-center justify-center space-x-1 pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-brand-accent" />
-                <span>NDA Protected • Zero spam • Fast 15-min response</span>
+              <div className="text-[10px] text-center text-slate-500 flex items-center justify-center space-x-1 pt-1 font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>NDA Protected • 100% Code Ownership • Fast 15-min response</span>
               </div>
             </form>
           </div>

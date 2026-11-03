@@ -3,11 +3,12 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import SatisfiedClients from './components/SatisfiedClients';
 import Services from './components/Services';
+import PastWork from './components/PastWork';
 import BillingShowcase from './components/BillingShowcase';
 import ProductRedPdf from './components/ProductRedPdf';
+import WhyUs from './components/WhyUs';
 import QuoteCalculator from './components/QuoteCalculator';
 import Pricing from './components/Pricing';
-import WhyUs from './components/WhyUs';
 import Reviews from './components/Reviews';
 import FaqSection from './components/FaqSection';
 import ContactSection from './components/ContactSection';
@@ -18,15 +19,15 @@ import EnquiryModal from './components/EnquiryModal';
 export default function App() {
   const [currency, setCurrency] = useState('INR');
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalSubject, setModalSubject] = useState('General Project Inquiry');
+  const [modalSubject, setModalSubject] = useState('Android & iOS Mobile Application');
 
-  const handleOpenEnquiry = (subject = 'Project Proposal') => {
+  const handleOpenEnquiry = (subject = 'Android & iOS Mobile Application') => {
     setModalSubject(subject);
     setModalOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-brand-deep text-slate-100 flex flex-col font-sans selection:bg-brand-accent selection:text-slate-900">
+    <div className="min-h-screen bg-brand-bg text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       
       {/* Top Header & Sticky Navigation */}
       <Header 
@@ -35,7 +36,7 @@ export default function App() {
         onOpenEnquiry={handleOpenEnquiry} 
       />
 
-      {/* Main Page Flow */}
+      {/* Main Page Content Flow */}
       <main className="flex-grow">
         {/* High-Converting Hero Section */}
         <Hero 
@@ -43,12 +44,17 @@ export default function App() {
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
-        {/* Satisfied Clients & Industries Logo Grid */}
+        {/* Satisfied Clients & Domain Experience */}
         <SatisfiedClients />
 
         {/* Core Services Section with "Starting with ₹xxxx" */}
         <Services 
           currency={currency} 
+          onOpenEnquiry={handleOpenEnquiry} 
+        />
+
+        {/* Past Work Showcase (RedPDF, E-Commerce Setup, Custom Billing, Tech Consulting) */}
+        <PastWork 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
@@ -60,6 +66,11 @@ export default function App() {
 
         {/* In-House Product Showcase: RedPDF Utility App (Google Play) */}
         <ProductRedPdf 
+          onOpenEnquiry={handleOpenEnquiry} 
+        />
+
+        {/* Why Client Should Choose Us? (8 Core Conversion Pillars) */}
+        <WhyUs 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
@@ -75,22 +86,17 @@ export default function App() {
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
-        {/* Why Choose Omnigrain Tech LLP (Code ownership, NDA, sprints) */}
-        <WhyUs 
-          onOpenEnquiry={handleOpenEnquiry} 
-        />
-
         {/* Verified Client Reviews & Ratings */}
         <Reviews 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
-        {/* FAQ Section */}
+        {/* FAQ Section addressing customer questions */}
         <FaqSection 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
-        {/* Main Conversion Center: High-Converting Contact & Lead Desk */}
+        {/* Main Lead Conversion Center: Contact & Quote Form */}
         <ContactSection 
           currency={currency} 
           initialService={modalSubject} 
@@ -102,7 +108,7 @@ export default function App() {
         onOpenEnquiry={handleOpenEnquiry} 
       />
 
-      {/* Sticky Conversion Triggers (Floating WhatsApp & Mobile CTA) */}
+      {/* Sticky Conversion Triggers (Floating WhatsApp/Call & Mobile Bar) */}
       <StickyConversionBar 
         onOpenEnquiry={handleOpenEnquiry} 
       />

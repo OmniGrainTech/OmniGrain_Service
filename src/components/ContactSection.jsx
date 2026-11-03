@@ -13,7 +13,8 @@ import {
   AlertCircle,
   HelpCircle,
   Smartphone,
-  Check
+  Check,
+  Building
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
@@ -23,7 +24,8 @@ export default function ContactSection({ currency, initialService }) {
     name: '',
     phone: '',
     email: '',
-    services: initialService ? [initialService] : ['Mobile App Development'],
+    company: '',
+    need: initialService || 'Android & iOS Mobile Application',
     budget: currency === 'INR' ? '₹25,000 - ₹50,000' : '$500 - $1,000',
     timeline: '2 - 4 Weeks',
     details: '',
@@ -33,13 +35,17 @@ export default function ContactSection({ currency, initialService }) {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const serviceOptions = [
-    'Mobile App (Android/iOS)',
-    'Custom Billing Software',
-    'Web App / SaaS Platform',
-    'Website / Landing Page',
-    'API & Database Design',
-    'Cloud Hosting & DevOps',
+  const needOptions = [
+    'Android & iOS Mobile Application',
+    'E-Commerce Business Setup & Website',
+    'Custom Billing & POS Software',
+    'Tech Consulting & Architecture',
+    'Custom Web App / SaaS Platform',
+    'High-Converting Website / Landing Page',
+    'Custom CRM & Automation',
+    'API & Database Optimization',
+    'Cloud & DevOps Hosting',
+    'Other (Specify in description below)'
   ];
 
   const budgetOptions = currency === 'INR' ? [
@@ -56,108 +62,89 @@ export default function ContactSection({ currency, initialService }) {
     '$5,000+'
   ];
 
-  const handleServiceToggle = (srv) => {
-    if (formData.services.includes(srv)) {
-      if (formData.services.length > 1) {
-        setFormData({ ...formData, services: formData.services.filter(s => s !== srv) });
-      }
-    } else {
-      setFormData({ ...formData, services: [...formData.services, srv] });
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) {
-      setErrorMsg('Please provide your name and phone/WhatsApp number so we can reach you.');
+      setErrorMsg('Please enter your Name and Mobile/WhatsApp number.');
       return;
     }
 
     setErrorMsg('');
     setLoading(true);
 
-    // Simulate swift server processing & lead capture
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
 
-      // Trigger celebratory conversion confetti!
       try {
         confetti({
-          particleCount: 100,
-          spread: 70,
+          particleCount: 110,
+          spread: 75,
           origin: { y: 0.6 }
         });
-      } catch (err) {
-        // Confetti fallback
-      }
-    }, 600);
+      } catch (err) {}
+    }, 500);
   };
 
   const getWhatsAppDirectLink = () => {
-    const srvText = formData.services.join(', ');
-    const msg = `Hello Omnigrain Tech LLP!%0A*Name:* ${formData.name || 'Visitor'}%0A*Phone:* ${formData.phone || 'Not given'}%0A*Services Required:* ${srvText}%0A*Budget:* ${formData.budget}%0A*Timeline:* ${formData.timeline}%0A*Brief:* ${formData.details || 'Interested in consultation'}`;
+    const msg = `Hello Omnigrain Tech!%0A*Name:* ${formData.name || 'Client'}%0A*Phone:* ${formData.phone || 'Not given'}%0A*Company:* ${formData.company || 'Individual'}%0A*Requirement (Need):* ${formData.need}%0A*Budget:* ${formData.budget}%0A*Timeline:* ${formData.timeline}%0A*Details:* ${formData.details || 'Looking for project quote'}`;
     return `https://wa.me/${companyInfo.whatsappRaw}?text=${msg}`;
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-brand-deep relative">
+    <section id="contact" className="py-16 lg:py-24 bg-white relative border-t border-slate-200">
       
-      {/* Background Tech Mesh & Glows */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[350px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-extrabold uppercase tracking-wider mb-3">
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>High-Priority Client Intake Desk</span>
+            <span>High-Priority Lead Intake Desk</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Ready to Build Your Project? <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-300 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               Get Free Scope & Quote Within 2 Hours
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            Tell us about your requirements below. Our senior engineering leads will review your specifications and provide a realistic roadmap, architecture suggestion, and fixed-price quotation.
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
+            Tell us about your requirements below. Our Senior Tech Lead will review your specifications and provide a realistic roadmap, wireframes, and best-price quote.
           </p>
         </div>
 
         {/* Main Grid: Form (7 cols) + Direct Desk (5 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: High-Converting Lead Form */}
-          <div className="lg:col-span-7 bg-brand-card/90 border border-slate-800 rounded-3xl p-6 sm:p-9 shadow-2xl backdrop-blur-xl relative">
+          <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-9 shadow-md relative">
             
-            {/* Top SLA Indicator */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+            {/* Top Online Indicator */}
+            <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
               <div className="flex items-center space-x-2">
                 <span className="flex h-2.5 w-2.5 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
                 </span>
-                <span className="text-xs font-bold text-white">Client Desk Online</span>
+                <span className="text-xs font-bold text-slate-800">Tech Lead Desk Active</span>
               </div>
-              <span className="text-[11px] text-brand-muted flex items-center font-mono">
-                <Clock className="w-3.5 h-3.5 mr-1 text-brand-accent" />
+              <span className="text-[11px] text-slate-500 flex items-center font-semibold">
+                <Clock className="w-3.5 h-3.5 mr-1 text-blue-600" />
                 Avg Response: &lt; 15 Mins
               </span>
             </div>
 
             {submitted ? (
               /* Success / Conversion State */
-              <div className="py-10 text-center space-y-5 animate-in fade-in duration-300">
-                <div className="w-16 h-16 bg-emerald-500/10 border-2 border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+              <div className="py-8 text-center space-y-4 animate-in fade-in duration-300">
+                <div className="w-16 h-16 bg-emerald-100 border-2 border-emerald-300 text-emerald-700 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-black text-white">Thank You, {formData.name || 'Client'}!</h3>
-                  <p className="text-sm text-slate-300 max-w-md mx-auto">
-                    Your project details have been assigned to our Senior Solutions Architect. We will reach out to you via WhatsApp / Phone shortly with your preliminary scope and estimate.
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl font-black text-slate-900">Thank You, {formData.name || 'Client'}!</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+                    Your requirements have been delivered to our Senior Technical Architect. We will contact you via WhatsApp / Phone shortly with your preliminary scope and quotation.
                   </p>
                 </div>
 
@@ -167,9 +154,9 @@ export default function ContactSection({ currency, initialService }) {
                     href={getWhatsAppDirectLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2"
+                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center space-x-2"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4 fill-white" />
                     <span>Speed Up: Continue on WhatsApp</span>
                   </a>
                   <button
@@ -180,61 +167,35 @@ export default function ContactSection({ currency, initialService }) {
                         name: '',
                         phone: '',
                         email: '',
-                        services: ['Mobile App Development'],
+                        company: '',
+                        need: 'Android & iOS Mobile Application',
                         budget: currency === 'INR' ? '₹25,000 - ₹50,000' : '$500 - $1,000',
                         timeline: '2 - 4 Weeks',
                         details: '',
                       });
                     }}
-                    className="text-xs text-slate-400 hover:text-white underline"
+                    className="text-xs text-slate-500 hover:text-slate-800 underline"
                   >
-                    Send another inquiry
+                    Submit another requirement
                   </button>
                 </div>
               </div>
             ) : (
               /* Main Interactive Form */
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 
                 {errorMsg && (
-                  <div className="p-3 bg-red-950/60 border border-red-500/40 rounded-xl text-xs text-red-300 flex items-center space-x-2">
-                    <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center space-x-2">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
                     <span>{errorMsg}</span>
                   </div>
                 )}
 
-                {/* Service Selection Chips */}
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-300 block mb-2">
-                    I Need Development For: <span className="text-slate-500 font-normal">(Select all that apply)</span>
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {serviceOptions.map((srv) => {
-                      const isSelected = formData.services.includes(srv);
-                      return (
-                        <button
-                          key={srv}
-                          type="button"
-                          onClick={() => handleServiceToggle(srv)}
-                          className={`text-xs py-1.5 px-3 rounded-lg border font-semibold transition flex items-center space-x-1.5 ${
-                            isSelected
-                              ? 'bg-brand-accent text-slate-950 border-brand-accent shadow-sm'
-                              : 'bg-slate-900 text-slate-400 border-slate-700/80 hover:text-white hover:border-slate-600'
-                          }`}
-                        >
-                          {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
-                          <span>{srv}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
                 {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="client-name" className="text-xs font-bold text-slate-300 block mb-1.5">
-                      Your Full Name <span className="text-red-400">*</span>
+                    <label htmlFor="client-name" className="text-xs font-bold text-slate-700 block mb-1">
+                      Your Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="client-name"
@@ -243,54 +204,89 @@ export default function ContactSection({ currency, initialService }) {
                       placeholder="e.g. Rahul Sharma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="client-phone" className="text-xs font-bold text-slate-300 block mb-1.5">
-                      Phone / WhatsApp Number <span className="text-red-400">*</span>
+                    <label htmlFor="client-phone" className="text-xs font-bold text-slate-700 block mb-1">
+                      Mobile / WhatsApp Number <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="client-phone"
                       type="tel"
                       required
-                      placeholder="e.g. +91 98765 43210"
+                      placeholder="e.g. +91 8850164531"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
                     />
                   </div>
                 </div>
 
-                {/* Email & Budget */}
+                {/* Company Name (Optional) & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="client-email" className="text-xs font-bold text-slate-300 block mb-1.5">
-                      Work Email Address <span className="text-slate-500 font-normal">(Optional)</span>
+                    <label htmlFor="client-company" className="text-xs font-bold text-slate-700 block mb-1">
+                      Company Name <span className="text-slate-400 font-normal">(Optional)</span>
                     </label>
                     <input
-                      id="client-email"
-                      type="email"
-                      placeholder="rahul@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition"
+                      id="client-company"
+                      type="text"
+                      placeholder="e.g. Apex Retail / Your Brand"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="client-budget" className="text-xs font-bold text-slate-300 block mb-1.5">
-                      Estimated Budget Range
+                    <label htmlFor="client-email" className="text-xs font-bold text-slate-700 block mb-1">
+                      Email Address <span className="text-slate-400 font-normal">(Optional)</span>
+                    </label>
+                    <input
+                      id="client-email"
+                      type="email"
+                      placeholder="rahul@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
+                    />
+                  </div>
+                </div>
+
+                {/* Service Needed Dropdown (As Requested by user) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="client-need" className="text-xs font-bold text-slate-700 block mb-1">
+                      What Service Do You Need? <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="client-need"
+                      value={formData.need}
+                      onChange={(e) => setFormData({ ...formData, need: e.target.value })}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
+                    >
+                      {needOptions.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="client-budget" className="text-xs font-bold text-slate-700 block mb-1">
+                      Approximate Budget Range
                     </label>
                     <select
                       id="client-budget"
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                      className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
                     >
                       {budgetOptions.map((b) => (
-                        <option key={b} value={b} className="bg-slate-900 text-white">
+                        <option key={b} value={b}>
                           {b}
                         </option>
                       ))}
@@ -298,18 +294,18 @@ export default function ContactSection({ currency, initialService }) {
                   </div>
                 </div>
 
-                {/* Project Details */}
+                {/* Project Requirements & Write what they want */}
                 <div>
-                  <label htmlFor="client-details" className="text-xs font-bold text-slate-300 block mb-1.5">
-                    Project Requirements / Vision
+                  <label htmlFor="client-details" className="text-xs font-bold text-slate-700 block mb-1">
+                    Tell Us What You Want To Build <span className="text-slate-400 font-normal">(Features, specific ideas, or timeline)</span>
                   </label>
                   <textarea
                     id="client-details"
                     rows="3"
-                    placeholder="Briefly describe what you want to build (e.g., iOS & Android grocery app with OTP login, or custom wholesale billing with 3-inch thermal printer)..."
+                    placeholder="Briefly describe what you need (e.g., Android & iOS grocery delivery app with OTP login, or custom wholesale billing with 3-inch thermal printing, or D2C Shopify setup)..."
                     value={formData.details}
                     onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-accent transition resize-none"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition resize-none"
                   ></textarea>
                 </div>
 
@@ -320,34 +316,34 @@ export default function ContactSection({ currency, initialService }) {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 py-3.5 px-6 rounded-xl bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 font-extrabold text-sm shadow-xl shadow-brand-accent/25 hover:shadow-brand-accent/40 transition duration-300 flex items-center justify-center space-x-2"
+                    className="flex-1 py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-sm shadow-md hover:shadow-blue-500/25 transition duration-150 flex items-center justify-center space-x-2"
                   >
                     {loading ? (
-                      <span>Sending Specifications...</span>
+                      <span>Sending Your Requirements...</span>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        <span>Submit Project Enquiry</span>
+                        <span>Get Free Proposal & Quote</span>
                       </>
                     )}
                   </button>
 
-                  {/* Direct WhatsApp Pre-filled Button */}
+                  {/* Direct WhatsApp Pre-filled Button with updated phone number */}
                   <a
                     href={getWhatsAppDirectLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-3.5 px-5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 font-bold text-sm border border-emerald-500/40 transition flex items-center justify-center space-x-2"
-                    title="Send this exact requirement directly via WhatsApp"
+                    className="py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-sm transition flex items-center justify-center space-x-2"
+                    title="Send via WhatsApp directly"
                   >
-                    <MessageCircle className="w-4 h-4 fill-emerald-500/20" />
+                    <MessageCircle className="w-4 h-4 fill-white" />
                     <span>WhatsApp Directly</span>
                   </a>
                 </div>
 
-                <div className="pt-2 text-[11px] text-slate-400 flex items-center justify-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Strict Mutual NDA • No Spam Guarantee • 100% Confidential</span>
+                <div className="pt-1 text-[11px] text-slate-500 flex items-center justify-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <span>Strict Legal NDA • Zero Spam Guarantee • 100% Confidential</span>
                 </div>
 
               </form>
@@ -356,67 +352,87 @@ export default function ContactSection({ currency, initialService }) {
           </div>
 
           {/* Right Column: Direct Corporate Contact Desk */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             
-            <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-7 space-y-5 shadow-xs">
               <div>
-                <span className="text-[10px] text-brand-accent font-bold uppercase tracking-widest block mb-1">
+                <span className="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest block mb-0.5">
                   Direct Engineering Desk
                 </span>
-                <h3 className="text-2xl font-black text-white">Omnigrain Tech LLP</h3>
-                <p className="text-xs text-slate-400 mt-1">
-                  Connect directly with our technical partners and lead software architects.
+                <h3 className="text-2xl font-black text-slate-900">Omnigrain Tech</h3>
+                <p className="text-xs text-slate-600 mt-1">
+                  Connect directly with our lead software architects and tech consultants.
                 </p>
               </div>
 
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 
-                {/* Official Corporate Email */}
-                <div className="p-3.5 rounded-xl bg-brand-deep/90 border border-slate-800 flex items-center space-x-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent shrink-0">
+                {/* Direct Phone Call */}
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
+                      Direct Hotline (Call Us)
+                    </span>
+                    <a 
+                      href={`tel:${companyInfo.phone}`}
+                      className="text-sm font-black text-slate-900 hover:text-blue-600 transition block"
+                    >
+                      {companyInfo.phoneDisplay}
+                    </a>
+                  </div>
+                </div>
+
+                {/* WhatsApp Chat */}
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                    <MessageCircle className="w-5 h-5 fill-emerald-600" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
+                      WhatsApp Directly
+                    </span>
+                    <a 
+                      href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20would%20like%20to%20discuss%20a%20project.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-black text-emerald-700 hover:text-emerald-800 transition block"
+                    >
+                      {companyInfo.phoneDisplay} (Instant Chat)
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email Desk */}
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
                       Corporate Email Desk
                     </span>
                     <a 
                       href={`mailto:${companyInfo.email}`}
-                      className="text-sm font-semibold text-white hover:text-brand-accent transition"
+                      className="text-xs sm:text-sm font-bold text-slate-900 hover:text-blue-600 transition"
                     >
                       {companyInfo.email}
                     </a>
                   </div>
                 </div>
 
-                {/* Direct Phone / Corporate Hotline */}
-                <div className="p-3.5 rounded-xl bg-brand-deep/90 border border-slate-800 flex items-center space-x-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">
-                      Direct Hotline & WhatsApp
-                    </span>
-                    <a 
-                      href={`tel:${companyInfo.phone}`}
-                      className="text-sm font-semibold text-white hover:text-brand-accent transition block"
-                    >
-                      {companyInfo.phone} / {companyInfo.whatsapp}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Corporate Address */}
-                <div className="p-3.5 rounded-xl bg-brand-deep/90 border border-slate-800 flex items-center space-x-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                {/* Headquarters Address */}
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
                       Main Headquarters
                     </span>
-                    <span className="text-xs font-semibold text-slate-200 block leading-relaxed">
+                    <span className="text-xs font-semibold text-slate-700 block leading-tight">
                       {companyInfo.address}
                     </span>
                   </div>
@@ -425,41 +441,34 @@ export default function ContactSection({ currency, initialService }) {
               </div>
 
               {/* Working Hours */}
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800/80 text-xs space-y-1">
-                <div className="flex justify-between text-slate-300">
-                  <span className="text-slate-400">Monday - Friday:</span>
-                  <span className="font-semibold text-white">9:00 AM - 8:00 PM IST</span>
+              <div className="p-3.5 rounded-2xl bg-white border border-slate-200 text-xs space-y-1 font-medium text-slate-600">
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Monday - Friday:</span>
+                  <span className="font-bold text-slate-900">9:00 AM - 9:00 PM IST</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span className="text-slate-400">Saturday:</span>
-                  <span className="font-semibold text-white">10:00 AM - 5:00 PM IST</span>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Saturday:</span>
+                  <span className="font-bold text-slate-900">10:00 AM - 6:00 PM IST</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span className="text-slate-400">Emergency DevOps:</span>
-                  <span className="font-semibold text-emerald-400">24/7 Monitoring Active</span>
+                <div className="flex justify-between text-emerald-700 font-bold">
+                  <span>Emergency DevOps:</span>
+                  <span>24/7 Monitoring Active</span>
                 </div>
               </div>
 
             </div>
 
-            {/* Schedule a Call Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-r from-blue-900/30 to-slate-900 border border-blue-500/30 flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
-                  <Calendar className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white">Book a 15-Minute Tech Discovery Call</h4>
-                  <p className="text-[11px] text-slate-300">Pick a Google Meet slot with our Tech Lead</p>
-                </div>
+            {/* Schedule 15-Min Call Card */}
+            <div className="p-5 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-between shadow-xs">
+              <div>
+                <h4 className="text-xs font-extrabold text-blue-950">Book a 15-Minute Strategy Call</h4>
+                <p className="text-[11px] text-blue-700 mt-0.5">Talk to Senior Tech Architect on Google Meet / Call</p>
               </div>
               <a
-                href={getWhatsAppDirectLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 text-xs font-bold px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition shadow"
+                href={`tel:${companyInfo.phone}`}
+                className="shrink-0 text-xs font-bold px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition shadow-sm"
               >
-                Schedule Call
+                Call Now
               </a>
             </div>
 

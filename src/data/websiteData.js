@@ -1,16 +1,17 @@
 export const companyInfo = {
-  name: "Omnigrain Tech LLP",
-  tagline: "High-Performance Software, Mobile Apps & Cloud Solutions",
-  shortDesc: "We help startups, growing businesses, and enterprises build high-converting mobile apps, custom web applications, billing software, and scalable cloud architectures.",
+  name: "Omnigrain Tech",
+  tagline: "High-Converting Mobile Apps, E-Commerce, Custom Software & Tech Consulting",
+  shortDesc: "We build top-tier Android & iOS Mobile Apps, complete E-Commerce setups, custom Billing Software, and high-speed websites at the best market price. Backed by 100% source code ownership and direct Tech Consulting.",
   email: "contact@omnigrain.in",
-  phone: "+91 (22) 1234-5678",
-  whatsapp: "+91 98765 43210",
-  whatsappRaw: "919876543210",
-  address: "Omnigrain Tech Tower, Bandra Kurla Complex (BKC), Mumbai, Maharashtra 400051",
+  phone: "+91 8850164531",
+  phoneDisplay: "+91 8850164531",
+  whatsapp: "+91 8850164531",
+  whatsappRaw: "918850164531",
+  address: "Omnigrain Tech, Bandra Kurla Complex (BKC), Mumbai, Maharashtra 400051",
   experienceYears: "7+",
   projectsDelivered: "150+",
   clientSatisfaction: "99.4%",
-  teamSize: "25+ Engineers",
+  teamSize: "25+ Engineers & Consultants",
   hoursResponse: "< 15 Mins",
   websiteUrl: "https://omnigrain.in",
 };
@@ -18,141 +19,163 @@ export const companyInfo = {
 export const servicesData = [
   {
     id: "mobile-apps",
-    title: "Mobile App Development",
-    subtitle: "Native & Cross-Platform (Android & iOS)",
-    description: "Launch sleek, responsive, 60fps mobile applications engineered for high retention and seamless user experience. We handle complete lifecycle from UI/UX to App Store & Google Play approval.",
+    title: "Android & iOS Mobile Apps",
+    subtitle: "Native & Flutter/React Native at Best Price",
+    description: "Launch sleek, responsive 60fps mobile applications on Android & iOS at the industry's most competitive rates. From UI/UX and backend to guaranteed Google Play & App Store publishing.",
     icon: "Smartphone",
-    minPriceINR: 34999,
-    minPriceUSD: 499,
+    minPriceINR: 24999,
+    minPriceUSD: 349,
     timeline: "2 - 4 Weeks",
     popular: true,
-    badge: "High Demand",
-    technologies: ["React Native", "Flutter", "Kotlin", "Swift", "Firebase", "SQLite"],
+    badge: "Best Price Guarantee",
+    technologies: ["Android (Kotlin)", "iOS (Swift)", "Flutter", "React Native", "Firebase", "Node.js"],
     features: [
-      "Native Android & iOS deployment",
-      "Offline-first synchronization",
-      "Biometric security & push notifications",
-      "Payment gateway & in-app purchases",
-      "Guaranteed App Store & Play Store approval",
-      "Full source code handover & documentation"
+      "Full native & cross-platform performance (Android & iOS)",
+      "Guaranteed Google Play & Apple App Store approval",
+      "Push notifications, OTP login & biometric security",
+      "Integrated payment gateways (UPI, Cards, Netbanking)",
+      "Offline-first synchronization & smooth caching",
+      "100% source code ownership handed over to you"
     ],
-    exampleSnippet: "E-Commerce Apps, Delivery Apps, Service Booking, Social & Community Platforms"
+    exampleSnippet: "Delivery Apps, On-Demand Booking, Social & Community, Business Apps"
   },
   {
-    id: "web-apps",
-    title: "Web Apps & Custom SaaS",
-    subtitle: "Scalable Full-Stack Web Platforms",
-    description: "Bespoke web applications built with high-velocity modern frameworks. Engineered for high concurrency, real-time interactivity, and bank-grade data security.",
-    icon: "Globe",
-    minPriceINR: 29999,
-    minPriceUSD: 399,
-    timeline: "2 - 3 Weeks",
-    popular: false,
-    badge: "Scale Ready",
-    technologies: ["React.js", "Next.js", "Node.js", "Python FastAPI", "Tailwind CSS", "PostgreSQL"],
+    id: "ecommerce",
+    title: "E-Commerce Business & Website Setup",
+    subtitle: "Turnkey Online Store with Payments & Logistics",
+    description: "Start selling online immediately with a high-converting E-Commerce store. We handle catalog design, payment gateways (Razorpay/Stripe), automated shipping, WhatsApp order alerts, and mobile apps.",
+    icon: "ShoppingBag",
+    minPriceINR: 14999,
+    minPriceUSD: 199,
+    timeline: "5 - 12 Days",
+    popular: true,
+    badge: "High Conversion",
+    technologies: ["Shopify", "WooCommerce", "Next.js / MERN", "Razorpay / Stripe", "Shiprocket Sync"],
     features: [
-      "Role-based access control (RBAC)",
-      "Interactive data dashboards & charts",
-      "Multi-tenant SaaS architecture",
-      "Automated transactional emails & notifications",
-      "Stripe / Razorpay recurring subscriptions",
-      "End-to-end API integrations"
+      "Custom branded storefront with fast mobile checkout",
+      "Automated payment gateway (UPI, QR, Cards, COD, Wallets)",
+      "Automated WhatsApp & SMS order confirmation alerts",
+      "Real-time inventory management & low-stock triggers",
+      "Shipping partner integration & live package tracking",
+      "Discounts, coupons & abandoned cart recovery"
     ],
-    exampleSnippet: "CRM Systems, Client Portals, Marketplace Platforms, HR & Payroll Portals"
+    exampleSnippet: "Fashion D2C, Grocery & Essentials, Electronics, Multi-vendor Marketplaces"
+  },
+  {
+    id: "tech-consulting",
+    title: "Tech Consulting Services",
+    subtitle: "Architecture Advisory & Strategic Roadmap",
+    description: "Get unbiased, senior-level technology consulting to solve complex bottlenecks, choose the right tech stack, audit existing code, reduce server costs, and scale your product with zero downtime.",
+    icon: "Compass",
+    minPriceINR: 4999,
+    minPriceUSD: 69,
+    timeline: "1 - 3 Days",
+    popular: false,
+    badge: "Expert Advisory",
+    technologies: ["System Design", "Cloud Optimization", "Codebase Audit", "Database Scaling", "Security Review"],
+    features: [
+      "Comprehensive system architecture & scalability review",
+      "Tech stack evaluation tailored to your business budget",
+      "Cloud infrastructure cost reduction (AWS / GCP / Azure)",
+      "Database query bottleneck diagnosis & optimization",
+      "Security audit & vulnerability penetration checklist",
+      "Dedicated 1-on-1 strategy calls with Senior Tech Architect"
+    ],
+    exampleSnippet: "Startup MVP scoping, Legacy system migration, Cloud cost cutting, Scaling audits"
   },
   {
     id: "billing-software",
     title: "Custom Billing & POS Software",
-    subtitle: "Enterprise Invoicing, Inventory & Accounts",
-    description: "Tailor-made billing software built specifically for your retail, wholesale, or distribution workflow. Never pay monthly subscription lock-ins again.",
+    subtitle: "GST Invoicing, Barcode & Thermal Sync",
+    description: "Eliminate expensive monthly software subscriptions. We build bespoke GST billing software with barcode scanner sync, 2\"/3\" thermal receipt printing, and automated WhatsApp invoice dispatch.",
     icon: "Receipt",
     minPriceINR: 19999,
     minPriceUSD: 279,
     timeline: "1 - 3 Weeks",
     popular: true,
     badge: "Top Seller",
-    technologies: ["React", "Electron / Web", "Node.js", "PostgreSQL", "Thermal Print Engine", "Barcode SDK"],
+    technologies: ["Electron / Web", "React", "PostgreSQL / SQLite", "Thermal Print Engine", "Barcode SDK"],
     features: [
-      "GST / VAT compliant invoice generation (A4 & Thermal 3-inch)",
-      "Barcode scanner & electronic weighing scale integration",
-      "Real-time inventory tracking & low stock alerts",
-      "Customer credit ledger (Khata) & auto WhatsApp invoice dispatch",
-      "Multi-branch & multi-counter sync",
-      "Detailed P&L, sales, tax & profit analytics"
+      "GST compliant invoice generator (A4 Laser & 2\"/3\" Thermal)",
+      "Barcode scanner & electronic weighing scale plug-and-play",
+      "Instant WhatsApp PDF bill dispatch to customer mobile",
+      "Customer credit ledger (Khata) & auto-payment reminders",
+      "Multi-counter & multi-branch real-time sync",
+      "One-time payment: zero monthly renewal fees forever"
     ],
-    exampleSnippet: "Supermarket POS, Wholesale Invoicing, Pharmacy ERP, Restaurant KOT Billing"
+    exampleSnippet: "Supermarket POS, Wholesale Invoicing, Pharmacy ERP, Hardware & Retail Billing"
+  },
+  {
+    id: "web-apps",
+    title: "Web Apps, SaaS & Custom CRM",
+    subtitle: "Interactive Dashboards & Automated Workflows",
+    description: "High-velocity web applications and automated CRM portals built to streamline operations, manage customer leads, and power complex multi-user business workflows.",
+    icon: "Globe",
+    minPriceINR: 24999,
+    minPriceUSD: 349,
+    timeline: "2 - 4 Weeks",
+    popular: false,
+    badge: "Scale Ready",
+    technologies: ["React.js", "Next.js", "Node.js", "FastAPI", "Tailwind CSS", "PostgreSQL"],
+    features: [
+      "Role-based permission controls (Admin, Staff, Client)",
+      "Interactive analytics dashboards with real-time graphs",
+      "Automated lead capture & CRM pipeline tracking",
+      "Transactional emails, WhatsApp bots & webhooks",
+      "Multi-tenant SaaS subscription billing engine",
+      "100% responsive design across all devices"
+    ],
+    exampleSnippet: "Custom CRM, Client Portals, Booking Portals, ERP & HR Management"
   },
   {
     id: "websites",
-    title: "Websites & High-Converting Landers",
-    subtitle: "SEO-Optimized Speed Champions",
-    description: "Ultra-fast, beautifully crafted websites designed specifically to convert ad traffic into paying customers with 95+ Google PageSpeed score.",
+    title: "High-Speed Websites & Ad Landing Pages",
+    subtitle: "Engineered for 95+ PageSpeed & Lead Conversions",
+    description: "Ultra-fast, beautifully designed websites built specifically to convert ad visitors from Google & Meta Ads into qualified paying leads with sub-second loading speeds.",
     icon: "Layout",
     minPriceINR: 9999,
     minPriceUSD: 149,
     timeline: "3 - 7 Days",
     popular: false,
     badge: "Quick Launch",
-    technologies: ["React", "Tailwind CSS", "Vite", "Next.js", "Headless CMS"],
+    technologies: ["React", "Tailwind CSS", "Vite", "Next.js", "SEO Schema"],
     features: [
-      "100/100 Core Web Vitals optimization",
-      "Conversion-focused layouts & call-to-actions",
-      "Full mobile & tablet responsiveness",
-      "Interactive lead capture forms & WhatsApp chat",
-      "Schema.org rich snippets for Google rankings",
-      "Free 1-year SSL & domain setup support"
+      "Core Web Vitals 95+ PageSpeed score for top Google ad ranks",
+      "Conversion-focused layouts with prominent call-to-actions",
+      "Interactive lead capture forms with instant WhatsApp sync",
+      "Schema.org rich snippets & complete on-page SEO",
+      "100% mobile, tablet & desktop perfection",
+      "Free 1-year SSL certificate & domain configuration"
     ],
-    exampleSnippet: "Corporate Portals, Ad Landing Pages, Portfolio Showcases, Lead Generation Hubs"
+    exampleSnippet: "Corporate Portals, Ad Landing Pages, Service Portfolios, Lead Gen Hubs"
   },
   {
     id: "api-dev",
     title: "API Development & Microservices",
-    subtitle: "High-Throughput Backend Architecture",
-    description: "Robust RESTful and GraphQL APIs built to handle thousands of requests per second with microsecond latency, ironclad token security, and comprehensive docs.",
+    subtitle: "High-Throughput Backend & Integrations",
+    description: "Robust REST and GraphQL APIs built to handle thousands of requests per second with microsecond latency, ironclad token security, and comprehensive docs.",
     icon: "Cpu",
     minPriceINR: 14999,
     minPriceUSD: 199,
     timeline: "1 - 2 Weeks",
     popular: false,
     badge: "High Speed",
-    technologies: ["Node.js / Express", "FastAPI", "GraphQL", "Redis", "Swagger / OpenAPI"],
+    technologies: ["Node.js / Express", "FastAPI (Python)", "GraphQL", "Redis", "Swagger"],
     features: [
-      "Microservice and modular monolithic architecture",
-      "OAuth 2.0 & JWT stateless authentication",
-      "Third-party integrations (Payment, SMS, WhatsApp, AI)",
-      "Webhook events & message queues (RabbitMQ/Kafka)",
-      "Automated Swagger documentation",
-      "Rate limiting, DDoS filtering & caching layers"
+      "Microservice & modular monolithic backend architecture",
+      "Stateless JWT & OAuth 2.0 secure authentication",
+      "Third-party integrations (WhatsApp, Payments, AI, SMS)",
+      "Webhook event listeners & message queue architecture",
+      "Rate limiting, DDoS filtering & Redis caching layers",
+      "Automated Swagger documentation for frontend developers"
     ],
-    exampleSnippet: "Payment Gateways, WhatsApp Automation, AI LLM Wrappers, Mobile App Backends"
-  },
-  {
-    id: "database",
-    title: "Database Designing & Optimization",
-    subtitle: "Resilient Data Modeling & Tuning",
-    description: "Clean relational and document data architecture designed to scale with your business without query slowdowns, deadlocks, or data corruption.",
-    icon: "Database",
-    minPriceINR: 11999,
-    minPriceUSD: 169,
-    timeline: "5 - 10 Days",
-    popular: false,
-    badge: "Zero Latency",
-    technologies: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Supabase", "Prisma"],
-    features: [
-      "Normalized schema design & entity modeling",
-      "Composite indexing & query execution plan tuning",
-      "Automated hot backups & point-in-time recovery",
-      "Data migration & zero-downtime ETL pipelines",
-      "Connection pooling & read replica configurations",
-      "Rigid data constraints & ACID integrity validation"
-    ],
-    exampleSnippet: "High-volume transactional databases, Data Warehouses, Real-time Analytics Cache"
+    exampleSnippet: "Payment Gateways, WhatsApp Automation, AI LLM Wrappers, Mobile Backends"
   },
   {
     id: "cloud-hosting",
-    title: "Cloud Services & Managed Hosting",
-    subtitle: "Enterprise DevOps, CI/CD & 99.9% Uptime",
-    description: "Worry-free cloud infrastructure setup and 24/7 server monitoring. Deploy your apps on AWS, GCP, Azure, or VPS with automated zero-downtime pipelines.",
+    title: "Cloud DevOps & Managed Hosting",
+    subtitle: "Enterprise Setup, 99.9% Uptime & CI/CD",
+    description: "Worry-free cloud infrastructure setup and 24/7 server monitoring. Deploy your applications on AWS, GCP, Azure, or VPS with automated zero-downtime pipelines.",
     icon: "Cloud",
     minPriceINR: 4999,
     minPriceUSD: 69,
@@ -161,12 +184,12 @@ export const servicesData = [
     badge: "99.9% Uptime",
     technologies: ["AWS", "Google Cloud", "Docker", "Nginx", "Cloudflare", "GitHub Actions"],
     features: [
-      "AWS / GCP / DigitalOcean server provision & hardening",
+      "AWS / GCP / DigitalOcean server hardening & optimization",
       "Docker containerization & docker-compose orchestration",
-      "Automated CI/CD git push to live deployment",
+      "Automated CI/CD git push to live production deployments",
       "Cloudflare CDN, DDoS mitigation & SSL installation",
-      "Automated daily database snapshots to S3",
-      "24/7 uptime monitoring with instant alert triggers"
+      "Automated daily database snapshots & disaster recovery",
+      "24/7 server health monitoring with instant alert triggers"
     ],
     exampleSnippet: "Production server setup, Auto-scaling clusters, Microservices hosting"
   }
@@ -182,9 +205,9 @@ export const redPdfProduct = {
   reviewCount: "12,500+",
   downloads: "100,000+",
   category: "Productivity / Document Utility",
-  pricing: "Free to Download",
-  badge: "Featured In-House Product",
-  overview: "RedPDF is our flagship document utility app trusted by over 100,000+ Android users worldwide. Engineered by Omnigrain Tech LLP with an offline-first architecture, it ensures maximum privacy—no documents or sensitive files ever leave the user's smartphone.",
+  pricing: "Free on Google Play",
+  badge: "Featured In-House App",
+  overview: "RedPDF is our flagship document utility app trusted by over 100,000+ Android users worldwide. Engineered by Omnigrain Tech with an offline-first architecture, it ensures maximum privacy—no documents or sensitive files ever leave the user's smartphone.",
   highlights: [
     {
       title: "100% Offline & Privacy First",
@@ -220,12 +243,56 @@ export const redPdfProduct = {
   techStack: ["Android SDK", "Kotlin", "C++ PDFium Rendering Engine", "Material You Design", "SQLite", "CameraX API"]
 };
 
+export const pastWorkShowcase = [
+  {
+    id: "redpdf",
+    title: "RedPDF - Android Utility App",
+    category: "Mobile App Development",
+    stats: "100,000+ Downloads • 4.8★ Rating",
+    desc: "Offline-first mobile utility app built for fast document scanning, batch photo conversion, and 256-bit encryption.",
+    tags: ["Android", "Kotlin", "C++ PDFium", "CameraX"],
+    link: "https://play.google.com/store/apps/details?id=com.legendarysoftware.redpdf.imagetopdf&hl=en_IN",
+    isExternal: true,
+    actionText: "View on Play Store"
+  },
+  {
+    id: "ecommerce-platform",
+    title: "AuraFit D2C E-Commerce Store & App",
+    category: "E-Commerce Setup",
+    stats: "₹18L+ Monthly GMV • 3.4x Conversion",
+    desc: "Complete branded online store with one-click UPI checkout, automated Shiprocket fulfillment, and WhatsApp notifications.",
+    tags: ["Next.js", "Shopify Engine", "Razorpay", "WhatsApp API"],
+    isExternal: false,
+    actionText: "Request E-Comm Demo"
+  },
+  {
+    id: "billing-software",
+    title: "OmniBilling POS & Inventory ERP",
+    category: "Billing Software",
+    stats: "0.8s Per Bill • 12 Branches Synced",
+    desc: "High-speed retail & wholesale invoicing with 3-inch thermal printing, wireless barcode scanner sync, and credit ledgers.",
+    tags: ["Electron", "React", "PostgreSQL", "Thermal SDK"],
+    isExternal: false,
+    actionText: "Request Billing Demo"
+  },
+  {
+    id: "consulting-saas",
+    title: "KisanTrade Agro Logistics Platform",
+    category: "Tech Consulting & Web App",
+    stats: "40% Cloud Cost Cut • 5x Concurrency",
+    desc: "Redesigned backend architecture, optimized PostgreSQL schemas, and implemented Redis caching to handle peak harvest volumes.",
+    tags: ["FastAPI", "PostgreSQL", "Redis", "AWS Cloud"],
+    isExternal: false,
+    actionText: "Read Architecture Case"
+  }
+];
+
 export const pricingPlans = [
   {
     id: "starter",
-    name: "Starter / Web Launchpad",
-    badge: "Quick Launch",
-    description: "Perfect for local businesses, professionals, and product launches seeking a fast, high-converting presence.",
+    name: "Starter Launchpad",
+    badge: "Quickest Launch",
+    description: "Best for local businesses, professionals, and product launches seeking a fast, high-converting presence.",
     priceINR: 9999,
     priceUSD: 149,
     isPopular: false,
@@ -234,7 +301,7 @@ export const pricingPlans = [
       "Custom responsive 1 to 5-page modern website",
       "100% mobile, tablet & desktop optimized",
       "High-converting lead capture form",
-      "Direct WhatsApp chat integration",
+      "Direct WhatsApp chat & call button integration",
       "Google Maps, SEO tags & Schema markup",
       "Speed optimized (sub-1 second load time)",
       "Free 30-day post-launch support",
@@ -243,58 +310,88 @@ export const pricingPlans = [
     ctaText: "Launch Starter Website"
   },
   {
+    id: "ecommerce",
+    name: "E-Commerce Business Setup",
+    badge: "High ROI",
+    description: "Complete turnkey online store setup with payment gateway, catalog, shipping, and WhatsApp automations.",
+    priceINR: 19999,
+    priceUSD: 279,
+    isPopular: false,
+    deliveryTime: "1 - 2 Weeks",
+    features: [
+      "Full E-Commerce store setup with modern UI/UX",
+      "Payment gateway integration (Razorpay, UPI, Cards)",
+      "Product catalog with categories, variants & filters",
+      "Automated WhatsApp order confirmation alerts",
+      "Logistics & shipping calculator integration",
+      "Discount coupons & abandoned cart reminders",
+      "Admin order management dashboard",
+      "60 Days dedicated post-launch support"
+    ],
+    ctaText: "Start E-Commerce Setup"
+  },
+  {
     id: "growth",
-    name: "Growth / Full Mobile or SaaS",
+    name: "Full Mobile App (Android & iOS)",
     badge: "Most Popular",
-    description: "Designed for ambitious startups and businesses needing a full-fledged Mobile App (Android/iOS) or SaaS Web Platform.",
-    priceINR: 34999,
-    priceUSD: 499,
+    description: "Designed for ambitious businesses needing a complete, high-performance Mobile App on Google Play and App Store.",
+    priceINR: 24999,
+    priceUSD: 349,
     isPopular: true,
     deliveryTime: "2 - 4 Weeks",
     features: [
-      "Complete Mobile App (Android & iOS) OR Custom SaaS",
-      "Interactive modern UI/UX design (Figma provided)",
+      "Complete Mobile App for Android & iOS (Cross-Platform)",
+      "Interactive modern UI/UX design (Figma mockup provided)",
       "Backend API development & database architecture",
       "User authentication (Email, OTP, Google Login)",
-      "Payment gateway integration (Stripe / Razorpay)",
+      "Payment gateway integration (Stripe / Razorpay / UPI)",
       "Admin CMS dashboard for managing users & content",
-      "Google Play & Apple App Store submission",
-      "3 Months priority maintenance & bug warranty"
+      "Google Play & Apple App Store submission included",
+      "90 Days priority maintenance & bug warranty"
     ],
-    ctaText: "Build My App / SaaS"
+    ctaText: "Build My Mobile App"
   },
   {
     id: "enterprise",
-    name: "Enterprise / Billing & ERP",
-    badge: "High Performance",
-    description: "Tailored for retail chains, manufacturing, and growing enterprises requiring custom Billing, POS & automation.",
-    priceINR: 49999,
-    priceUSD: 699,
+    name: "Custom Billing & POS Software",
+    badge: "Best Value",
+    description: "Tailored for retail shops, supermarkets, and wholesale distributors seeking one-time software ownership.",
+    priceINR: 19999,
+    priceUSD: 279,
     isPopular: false,
-    deliveryTime: "3 - 6 Weeks",
+    deliveryTime: "1 - 3 Weeks",
     features: [
       "Complete Custom Billing & POS Software system",
-      "GST / VAT compliant invoicing engine",
-      "Barcode & thermal printer hardware integration",
-      "Multi-branch, multi-warehouse inventory sync",
-      "Customer ledger (Khata) & auto WhatsApp alerts",
+      "GST compliant invoicing engine (A4 Laser & 2\"/3\" Thermal)",
+      "Barcode scanner & weighing scale hardware integration",
+      "Customer credit ledger (Khata) & auto WhatsApp alerts",
+      "Real-time inventory tracking & low stock alerts",
       "Cloud database with automated encrypted backups",
-      "Custom role-based permissions & audit logging",
-      "6 Months dedicated support & feature updates"
+      "One-time payment: zero monthly renewal fees forever",
+      "Full team training & 6 months priority warranty"
     ],
-    ctaText: "Request Enterprise Quote"
+    ctaText: "Get Billing Software"
   }
 ];
 
 export const clientReviews = [
   {
     name: "Rajesh Sharma",
-    role: "Founder & Managing Director",
+    role: "Managing Director",
     company: "Apex Retail Mart & Wholesale",
-    project: "Custom GST Billing & Inventory Software",
+    project: "Custom GST Billing & POS Software",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    text: "Omnigrain Tech LLP built our custom wholesale billing software from scratch. Previously, monthly subscriptions of generic ERPs were killing our margins and slow barcode scanning created customer queues. Their custom solution is lightning fast, prints bills in under a second, and auto-sends PDFs to our retailers over WhatsApp. Worth every single rupee!"
+    text: "Omnigrain Tech built our custom wholesale billing software from scratch. Generic ERP monthly subscriptions were eating into our margins and slow barcode scanning caused long queues. Their custom software prints bills in under a second and auto-sends PDFs to retailers over WhatsApp. Worth every single rupee!"
+  },
+  {
+    name: "Sunil Mehta",
+    role: "Founder",
+    company: "AuraFit Activewear",
+    project: "D2C E-Commerce Website & Mobile App",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+    text: "We wanted a clean, fast E-Commerce website and mobile app to run Meta and Google ads. Omnigrain Tech set up our entire online store within 10 days. The checkout is buttery smooth, Razorpay UPI works instantly, and our ad conversion rate rose to 4.2%! Their pricing was the best in the market."
   },
   {
     name: "Sarah Jenkins",
@@ -303,16 +400,16 @@ export const clientReviews = [
     project: "Cross-Platform Mobile App (iOS & Android)",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    text: "We hired Omnigrain Tech for our cross-platform patient booking application. The UI is silky smooth at 60fps, push notifications are instant, and their engineers cleared Apple App Store review on the first submission without any rejections. Very disciplined, communicative, and transparent team."
+    text: "We hired Omnigrain Tech for our patient booking mobile application. The UI runs at a seamless 60fps, push notifications are instant, and their engineers cleared Apple App Store review on the first submission without any rejections. Highly disciplined and communicative team."
   },
   {
     name: "Amitabh Verma",
     role: "Co-Founder & CEO",
     company: "KisanTrade Agro Logistics",
-    project: "Web App & Backend API Architecture",
+    project: "Tech Consulting & Backend Optimization",
     rating: 5,
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    text: "Their backend and database design saved our peak harvest season. We were hitting database connection limits with our old agency. Omnigrain redesigned our PostgreSQL schemas, implemented Redis caching, and built clean REST APIs. Server costs dropped by 40% while handling 5x more concurrent farmers."
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
+    text: "Their Tech Consulting saved our business during peak harvest season. We were hitting database connection limits with our old agency. Omnigrain audited our PostgreSQL schemas, implemented Redis caching, and re-architected our REST APIs. Server costs dropped by 40% while handling 5x more concurrent farmers."
   },
   {
     name: "Pooja Malhotra",
@@ -321,86 +418,87 @@ export const clientReviews = [
     project: "High-Converting Landing Page & Lead Engine",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    text: "We ran Meta and Google search ads to our new website built by Omnigrain Tech LLP. Our conversion rate jumped from 2.1% to 6.8%! The website loads in less than 800 milliseconds and the WhatsApp direct quote button generates inbound qualified leads daily."
-  },
-  {
-    name: "Vikram Singhania",
-    role: "Head of Operations",
-    company: "SwiftLogistics Express",
-    project: "Driver & Dispatch Mobile Apps",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
-    text: "What sets Omnigrain Tech apart is their integrity. They gave us complete source code ownership, clean documentation, and never tried to trap us in hidden recurring maintenance fees. Their milestone payment structure gave us total confidence."
+    text: "We ran Google search ads to our new landing page built by Omnigrain Tech. Our conversion rate jumped from 2.1% to 6.8%! The website loads in less than 700ms and the WhatsApp direct quote button generates qualified inbound leads daily."
   }
 ];
 
 export const clientLogos = [
   { name: "Apex Retail Mart", label: "Retail & Wholesale" },
+  { name: "AuraFit D2C", label: "E-Commerce" },
   { name: "NovaHealth", label: "HealthTech UK" },
   { name: "KisanTrade", label: "AgroTech Logistics" },
-  { name: "LuxeLiving", label: "E-Commerce" },
+  { name: "LuxeLiving", label: "Home Decor" },
   { name: "SwiftLogistics", label: "Fleet & Transport" },
   { name: "PayShield Tech", label: "Fintech & POS" },
-  { name: "EduVantage Pro", label: "EdTech Learning" },
-  { name: "MediCore Lab", label: "Healthcare Labs" }
+  { name: "EduVantage Pro", label: "EdTech Learning" }
 ];
 
 export const whyChooseUs = [
   {
+    title: "Best Price in Market",
+    desc: "Honest, transparent milestone pricing with zero hidden fees. We deliver enterprise-grade quality at accessible rates for growing businesses.",
+    icon: "BadgePercent"
+  },
+  {
     title: "100% Source Code Ownership",
-    desc: "You own all code, repositories, databases, and IP from day one. No vendor lock-in, no hostage code.",
+    desc: "You own all source code repositories, databases, design files, and intellectual property from day one. No vendor lock-in.",
     icon: "Code2"
   },
   {
-    title: "Agile Sprints & Fast Delivery",
-    desc: "We deploy working prototypes within 7 days and full production builds in 2 to 4 weeks using weekly milestone demos.",
+    title: "Turnkey E-Commerce & App Mastery",
+    desc: "From UI/UX wireframes to Play Store/App Store approvals, payment gateways, and delivery logistics, we handle the entire pipeline.",
+    icon: "ShoppingBag"
+  },
+  {
+    title: "Agile 2 - 4 Week Sprints",
+    desc: "We deploy working prototypes within 7 days and full production builds in 2 to 4 weeks using weekly milestone walkthroughs.",
     icon: "Zap"
   },
   {
-    title: "Direct Senior Engineer Access",
-    desc: "No middlemen account managers playing telephone. You communicate directly with the senior developers building your software.",
+    title: "Direct Senior Tech Access",
+    desc: "No non-technical sales middlemen. You collaborate directly with senior software architects and developers on call or WhatsApp.",
     icon: "Users"
   },
   {
-    title: "Ironclad Mutual NDA",
+    title: "Strict Mutual NDA Protection",
     desc: "Your product ideas, business logic, customer data, and trade secrets remain strictly confidential under legal NDAs.",
     icon: "ShieldAlert"
   },
   {
     title: "Milestone-Based Payments",
-    desc: "Pay strictly as milestones are delivered and approved by you. Zero financial risk with clear transparent invoicing.",
+    desc: "Pay strictly as milestones are delivered and approved by you. Zero financial risk with transparent deliverables.",
     icon: "CheckCircle"
   },
   {
-    title: "Post-Launch Warranty & Support",
-    desc: "Every project comes with free bug-fixing support, server monitoring, and guaranteed handover training.",
+    title: "Free Post-Launch Warranty & Support",
+    desc: "Every project includes 30 to 90 days of free bug-fixing support, server monitoring, and guaranteed handover training.",
     icon: "Headphones"
   }
 ];
 
 export const faqs = [
   {
-    q: "How does the pricing work and are there any hidden fees?",
-    a: "Our pricing is 100% transparent. We provide itemized quotes starting at minimum prices (e.g., ₹9,999 for landing pages, ₹19,999 for custom billing software, ₹34,999 for full mobile apps). There are zero hidden fees, and payments are split into milestone-based stages (e.g., 30% kickoff, 40% demo milestone, 30% final handover)."
+    q: "Can you build both Android and iOS apps at the best price?",
+    a: "Yes, absolutely! We develop native (Kotlin/Swift) as well as cross-platform (Flutter & React Native) mobile applications that run smoothly on both Android and iOS from a single robust codebase. This gives you top performance while cutting development costs and time in half, with pricing starting at just ₹24,999."
   },
   {
-    q: "Do I get full ownership of the source code and database?",
-    a: "Yes, absolutely 100%. Upon final milestone completion, all source code repositories (GitHub/GitLab), database credentials, API keys, and deployment credentials are fully transferred to you. You have full intellectual property rights with zero vendor lock-in."
+    q: "How does the E-Commerce business setup service work?",
+    a: "We provide complete end-to-end E-Commerce setup: designing your high-converting online store, integrating payment gateways (UPI, Cards, Netbanking via Razorpay/Stripe), configuring inventory catalogs, integrating automated courier shipping (Shiprocket), and setting up automated WhatsApp order notifications."
+  },
+  {
+    q: "What do your Tech Consulting Services include?",
+    a: "Our Tech Consulting services help founders, startups, and companies make the right technical decisions. We provide codebase audits, cloud architecture reviews, database query tuning, tech stack recommendations, MVP scoping, and infrastructure cost optimization so you never overpay for servers or rewrite code later."
   },
   {
     q: "Can you build custom Billing Software with barcode scanner and printer support?",
-    a: "Yes! In fact, custom Billing & POS Software is one of our most requested specializations. We build systems that support 2-inch and 3-inch thermal receipt printers, laser A4 GST invoices, handheld wireless barcode scanners, customer ledger management, and automatic WhatsApp invoice dispatch."
+    a: "Yes! Custom Billing & POS Software is one of our flagship specializations. We build desktop and cloud systems that support 2-inch and 3-inch thermal receipt printers, laser A4 GST invoices, handheld wireless barcode scanners, customer credit ledger (Khata) management, and automatic WhatsApp invoice dispatch with zero monthly subscription fees."
   },
   {
-    q: "How long will it take to build and launch my mobile app or web platform?",
-    a: "High-converting websites and landing pages take 3 to 7 days. Standard custom web applications and billing software take 1 to 3 weeks. Comprehensive mobile apps (Android & iOS) typically take 2 to 4 weeks depending on the complexity of features and integrations."
+    q: "Do I get full ownership of the source code and database?",
+    a: "Yes, 100%. Upon final milestone completion, all source code repositories (GitHub/GitLab), database credentials, API keys, and deployment credentials are fully transferred to you. You have full intellectual property rights with zero vendor lock-in."
   },
   {
-    q: "Will you help upload and approve our app on Google Play and Apple App Store?",
-    a: "Yes. We take full responsibility for generating signed release builds, configuring app permissions, creating screenshot assets, filling out data safety forms, and submitting to the Google Play Console and Apple App Store Connect until your app is live."
-  },
-  {
-    q: "How do we get started today?",
-    a: "Simply click 'Get Instant Quote' or message us directly on WhatsApp (+91 98765 43210). We will review your requirements, schedule a free 30-minute discovery call, and provide a detailed scope of work and fixed-price quotation within 24 hours."
+    q: "How do I get an instant quote or speak with a tech lead right now?",
+    a: "Simply fill the quick quote form below or message/call us directly on WhatsApp at +91 8850164531. Our Senior Tech Lead will review your requirements and provide a detailed scope and fixed-price quotation within 2 hours."
   }
 ];

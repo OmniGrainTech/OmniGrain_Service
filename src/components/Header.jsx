@@ -8,7 +8,8 @@ import {
   ArrowRight, 
   Sparkles,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
 
@@ -26,9 +27,11 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
 
   const navLinks = [
     { name: 'Services', href: '#services' },
+    { name: 'E-Commerce', href: '#services' },
     { name: 'Billing Software', href: '#billing-software' },
-    { name: 'Our Products (RedPDF)', href: '#products' },
-    { name: 'Cost Estimator', href: '#calculator' },
+    { name: 'Tech Consulting', href: '#services' },
+    { name: 'Past Work', href: '#past-work' },
+    { name: 'Why Us', href: '#why-us' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },
@@ -37,65 +40,85 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
   return (
     <>
       {/* Top High-Conversion Urgency Banner */}
-      <aside aria-label="Limited Time Offer" className="bg-gradient-to-r from-brand-accent/20 via-blue-600/20 to-purple-600/20 border-b border-brand-accent/20 py-2 px-4 text-xs text-center text-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-brand-accent/20 text-brand-accentLight font-semibold text-[11px] border border-brand-accent/30">
-            <Sparkles className="w-3 h-3 mr-1" /> SPECIAL PROMOTION
-          </span>
-          <span>
-            Need a Mobile App, Web Platform, or Custom Billing Software? 
-            <strong className="text-white ml-1">Get Free Scope & Prototype within 24 Hours!</strong>
-          </span>
-          <button 
-            onClick={() => onOpenEnquiry('Free Scope & Prototype Consultation')}
-            className="text-brand-accentLight hover:text-white underline font-medium ml-1 inline-flex items-center group transition"
-          >
-            Claim Consultation <ArrowRight className="w-3 h-3 ml-0.5 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+      <aside aria-label="Limited Time Offer" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white py-2 px-4 text-xs shadow-sm">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center space-x-2">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-white/20 text-white font-bold text-[10px] tracking-wider uppercase backdrop-blur-sm">
+              <Sparkles className="w-3 h-3 mr-1 text-amber-300" /> LIMITED AD PROMOTION
+            </span>
+            <span className="hidden sm:inline font-medium text-slate-100">
+              Need a Mobile App, E-Commerce Store or Custom Software?
+            </span>
+            <strong className="text-white font-bold">
+              Get Free Technical Scope & Price Estimate in 2 Hours!
+            </strong>
+          </div>
+
+          <div className="flex items-center space-x-4 text-xs font-semibold">
+            {/* Direct Call / WhatsApp Quick Link */}
+            <a 
+              href={`tel:${companyInfo.phone}`}
+              className="hidden md:flex items-center space-x-1 text-white hover:text-amber-200 transition"
+              title="Call Tech Lead Directly"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call: {companyInfo.phoneDisplay}</span>
+            </a>
+            <a 
+              href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20am%20looking%20for%20a%20project%20quote.`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1 text-emerald-200 hover:text-white transition"
+              title="Chat on WhatsApp"
+            >
+              <MessageCircle className="w-3.5 h-3.5 fill-emerald-400" />
+              <span>WhatsApp: {companyInfo.phoneDisplay}</span>
+            </a>
+          </div>
         </div>
       </aside>
 
       {/* Main Sticky Header */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      <header className={`sticky top-0 z-50 transition-all duration-200 ${
         isScrolled 
-          ? 'bg-brand-deep/95 backdrop-blur-md shadow-2xl shadow-brand-deep/80 border-b border-slate-800/90 py-3' 
-          : 'bg-brand-deep/80 backdrop-blur-sm border-b border-slate-800/50 py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200 py-2.5' 
+          : 'bg-white/90 backdrop-blur-sm border-b border-slate-100 py-3.5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
             {/* Logo */}
             <a href="#" className="flex items-center space-x-3 group">
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-brand-accent to-blue-600 p-[1.5px] shadow-lg shadow-brand-accent/20 group-hover:shadow-brand-accent/40 transition">
-                <div className="w-full h-full bg-brand-deep rounded-[10px] flex items-center justify-center overflow-hidden p-1">
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-indigo-600 p-[1.5px] shadow-md group-hover:shadow-blue-500/25 transition">
+                <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-1">
                   <img 
                     src="/logo.png" 
                     alt="Omnigrain Tech Logo" 
-                    className="w-full h-full object-contain filter drop-shadow group-hover:scale-105 transition-transform"
+                    className="w-full h-full object-contain filter group-hover:scale-105 transition-transform"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.parentNode.innerHTML = '<span class="text-brand-accent font-black text-lg">OG</span>';
+                      e.target.parentNode.innerHTML = '<span class="text-blue-600 font-black text-lg">OG</span>';
                     }}
                   />
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black tracking-wider text-white group-hover:text-brand-accent transition">
+                <span className="text-xl font-black tracking-wider text-slate-900 group-hover:text-blue-600 transition">
                   OMNIGRAIN
                 </span>
-                <span className="text-[10px] text-brand-muted tracking-[0.22em] font-semibold uppercase">
+                <span className="text-[10px] text-slate-500 tracking-[0.24em] font-bold uppercase">
                   TECH SOLUTIONS
                 </span>
               </div>
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center space-x-7 text-sm font-medium">
+            <nav className="hidden xl:flex items-center space-x-6 text-sm font-semibold text-slate-600">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-slate-300 hover:text-brand-accent transition duration-200"
+                  className="hover:text-blue-600 transition-colors py-1"
                 >
                   {link.name}
                 </a>
@@ -103,17 +126,17 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
             </nav>
 
             {/* Header Right Actions */}
-            <div className="flex items-center space-x-3 sm:space-x-4">
+            <div className="flex items-center space-x-2.5 sm:space-x-3">
               
               {/* Currency Selector */}
-              <div className="flex items-center bg-slate-900/90 border border-slate-700/80 rounded-lg p-0.5 text-xs font-semibold">
+              <div className="flex items-center bg-slate-100 border border-slate-200 rounded-lg p-0.5 text-xs font-bold">
                 <button
                   type="button"
                   onClick={() => setCurrency('INR')}
                   className={`px-2 py-1 rounded transition ${
                     currency === 'INR' 
-                      ? 'bg-brand-accent text-slate-900 shadow font-bold' 
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-white text-blue-600 shadow-sm font-extrabold' 
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                   title="Show prices in Indian Rupees (₹)"
                 >
@@ -124,8 +147,8 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                   onClick={() => setCurrency('USD')}
                   className={`px-2 py-1 rounded transition ${
                     currency === 'USD' 
-                      ? 'bg-brand-accent text-slate-900 shadow font-bold' 
-                      : 'text-slate-400 hover:text-white'
+                      ? 'bg-white text-blue-600 shadow-sm font-extrabold' 
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                   title="Show prices in US Dollars ($)"
                 >
@@ -133,35 +156,46 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                 </button>
               </div>
 
-              {/* Direct WhatsApp Action (Desktop) */}
+              {/* Direct Call Pill (Desktop) */}
               <a
-                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hello%20Omnigrain%20Tech%20LLP,%20I%20am%20interested%20in%20your%20software%20and%20app%20development%20services.`}
+                href={`tel:${companyInfo.phone}`}
+                className="hidden lg:flex items-center space-x-1.5 text-xs font-bold text-slate-700 hover:text-blue-600 bg-slate-50 hover:bg-slate-100 border border-slate-200 px-3 py-2 rounded-lg transition"
+                title="Call Directly"
+              >
+                <Phone className="w-3.5 h-3.5 text-blue-600" />
+                <span>{companyInfo.phoneDisplay}</span>
+              </a>
+
+              {/* Direct WhatsApp Action */}
+              <a
+                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hello%20Omnigrain%20Tech,%20I%20am%20interested%20in%20your%20development%20and%20consulting%20services.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex items-center space-x-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg transition"
+                className="hidden md:flex items-center space-x-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-2 rounded-lg transition shadow-sm"
                 title="Direct WhatsApp Chat with Tech Lead"
               >
-                <MessageCircle className="w-4 h-4 fill-emerald-500/20" />
+                <MessageCircle className="w-4 h-4 fill-emerald-500 text-emerald-600" />
                 <span>WhatsApp</span>
               </a>
 
-              {/* Primary High-Conversion CTA */}
+              {/* Primary High-Conversion CTA Button */}
               <button
                 type="button"
-                onClick={() => onOpenEnquiry('Instant Quote Request')}
-                className="relative group overflow-hidden px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-brand-accent/25 hover:shadow-brand-accent/40 transition duration-300 transform hover:-translate-y-0.5"
+                onClick={() => onOpenEnquiry('Header Instant Quote Button')}
+                className="relative group overflow-hidden px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg shadow-blue-500/25 transition duration-200 transform hover:-translate-y-0.5"
               >
-                <span className="flex items-center space-x-1.5 text-slate-900 font-extrabold">
-                  <span>Get Instant Quote</span>
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span className="flex items-center space-x-1.5">
+                  <Zap className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+                  <span>Get Free Quote</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </button>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Toggle Button */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="xl:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/80 transition"
+                className="xl:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
                 aria-label="Toggle Navigation Menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -170,32 +204,40 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Navigation */}
         {mobileMenuOpen && (
-          <div className="xl:hidden bg-brand-dark/98 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 mt-3 backdrop-blur-xl animate-in slide-in-from-top-2 duration-200">
-            <div className="flex flex-col space-y-2">
+          <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl animate-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-brand-accent transition flex items-center justify-between"
+                  className="px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition flex items-center justify-between"
                 >
                   <span>{link.name}</span>
-                  <ChevronRight className="w-4 h-4 text-slate-500" />
+                  <ChevronRight className="w-4 h-4 text-slate-400" />
                 </a>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex flex-col gap-2">
+            <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
               <a
-                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hello%20Omnigrain%20Tech%20LLP,%20I%20am%20looking%20for%20software%20development%20services.`}
+                href={`tel:${companyInfo.phone}`}
+                className="w-full flex items-center justify-center space-x-2 bg-slate-900 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
+              >
+                <Phone className="w-4 h-4 text-blue-400" />
+                <span>Direct Call: {companyInfo.phoneDisplay}</span>
+              </a>
+
+              <a
+                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hello%20Omnigrain%20Tech,%20I%20am%20looking%20for%20software%20and%20app%20development%20services.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 rounded-lg text-sm shadow transition"
+                className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Chat on WhatsApp Directly</span>
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>WhatsApp: {companyInfo.phoneDisplay}</span>
               </a>
 
               <button
@@ -203,16 +245,16 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                   setMobileMenuOpen(false);
                   onOpenEnquiry('Mobile Menu Quote');
                 }}
-                className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-brand-accent to-blue-600 text-slate-950 font-bold py-2.5 rounded-lg text-sm shadow-lg shadow-brand-accent/20"
+                className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-3 rounded-xl text-sm shadow-md"
               >
-                <span>Request Project Proposal</span>
+                <span>Request Instant Quote & Scope</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="pt-2 text-center text-xs text-slate-400 flex items-center justify-center space-x-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-brand-accent" />
-              <span>Full Source Code Ownership • NDA Protected</span>
+            <div className="pt-2 text-center text-xs text-slate-500 flex items-center justify-center space-x-1.5 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span>100% Source Code Ownership • Strict Mutual NDA</span>
             </div>
           </div>
         )}

@@ -13,32 +13,28 @@ import { pricingPlans } from '../data/websiteData';
 
 export default function Pricing({ currency, onOpenEnquiry }) {
   return (
-    <section id="pricing" className="py-20 lg:py-28 bg-brand-deep relative">
-      
-      {/* Background Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-brand-accent/10 rounded-full blur-[140px] pointer-events-none"></div>
-
+    <section id="pricing" className="py-16 lg:py-24 bg-white relative border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-extrabold uppercase tracking-wider mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
             <span>Transparent Minimum Pricing</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Transparent Investment Plans, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-300 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               Zero Hidden Surprises
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            No endless hourly billing bloat. Every project is scoped with fixed milestone-based payments, complete source code handover, and post-launch bug warranty.
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
+            No endless hourly billing surprises. Every project is scoped with fixed milestone-based payments, 100% complete source code handover, and post-launch bug warranty.
           </p>
         </div>
 
-        {/* 3-Column Pricing Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* 4-Column Pricing Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {pricingPlans.map((plan) => {
             const price = currency === 'INR' 
               ? `₹${plan.priceINR.toLocaleString('en-IN')}` 
@@ -47,17 +43,17 @@ export default function Pricing({ currency, onOpenEnquiry }) {
             return (
               <div 
                 key={plan.id}
-                className={`relative rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
+                className={`relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 ${
                   plan.isPopular
-                    ? 'bg-gradient-to-b from-brand-card via-slate-900 to-brand-card border-2 border-brand-accent shadow-2xl shadow-brand-accent/15 transform lg:-translate-y-3'
-                    : 'bg-brand-card/90 border border-slate-800 hover:border-slate-700 shadow-xl'
+                    ? 'bg-gradient-to-b from-blue-50/50 via-white to-white border-2 border-blue-600 shadow-xl lg:-translate-y-2'
+                    : 'bg-slate-50 border border-slate-200 hover:border-slate-300 shadow-sm'
                 }`}
               >
                 {/* Popular Badge */}
                 {plan.isPopular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-brand-accent to-blue-600 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-brand-accent/30 flex items-center space-x-1">
-                      <Sparkles className="w-3.5 h-3.5 fill-slate-950" />
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-[11px] uppercase tracking-wider shadow-sm flex items-center space-x-1">
+                      <Sparkles className="w-3 h-3 text-amber-300" />
                       <span>{plan.badge}</span>
                     </span>
                   </div>
@@ -66,41 +62,41 @@ export default function Pricing({ currency, onOpenEnquiry }) {
                 <div>
                   {/* Plan Name & Tag */}
                   <div className="mb-4">
-                    <span className="text-xs font-bold text-brand-accent uppercase tracking-wider">
+                    <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider">
                       {plan.badge}
                     </span>
-                    <h3 className="text-2xl font-black text-white mt-1">{plan.name}</h3>
-                    <p className="text-xs text-slate-400 mt-2 min-h-[36px]">{plan.description}</p>
+                    <h3 className="text-xl font-black text-slate-900 mt-1">{plan.name}</h3>
+                    <p className="text-xs text-slate-500 mt-1.5 min-h-[34px]">{plan.description}</p>
                   </div>
 
                   {/* Price Header */}
-                  <div className="p-4 rounded-2xl bg-brand-dark/95 border border-slate-800/90 mb-6">
-                    <span className="text-[11px] text-slate-400 font-semibold uppercase tracking-wider block">
+                  <div className="p-4 rounded-2xl bg-white border border-slate-200 mb-5 shadow-xs">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">
                       Starting At Minimum
                     </span>
                     <div className="flex items-baseline space-x-1 mt-1">
-                      <span className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                      <span className="text-3xl font-black text-slate-900 tracking-tight">
                         {price}
                       </span>
-                      <span className="text-xs text-slate-400 font-medium">/ project base</span>
+                      <span className="text-xs text-slate-500 font-medium">/ base</span>
                     </div>
-                    <div className="mt-2 pt-2 border-t border-slate-800 text-[11px] text-slate-300 flex items-center justify-between">
-                      <span className="flex items-center text-slate-400">
-                        <Clock className="w-3.5 h-3.5 mr-1 text-brand-accent" /> Timeline:
+                    <div className="mt-2 pt-2 border-t border-slate-100 text-[11px] text-slate-600 flex items-center justify-between">
+                      <span className="flex items-center text-slate-500">
+                        <Clock className="w-3.5 h-3.5 mr-1 text-blue-600" /> Timeline:
                       </span>
-                      <span className="font-mono font-bold text-white">{plan.deliveryTime}</span>
+                      <span className="font-mono font-bold text-slate-800">{plan.deliveryTime}</span>
                     </div>
                   </div>
 
                   {/* Feature List */}
-                  <div className="space-y-3 mb-8">
-                    <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                  <div className="space-y-2.5 mb-6">
+                    <span className="text-xs font-extrabold text-slate-800 uppercase tracking-wider block">
                       Core Deliverables:
                     </span>
                     {plan.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start space-x-2.5 text-xs text-slate-300">
-                        <div className="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 stroke-[3]" />
+                      <div key={idx} className="flex items-start space-x-2 text-xs text-slate-600">
+                        <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
+                          ✓
                         </div>
                         <span>{feat}</span>
                       </div>
@@ -113,17 +109,17 @@ export default function Pricing({ currency, onOpenEnquiry }) {
                   <button
                     type="button"
                     onClick={() => onOpenEnquiry(`Selected Pricing Tier: ${plan.name} (${price})`)}
-                    className={`w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center space-x-2 transition duration-200 ${
+                    className={`w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center space-x-2 transition duration-150 ${
                       plan.isPopular
-                        ? 'bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 shadow-lg shadow-brand-accent/25'
-                        : 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-700'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20'
+                        : 'bg-slate-900 hover:bg-slate-800 text-white'
                     }`}
                   >
                     <span>{plan.ctaText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  <div className="text-center text-[10px] text-slate-400 mt-2 flex items-center justify-center space-x-1">
-                    <ShieldCheck className="w-3 h-3 text-brand-accent" />
+                  <div className="text-center text-[10px] text-slate-500 mt-2 flex items-center justify-center space-x-1 font-medium">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                     <span>Pay in 3 Easy Milestones</span>
                   </div>
                 </div>
@@ -134,22 +130,22 @@ export default function Pricing({ currency, onOpenEnquiry }) {
         </div>
 
         {/* Milestone Payment Assurance Callout */}
-        <div className="mt-14 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="mt-12 p-6 rounded-3xl bg-slate-50 border border-slate-200 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mx-auto sm:mx-0">
+            <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mx-auto sm:mx-0">
               <Lock className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">How Milestone Payments Protect You</h4>
-              <p className="text-xs text-slate-300 mt-0.5">
-                30% Initial Kickoff & Wireframes → 40% Working Product Demo → 30% Final Testing & 100% Source Code Transfer.
+              <h4 className="text-sm font-black text-slate-900">How Our Milestone Payments Protect You</h4>
+              <p className="text-xs text-slate-600 mt-0.5">
+                30% Initial Kickoff & UI Mockups → 40% Working Product Demo → 30% Final Testing & 100% Code Handover.
               </p>
             </div>
           </div>
           <button
             type="button"
             onClick={() => onOpenEnquiry('Custom Milestone Plan Request')}
-            className="shrink-0 text-xs font-bold text-brand-accent hover:text-white underline underline-offset-4 transition"
+            className="shrink-0 text-xs font-bold text-blue-600 hover:text-blue-800 underline underline-offset-4 transition"
           >
             Customize Milestones →
           </button>

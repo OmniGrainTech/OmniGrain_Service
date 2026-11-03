@@ -9,247 +9,270 @@ import {
   Cpu, 
   Zap, 
   Lock, 
-  Code2, 
   Smartphone,
   ChevronRight,
   TrendingUp,
-  MessageCircle
+  MessageCircle,
+  Phone,
+  ShoppingBag,
+  Receipt,
+  Compass,
+  Check
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
 
 export default function Hero({ onOpenEnquiry, currency }) {
   const minWebPrice = currency === 'INR' ? '₹9,999' : '$149';
-  const minAppPrice = currency === 'INR' ? '₹34,999' : '$499';
+  const minAppPrice = currency === 'INR' ? '₹24,999' : '$349';
+  const minEcomPrice = currency === 'INR' ? '₹14,999' : '$199';
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-tech-grid">
-      {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-brand-accent/15 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute top-40 right-10 w-[400px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-10 left-10 w-[450px] h-[300px] bg-indigo-600/10 rounded-full blur-[110px] pointer-events-none"></div>
+    <section className="relative overflow-hidden pt-10 pb-16 lg:pt-16 lg:pb-24 bg-tech-grid-light bg-radial-glow-light">
+      
+      {/* Decorative Gradient Flares */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-100/60 via-cyan-100/30 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* Left Column: Core Value Proposition & Conversion Hooks */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Trust Pill */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-brand-accent/30 shadow-lg shadow-brand-accent/10">
+            {/* Top Ad Trust Pill */}
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-200 shadow-sm text-xs font-bold text-blue-700">
               <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
               </span>
-              <span className="text-xs font-semibold text-brand-accent uppercase tracking-wider">
-                Full-Lifecycle Software Engineering & App Development
-              </span>
+              <span>🔥 BEST PRICE GUARANTEE • 100% CODE OWNERSHIP</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
-              Build High-Converting <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-cyan-300 to-blue-500">
-                Mobile Apps, Web Platforms
+            <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-black tracking-tight leading-[1.12] text-slate-900">
+              High-Converting <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600">
+                Mobile Apps, E-Commerce
               </span>
               <br />
-              <span className="text-slate-100">& Custom Billing Software</span>
+              <span className="text-slate-900">& Custom Software Solutions</span>
             </h1>
 
-            {/* Subheading / Value Guarantee */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              <strong>Omnigrain Tech LLP</strong> designs, builds, and scales high-velocity digital products. From consumer Android/iOS apps with 
-              <span className="text-brand-accent font-semibold"> 100k+ downloads</span> to custom GST billing systems, high-speed APIs, and resilient cloud architectures.
+            {/* Subheading explicitly covering requirements */}
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              We engineer revenue-generating <strong>Android & iOS Mobile Applications</strong>, complete <strong>E-Commerce Business Setups</strong>, custom <strong>Billing & POS Software</strong>, and provide direct <strong>Tech Consulting</strong> at the best price in the market.
             </p>
 
-            {/* Starting Price Pill */}
-            <div className="inline-flex items-center space-x-3 bg-brand-card/90 border border-slate-700/80 px-4 py-2 rounded-xl text-xs sm:text-sm text-slate-300">
-              <span className="text-amber-400 font-bold flex items-center">
-                <Sparkles className="w-4 h-4 mr-1 text-amber-400 fill-amber-400/20" /> Transparent Pricing:
+            {/* Highlighted Services Quick Tags */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+              <span className="inline-flex items-center text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg">
+                <Smartphone className="w-3.5 h-3.5 mr-1" /> All Android & iOS Apps
               </span>
-              <span>Websites starting from <strong className="text-white underline decoration-brand-accent">{minWebPrice}</strong></span>
-              <span className="text-slate-600">|</span>
-              <span>Mobile Apps from <strong className="text-white underline decoration-blue-500">{minAppPrice}</strong></span>
+              <span className="inline-flex items-center text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2.5 py-1 rounded-lg">
+                <ShoppingBag className="w-3.5 h-3.5 mr-1" /> E-Commerce Business Setup
+              </span>
+              <span className="inline-flex items-center text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg">
+                <Receipt className="w-3.5 h-3.5 mr-1" /> Custom GST Billing & POS
+              </span>
+              <span className="inline-flex items-center text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200/80 px-2.5 py-1 rounded-lg">
+                <Compass className="w-3.5 h-3.5 mr-1" /> Tech Consulting Services
+              </span>
+            </div>
+
+            {/* Starting Price Pill */}
+            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 bg-white border border-slate-200 px-4 py-2.5 rounded-2xl text-xs sm:text-sm text-slate-700 shadow-sm">
+              <span className="text-amber-600 font-extrabold flex items-center">
+                <Sparkles className="w-4 h-4 mr-1 text-amber-500 fill-amber-500" /> Transparent Pricing:
+              </span>
+              <span>Websites from <strong className="text-slate-900 font-bold">{minWebPrice}</strong></span>
+              <span className="text-slate-300">•</span>
+              <span>E-Commerce from <strong className="text-slate-900 font-bold">{minEcomPrice}</strong></span>
+              <span className="text-slate-300">•</span>
+              <span>Mobile Apps from <strong className="text-blue-600 font-bold">{minAppPrice}</strong></span>
             </div>
 
             {/* High-Converting CTA Button Cluster */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2">
               
-              {/* Primary Consultation Button */}
+              {/* Primary Quote CTA Button with Glow */}
               <button
                 type="button"
-                onClick={() => onOpenEnquiry('Hero Main CTA - Free Consultation')}
-                className="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-brand-accent to-blue-600 hover:from-brand-accentLight hover:to-blue-500 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl shadow-brand-accent/25 hover:shadow-brand-accent/40 transition duration-300 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2 group"
+                onClick={() => onOpenEnquiry('Hero Main CTA - Get Free Quote')}
+                className="px-7 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-sm sm:text-base shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition duration-200 transform hover:-translate-y-0.5 flex items-center justify-center space-x-2 group"
               >
-                <span>Get Free Scope & Quote</span>
+                <span>Get Free Quote & SOW</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              {/* Direct WhatsApp Action */}
+              {/* Direct WhatsApp Call-to-Action */}
               <a
-                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech%20LLP,%20I%20am%20looking%20for%20software%20and%20app%20development%20pricing%20and%20scope.`}
+                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20am%20looking%20for%20Mobile%20App,%20E-Commerce%20or%20Software%20Development%20services.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 font-bold text-sm sm:text-base border border-emerald-500/40 transition duration-300 flex items-center justify-center space-x-2 shadow-lg"
+                className="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-emerald-600/30 transition duration-200 flex items-center justify-center space-x-2"
+                title="Direct WhatsApp Chat"
               >
-                <MessageCircle className="w-5 h-5 fill-emerald-500/20" />
-                <span>Chat on WhatsApp</span>
+                <MessageCircle className="w-5 h-5 fill-white" />
+                <span>WhatsApp: {companyInfo.phoneDisplay}</span>
               </a>
 
-              {/* In-House Product Link */}
+              {/* Direct Phone Call Button */}
               <a
-                href="#products"
-                className="w-full sm:w-auto px-5 py-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-sm border border-slate-700/80 transition duration-300 flex items-center justify-center space-x-1.5"
+                href={`tel:${companyInfo.phone}`}
+                className="px-5 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm sm:text-base border border-slate-300 shadow-sm transition duration-200 flex items-center justify-center space-x-2"
+                title="Call Immediately"
               >
-                <Smartphone className="w-4 h-4 text-brand-accent" />
-                <span>See Our Apps</span>
+                <Phone className="w-4 h-4 text-blue-600" />
+                <span>Call Now</span>
               </a>
             </div>
 
-            {/* Trust Signals & Guarantees */}
-            <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            {/* Trust Badges Checkmarks */}
+            <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-left">
+              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
                 <span>100% Code Ownership</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Mutual NDA Protected</span>
+              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
+                <span>Strict Mutual NDA</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
                 <span>2 - 4 Week Sprints</span>
               </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-700">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
                 <span>Milestone Payments</span>
               </div>
             </div>
 
             {/* Quick Metrics Bar */}
-            <div className="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div className="pt-6 border-t border-slate-200 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white flex items-center">
-                  150<span className="text-brand-accent">+</span>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900">
+                  150<span className="text-blue-600">+</span>
                 </div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider font-medium">Projects Delivered</div>
+                <div className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">Projects Launched</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white flex items-center">
-                  4.9<span className="text-amber-400 text-lg ml-0.5">★</span>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center justify-center lg:justify-start">
+                  4.9<span className="text-amber-500 text-lg ml-0.5">★</span>
                 </div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider font-medium">120+ Client Reviews</div>
+                <div className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">120+ Client Reviews</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white flex items-center">
-                  100k<span className="text-emerald-400">+</span>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900">
+                  100k<span className="text-emerald-600">+</span>
                 </div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider font-medium">Active App Users</div>
+                <div className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">Active App Users</div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Interactive Tech Card / Live Status Showcase */}
+          {/* Right Column: Clean Interactive Tech Showcase Card */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Outer Glow */}
-              <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-brand-accent/40 via-blue-600/30 to-purple-600/40 opacity-70 blur-xl"></div>
-              
               {/* Main Card Surface */}
-              <div className="relative rounded-2xl bg-brand-dark/95 border border-slate-700/80 p-6 shadow-2xl backdrop-blur-xl">
+              <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-7 shadow-xl">
                 
-                {/* Window Header */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                {/* Header of Preview Box */}
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-5">
                   <div className="flex items-center space-x-2">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                    <span className="ml-2 text-xs font-mono text-slate-400">omnigrain-engine.v2.prod</span>
+                    <span className="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span className="w-3 h-3 rounded-full bg-amber-400"></span>
+                    <span className="w-3 h-3 rounded-full bg-emerald-400"></span>
+                    <span className="ml-2 text-xs font-mono font-bold text-slate-500">omnigrain-delivery.live</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1 animate-pulse"></span>
-                    SYSTEM HEALTHY
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-pulse"></span>
+                    ACTIVE DEPLOYMENT
                   </span>
                 </div>
 
-                {/* Simulated Metrics Grid */}
-                <div className="space-y-3 font-mono text-xs">
+                {/* 4 Core Pillars Showcase */}
+                <div className="space-y-3">
                   
-                  {/* Status Item 1: App Status */}
-                  <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
-                        <Download className="w-4 h-4" />
+                  {/* Item 1: Mobile Apps */}
+                  <div className="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                        <Smartphone className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-white font-semibold">RedPDF Utility Engine</div>
-                        <div className="text-[10px] text-slate-400">Google Play Store • In-House App</div>
+                        <div className="text-xs font-bold text-slate-900">Android & iOS Applications</div>
+                        <div className="text-[11px] text-slate-500">Flutter • React Native • Native Swift/Kotlin</div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-emerald-400 font-bold">100,000+ Installs</div>
-                      <div className="text-[10px] text-amber-400">4.8 ★ Rating</div>
-                    </div>
+                    <span className="text-[11px] font-bold text-blue-700 bg-blue-100/60 px-2 py-0.5 rounded">
+                      Best Price
+                    </span>
                   </div>
 
-                  {/* Status Item 2: Custom Billing Software */}
-                  <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center text-brand-accent">
-                        <Zap className="w-4 h-4" />
+                  {/* Item 2: E-Commerce Store */}
+                  <div className="p-3.5 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                        <ShoppingBag className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Custom Billing & POS Engine</div>
-                        <div className="text-[10px] text-slate-400">GST Invoicing • Barcode & Thermal Sync</div>
+                        <div className="text-xs font-bold text-slate-900">E-Commerce Business Setup</div>
+                        <div className="text-[11px] text-slate-500">Shopify • Custom MERN • Razorpay UPI</div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-brand-accent font-bold">&lt; 0.8s Per Bill</div>
-                      <div className="text-[10px] text-slate-400">Zero Monthly Sub</div>
-                    </div>
+                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded">
+                      High ROI
+                    </span>
                   </div>
 
-                  {/* Status Item 3: API & Cloud Infrastructure */}
-                  <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                        <Cpu className="w-4 h-4" />
+                  {/* Item 3: Custom Billing Software */}
+                  <div className="p-3.5 bg-slate-50 hover:bg-amber-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                        <Receipt className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="text-white font-semibold">Microservices & Database</div>
-                        <div className="text-[10px] text-slate-400">PostgreSQL • Redis • AWS Auto-Scale</div>
+                        <div className="text-xs font-bold text-slate-900">Custom Billing & POS Software</div>
+                        <div className="text-[11px] text-slate-500">GST Invoice • Thermal Printer • Barcode</div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-emerald-400 font-bold">14ms Latency</div>
-                      <div className="text-[10px] text-slate-400">99.99% Uptime</div>
+                    <span className="text-[11px] font-bold text-amber-700 bg-amber-100/60 px-2 py-0.5 rounded">
+                      Zero Monthly Fee
+                    </span>
+                  </div>
+
+                  {/* Item 4: Tech Consulting */}
+                  <div className="p-3.5 bg-slate-50 hover:bg-purple-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+                        <Compass className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-900">Tech Consulting Services</div>
+                        <div className="text-[11px] text-slate-500">Architecture • Code Audit • Cloud Scaling</div>
+                      </div>
                     </div>
+                    <span className="text-[11px] font-bold text-purple-700 bg-purple-100/60 px-2 py-0.5 rounded">
+                      1-on-1 Lead
+                    </span>
                   </div>
 
                 </div>
 
-                {/* Simulated Code snippet */}
-                <div className="mt-4 p-3 bg-slate-950 rounded-xl border border-slate-800/90 font-mono text-[11px] text-slate-300">
-                  <div className="text-slate-500">// Client Guarantee Contract</div>
-                  <div><span className="text-purple-400">const</span> clientProject = &#123;</div>
-                  <div className="pl-4">sourceCode: <span className="text-emerald-400">'100% Client Owned'</span>,</div>
-                  <div className="pl-4">ndaSigned: <span className="text-blue-400">true</span>,</div>
-                  <div className="pl-4">postLaunchSupport: <span className="text-amber-400">'Included (Free)'</span>,</div>
-                  <div className="pl-4">fixedMilestonePricing: <span className="text-cyan-400">'Guaranteed'</span></div>
-                  <div>&#125;;</div>
-                </div>
-
-                {/* Instant Quote CTA inside card */}
-                <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
-                  <span className="text-xs text-slate-400">Have an active project requirement?</span>
+                {/* Instant Quote Action Box inside Card */}
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div className="text-left">
+                    <span className="text-xs font-bold text-slate-900 block">Have a project in mind?</span>
+                    <span className="text-[11px] text-slate-500">Get a fixed quote and wireframes in 24h</span>
+                  </div>
                   <button
                     type="button"
-                    onClick={() => onOpenEnquiry('Card Direct Action')}
-                    className="text-xs font-bold text-brand-accent hover:text-white flex items-center transition"
+                    onClick={() => onOpenEnquiry('Hero Card Action')}
+                    className="px-4 py-2 bg-slate-900 hover:bg-blue-600 text-white rounded-xl text-xs font-extrabold transition shadow-sm flex items-center space-x-1"
                   >
-                    <span>Instant Proposal</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    <span>Request Proposal</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
