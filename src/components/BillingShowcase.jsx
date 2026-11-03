@@ -98,8 +98,8 @@ export default function BillingShowcase({ currency, onOpenEnquiry }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Interactive Simulated POS Terminal */}
-          <div className="lg:col-span-7">
-            <div className="relative rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl p-5 sm:p-7">
+          <div className="lg:col-span-7 min-w-0 w-full">
+            <div className="relative rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl p-4 sm:p-7">
               
               {/* POS Terminal Top Bar */}
               <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-4 mb-5 gap-2">
@@ -124,8 +124,8 @@ export default function BillingShowcase({ currency, onOpenEnquiry }) {
               </div>
 
               {/* Sample Cart Table */}
-              <div className="overflow-x-auto mb-4">
-                <table className="w-full text-left text-xs font-mono">
+              <div className="overflow-x-auto mb-4 w-full">
+                <table className="w-full min-w-[420px] text-left text-xs font-mono">
                   <thead>
                     <tr className="border-b border-slate-800 text-slate-400">
                       <th className="pb-2">ITEM DESCRIPTION</th>

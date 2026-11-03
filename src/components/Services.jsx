@@ -54,8 +54,8 @@ export default function Services({ currency, onOpenEnquiry }) {
   });
 
   return (
-    <section id="services" className="py-12 lg:py-20 bg-slate-50 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="services" className="py-12 lg:py-20 bg-slate-50 relative overflow-hidden w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Clean, Direct Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">

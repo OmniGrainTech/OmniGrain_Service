@@ -101,11 +101,12 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
             <button
               type="button"
               onClick={() => onOpenEnquiry('Header Instant Quote Button')}
-              className="relative group overflow-hidden px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-blue-500/25 transition duration-150 transform hover:-translate-y-0.5 whitespace-nowrap"
+              className="relative group overflow-hidden px-2.5 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-blue-500/25 transition duration-150 transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               <span className="flex items-center space-x-1 sm:space-x-1.5">
                 <Zap className="w-3.5 h-3.5 fill-amber-300 text-amber-300 shrink-0" />
-                <span>Get Free Quote</span>
+                <span className="hidden xs:inline">Get Free Quote</span>
+                <span className="xs:hidden">Get Quote</span>
                 <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform shrink-0" />
               </span>
             </button>

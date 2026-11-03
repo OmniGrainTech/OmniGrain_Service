@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-bg text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-brand-bg text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white w-full max-w-full overflow-x-hidden">
       
       {/* Top Header & Sticky Navigation */}
       <Header 
@@ -35,7 +35,7 @@ export default function App() {
       />
 
       {/* Main Page Content Flow */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden">
         {/* High-Converting Hero Section */}
         <Hero 
           currency={currency} 
