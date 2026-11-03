@@ -246,44 +246,104 @@ export const redPdfProduct = {
 export const pastWorkShowcase = [
   {
     id: "redpdf",
-    title: "RedPDF - Android Utility App",
+    title: "RedPDF - Image to PDF & Fast Scanner",
     category: "Mobile App Development",
-    stats: "100,000+ Downloads • 4.8★ Rating",
-    desc: "Offline-first mobile utility app built for fast document scanning, batch photo conversion, and 256-bit encryption.",
-    tags: ["Android", "Kotlin", "C++ PDFium", "CameraX"],
+    icon: "Smartphone",
+    badge: "100k+ Active Users",
+    stats: "100,000+ Downloads",
+    rating: "4.8 ★ (12,500+ Reviews)",
+    metricLabel: "Global Play Store Impact",
+    metricValue: "100,000+ Android Downloads",
+    desc: "Offline-first Android utility app engineered by Omnigrain Tech with smart document edge-detection, batch image-to-PDF conversion, and 256-bit password encryption.",
+    fullDesc: "RedPDF is our flagship in-house utility app published on Google Play. Built from scratch with an offline-first architecture, it ensures complete user privacy—no photos, contracts, or personal records ever leave the device. Features native C++ PDFium rendering engine for sub-second conversions.",
+    highlights: [
+      "Offline-first image processing with zero cloud data transmission",
+      "CameraX smart edge-detection and automatic document crop",
+      "Batch conversion of 50+ images into a single compact PDF",
+      "Military-grade 256-bit password protection & file locking",
+      "Built-in smart PDF compressor reducing file sizes by up to 80%",
+      "Seamless wireless printing and direct 1-tap WhatsApp sharing"
+    ],
+    tags: ["Android (Kotlin)", "C++ PDFium", "CameraX API", "SQLite", "Material You"],
     link: "https://play.google.com/store/apps/details?id=com.legendarysoftware.redpdf.imagetopdf&hl=en_IN",
     isExternal: true,
-    actionText: "View on Play Store"
+    actionText: "View on Google Play Store",
+    enquiryText: "Build an App Like RedPDF"
   },
   {
     id: "ecommerce-platform",
     title: "AuraFit D2C E-Commerce Store & App",
     category: "E-Commerce Setup",
-    stats: "₹18L+ Monthly GMV • 3.4x Conversion",
-    desc: "Complete branded online store with one-click UPI checkout, automated Shiprocket fulfillment, and WhatsApp notifications.",
-    tags: ["Next.js", "Shopify Engine", "Razorpay", "WhatsApp API"],
+    icon: "ShoppingBag",
+    badge: "Live D2C Brand",
+    stats: "3.4x Conversion Lift",
+    rating: "₹18L+ Monthly GMV",
+    metricLabel: "Business Growth Metric",
+    metricValue: "₹18 Lakhs+ Monthly GMV Handled",
+    desc: "Full-stack turnkey online storefront engineered for paid Google & Meta ad conversions with instant 1-click Razorpay checkout and automated shipping.",
+    fullDesc: "Omnigrain Tech engineered an ultra-fast, high-converting D2C brand portal for AuraFit. We integrated custom UI/UX optimized for mobile checkouts, instant UPI payments, automated Shiprocket fulfillment, live tracking, and real-time WhatsApp order alerts.",
+    highlights: [
+      "Sub-second load times engineered for high Google & Meta ad ROAS",
+      "1-click UPI, Cards & Netbanking checkout powered by Razorpay",
+      "Automated logistics dispatch with Shiprocket & live tracking",
+      "Instant WhatsApp order confirmation, invoice & shipping alerts",
+      "Abandoned cart automated recovery system boosting sales by 22%",
+      "Responsive admin dashboard for order, stock & promo code management"
+    ],
+    tags: ["Next.js", "Shopify Engine", "Razorpay UPI", "Shiprocket", "WhatsApp Cloud API"],
     isExternal: false,
-    actionText: "Request E-Comm Demo"
+    actionText: "Launch Similar Store",
+    enquiryText: "E-Commerce Business Setup Demo"
   },
   {
     id: "billing-software",
     title: "OmniBilling POS & Inventory ERP",
     category: "Billing Software",
-    stats: "0.8s Per Bill • 12 Branches Synced",
-    desc: "High-speed retail & wholesale invoicing with 3-inch thermal printing, wireless barcode scanner sync, and credit ledgers.",
-    tags: ["Electron", "React", "PostgreSQL", "Thermal SDK"],
+    icon: "Receipt",
+    badge: "12 Retail Marts",
+    stats: "0.8s Sub-Second Bill",
+    rating: "₹36k/yr SaaS Saved",
+    metricLabel: "Client Cost Savings",
+    metricValue: "₹36,000/yr Saved on SaaS Fees",
+    desc: "High-speed custom retail billing & inventory ERP with thermal receipt printing, wireless barcode scanner sync, and automated WhatsApp invoice dispatch.",
+    fullDesc: "Built for high-volume retail marts and wholesale distributors to eliminate expensive recurring software subscriptions. Deployed across 12 branch counters with zero downtime, sub-second barcode scans, multi-terminal synchronisation, and direct WhatsApp PDF billing.",
+    highlights: [
+      "Sub-second 0.8s billing speed with barcode scanner plug-and-play",
+      "Native USB/Network drivers for 2\" and 3\" thermal receipt printers",
+      "Automated WhatsApp PDF invoice dispatch directly to customer mobile",
+      "Integrated customer credit ledger (Khata) with payment reminders",
+      "Real-time multi-branch stock inventory sync with low-stock alerts",
+      "One-time perpetual license with 100% source code ownership"
+    ],
+    tags: ["Electron Desktop", "React", "PostgreSQL", "Thermal SDK", "Barcode SDK"],
     isExternal: false,
-    actionText: "Request Billing Demo"
+    actionText: "Get Custom Billing POS",
+    enquiryText: "Request Billing Software Live Demo"
   },
   {
     id: "consulting-saas",
     title: "KisanTrade Agro Logistics Platform",
     category: "Tech Consulting & Web App",
-    stats: "40% Cloud Cost Cut • 5x Concurrency",
-    desc: "Redesigned backend architecture, optimized PostgreSQL schemas, and implemented Redis caching to handle peak harvest volumes.",
-    tags: ["FastAPI", "PostgreSQL", "Redis", "AWS Cloud"],
+    icon: "Compass",
+    badge: "Agro Tech Case",
+    stats: "40% Cloud Cost Cut",
+    rating: "5x Concurrency",
+    metricLabel: "Scaling Benchmark",
+    metricValue: "5x Concurrent Traffic Handled",
+    desc: "End-to-end tech consulting and backend architectural overhaul to resolve database connection deadlocks during peak harvest season.",
+    fullDesc: "Omnigrain Tech served as senior architectural advisors for KisanTrade. We restructured their monolithic backend into high-throughput FastAPI microservices, overhauled relational database schemas in PostgreSQL, implemented Redis caching, and trimmed AWS monthly server costs by 40%.",
+    highlights: [
+      "Identified and eliminated database connection pool bottlenecks",
+      "Migrated slow queries to optimized indexes and Redis cache layers",
+      "Engineered microservices capable of handling 5x peak harvest traffic",
+      "AWS cloud audit resulting in immediate 40% monthly infrastructure savings",
+      "Implemented Docker containerization & zero-downtime CI/CD deployment",
+      "Comprehensive code review and security vulnerability hardening"
+    ],
+    tags: ["FastAPI (Python)", "PostgreSQL", "Redis Cache", "AWS Cloud", "Docker CI/CD"],
     isExternal: false,
-    actionText: "Read Architecture Case"
+    actionText: "Book Tech Consultation",
+    enquiryText: "Tech Consulting Architecture Review"
   }
 ];
 

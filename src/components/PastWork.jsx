@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Smartphone, 
   ShoppingBag, 
@@ -9,249 +9,289 @@ import {
   Download, 
   ArrowRight, 
   CheckCircle2, 
-  Sparkles,
-  Zap
+  Sparkles, 
+  Zap,
+  X,
+  Check,
+  ShieldCheck,
+  MessageCircle,
+  Eye
 } from 'lucide-react';
-import { pastWorkShowcase, redPdfProduct, companyInfo } from '../data/websiteData';
+import { pastWorkShowcase, companyInfo } from '../data/websiteData';
+
+const iconMap = {
+  Smartphone: Smartphone,
+  ShoppingBag: ShoppingBag,
+  Receipt: Receipt,
+  Compass: Compass,
+};
 
 export default function PastWork({ onOpenEnquiry }) {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleOpenDetail = (project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedProject(null);
+  };
+
   return (
-    <section id="past-work" className="py-16 lg:py-24 bg-white border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="past-work" className="py-14 lg:py-22 bg-white border-t border-slate-200 relative overflow-hidden w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-extrabold uppercase tracking-widest mb-3">
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Proven Delivery Portfolio</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Our Past Work & <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600">
               High-Performing Software Products
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600">
-            Real software built for real businesses. From in-house consumer Android apps with 100k+ downloads to fast D2C E-Commerce setups and bespoke billing software.
+          <p className="mt-3 text-xs sm:text-base text-slate-600 max-w-2xl mx-auto">
+            Click any project card below to explore full technical deliverables, client results, and live demonstrations.
           </p>
         </div>
 
-        {/* 4 Featured Past Work Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
-          
-          {/* Card 1: RedPDF Flagship App */}
-          <div className="p-5 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 hover:border-red-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <div className="flex flex-wrap items-center justify-between mb-4 gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-red-100 text-red-700 border border-red-200 uppercase tracking-wider">
-                  Mobile App Development
-                </span>
-                <span className="text-xs font-bold text-amber-700 bg-amber-100/70 border border-amber-200 px-2.5 py-1 rounded-lg flex items-center shrink-0">
-                  <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500 mr-1" />
-                  4.8 ★ on Google Play
-                </span>
-              </div>
+        {/* 4 Clickable Past Work Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-10">
+          {pastWorkShowcase.map((project) => {
+            const IconComponent = iconMap[project.icon] || Smartphone;
 
-              <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-red-600 transition mb-2">
-                RedPDF - Image to PDF & Fast PDF Maker
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                Offline-first Android utility app engineered by Omnigrain Tech. Handles instant document edge-detection, camera scans, batch photo-to-PDF conversion, and military-grade 256-bit password locking.
-              </p>
-
-              <div className="p-3 rounded-2xl bg-white border border-slate-200 mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
-                <span className="text-slate-500">Global Play Store Impact:</span>
-                <span className="text-emerald-600 flex items-center">
-                  <Download className="w-3.5 h-3.5 mr-1 shrink-0" />
-                  100,000+ Downloads (12,500+ Reviews)
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {["Android (Kotlin)", "C++ PDFium", "CameraX API", "SQLite", "Material You"].map((t, i) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded bg-white text-slate-600 border border-slate-200">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-2 pt-2">
-              <a
-                href={redPdfProduct.playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
+            return (
+              <div
+                key={project.id}
+                onClick={() => handleOpenDetail(project)}
+                className="group p-5 sm:p-7 rounded-3xl bg-slate-50 border border-slate-200 hover:border-blue-400 hover:bg-white hover:shadow-xl transition-all duration-200 flex flex-col justify-between cursor-pointer relative"
               >
-                <Download className="w-4 h-4" />
-                <span>View on Play Store</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-              <button
-                type="button"
-                onClick={() => onOpenEnquiry('Build an App Like RedPDF')}
-                className="py-3 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm border border-slate-300 transition"
-              >
-                Build Similar App
-              </button>
-            </div>
-          </div>
+                <div>
+                  {/* Top Badges */}
+                  <div className="flex flex-wrap items-center justify-between mb-3.5 gap-2">
+                    <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider flex items-center space-x-1">
+                      <IconComponent className="w-3 h-3 mr-1 shrink-0" />
+                      <span>{project.category}</span>
+                    </span>
+                    <span className="text-[11px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg flex items-center shrink-0">
+                      <Star className="w-3 h-3 fill-amber-500 text-amber-500 mr-1 shrink-0" />
+                      {project.stats}
+                    </span>
+                  </div>
 
-          {/* Card 2: E-Commerce Store & App Setup */}
-          <div className="p-5 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 hover:border-emerald-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <div className="flex flex-wrap items-center justify-between mb-4 gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase tracking-wider">
-                  E-Commerce Setup & Website
-                </span>
-                <span className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-lg shrink-0">
-                  3.4x Conversion Lift
-                </span>
-              </div>
+                  {/* Title & Short Description */}
+                  <h3 className="text-base sm:text-xl font-black text-slate-900 group-hover:text-blue-600 transition leading-snug mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2 sm:line-clamp-none">
+                    {project.desc}
+                  </p>
 
-              <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-emerald-700 transition mb-2">
-                AuraFit D2C E-Commerce Store & Mobile App
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                Full-stack custom online storefront setup engineered for paid Meta & Google ad conversion. Includes 1-click Razorpay UPI checkout, automated Shiprocket fulfillment, and WhatsApp order alerts.
-              </p>
+                  {/* Key Metric Pill */}
+                  <div className="p-2.5 sm:p-3 rounded-2xl bg-white group-hover:bg-blue-50/40 border border-slate-200 group-hover:border-blue-200 mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold transition">
+                    <span className="text-slate-500 text-[11px] sm:text-xs">{project.metricLabel}:</span>
+                    <span className="text-emerald-700 text-xs sm:text-sm flex items-center">
+                      <Sparkles className="w-3 h-3 mr-1 text-amber-500 shrink-0" />
+                      {project.metricValue}
+                    </span>
+                  </div>
 
-              <div className="p-3 rounded-2xl bg-white border border-slate-200 mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
-                <span className="text-slate-500">Business Growth Metric:</span>
-                <span className="text-emerald-700">₹18 Lakhs+ Monthly GMV Handled</span>
-              </div>
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tags.map((tag, idx) => (
+                      <span 
+                        key={idx} 
+                        className="text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {["Shopify Engine", "Next.js", "Razorpay UPI", "Shiprocket", "WhatsApp Cloud API"].map((t, i) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded bg-white text-slate-600 border border-slate-200">
-                    {t}
+                {/* Click Target Button */}
+                <div className="pt-2 border-t border-slate-200/80 flex items-center justify-between text-xs sm:text-sm font-bold text-blue-600 group-hover:text-blue-700">
+                  <span className="flex items-center space-x-1.5">
+                    <Eye className="w-4 h-4" />
+                    <span>Click to View Full Details</span>
                   </span>
-                ))}
+                  <div className="w-8 h-8 rounded-full bg-white group-hover:bg-blue-600 group-hover:text-white border border-slate-200 group-hover:border-blue-600 flex items-center justify-center transition-all">
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => onOpenEnquiry('E-Commerce Business Setup Demo')}
-              className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span>Launch Your E-Commerce Store</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Card 3: Custom Billing & POS Software */}
-          <div className="p-5 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 hover:border-amber-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <div className="flex flex-wrap items-center justify-between mb-4 gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-200 uppercase tracking-wider">
-                  Billing Software & POS
-                </span>
-                <span className="text-xs font-bold text-slate-700 bg-white border border-slate-200 px-2.5 py-1 rounded-lg shrink-0">
-                  0.8s Sub-Second Bill
-                </span>
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-amber-700 transition mb-2">
-                OmniBilling POS & Wholesale Inventory ERP
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                Custom billing software deployed across 12 retail & wholesale mart counters. Features 2"/3" thermal printer USB drivers, barcode scanner plug-and-play, customer credit ledger (Khata), and auto WhatsApp bills.
-              </p>
-
-              <div className="p-3 rounded-2xl bg-white border border-slate-200 mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
-                <span className="text-slate-500">Savings for Client:</span>
-                <span className="text-amber-700">₹36,000/yr Saved on SaaS Renewals</span>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {["Electron Desktop", "React", "PostgreSQL", "Thermal SDK", "Barcode SDK"].map((t, i) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded bg-white text-slate-600 border border-slate-200">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => onOpenEnquiry('Request Billing Software Live Demo')}
-              className="w-full py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
-            >
-              <Receipt className="w-4 h-4" />
-              <span>Get Custom Billing Software</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Card 4: Tech Consulting & Backend Scaling */}
-          <div className="p-5 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200/90 hover:border-purple-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <div className="flex flex-wrap items-center justify-between mb-4 gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-purple-100 text-purple-800 border border-purple-200 uppercase tracking-wider">
-                  Tech Consulting & Architecture
-                </span>
-                <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-lg shrink-0">
-                  40% Cloud Cost Cut
-                </span>
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-purple-700 transition mb-2">
-                KisanTrade Agro Logistics & ERP Platform
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                Omnigrain Tech provided end-to-end technical consulting to resolve severe database connection deadlocks during harvest season. Redesigned PostgreSQL schemas, implemented Redis caching, and built REST microservices.
-              </p>
-
-              <div className="p-3 rounded-2xl bg-white border border-slate-200 mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
-                <span className="text-slate-500">Scaling Benchmark:</span>
-                <span className="text-purple-700">5x Concurrent Traffic Handled</span>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {["FastAPI (Python)", "PostgreSQL", "Redis Cache", "AWS Architecture", "Docker"].map((t, i) => (
-                  <span key={i} className="text-[11px] font-semibold px-2 py-0.5 rounded bg-white text-slate-600 border border-slate-200">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => onOpenEnquiry('Tech Consulting Architecture Review')}
-              className="w-full py-3 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
-            >
-              <Compass className="w-4 h-4" />
-              <span>Schedule Tech Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
+            );
+          })}
         </div>
 
-        {/* Bottom Banner */}
-        <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-          <div>
-            <h4 className="text-base sm:text-lg font-black flex items-center">
-              <Sparkles className="w-4 h-4 mr-2 text-amber-300" />
-              Need a custom mobile app, e-commerce store, or billing software built?
+        {/* Bottom Callout Banner */}
+        <div className="p-5 sm:p-7 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+          <div className="text-center sm:text-left">
+            <h4 className="text-base sm:text-lg font-black flex items-center justify-center sm:justify-start">
+              <Sparkles className="w-4 h-4 mr-2 text-amber-300 shrink-0" />
+              Need a custom mobile app, e-commerce store, or software built?
             </h4>
-            <p className="text-xs sm:text-sm text-blue-100 mt-0.5">
-              We provide fixed-milestone pricing with zero advance risk and 100% source code handover.
+            <p className="text-xs sm:text-sm text-blue-100 mt-1">
+              Fixed-milestone pricing with zero advance risk, mutual NDA, and 100% source code handover.
             </p>
           </div>
           <button
             type="button"
             onClick={() => onOpenEnquiry('Past Work Bottom CTA')}
-            className="shrink-0 px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-black text-xs sm:text-sm transition shadow"
+            className="shrink-0 px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-black text-xs sm:text-sm transition shadow-sm w-full sm:w-auto"
           >
             Request SOW & Pricing
           </button>
         </div>
 
       </div>
+
+      {/* Interactive Detail Drawer / Modal ("Cart style" slide-over detail view) */}
+      {selectedProject && (
+        <div 
+          role="dialog" 
+          aria-modal="true" 
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={handleCloseDetail}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="w-full sm:max-w-2xl bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl border border-slate-200 max-h-[90vh] sm:max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom sm:zoom-in-95 duration-200 flex flex-col"
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white/95 backdrop-blur-md p-4 sm:p-6 border-b border-slate-200 flex items-center justify-between z-10">
+              <div className="flex items-center space-x-2">
+                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-blue-100 text-blue-700 border border-blue-200 uppercase tracking-wider">
+                  {selectedProject.category}
+                </span>
+                <span className="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg">
+                  {selectedProject.badge}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={handleCloseDetail}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition"
+                aria-label="Close Project Details"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 sm:p-7 space-y-6 flex-grow">
+              
+              {/* Title & Impact Metric */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-snug mb-2">
+                  {selectedProject.title}
+                </h3>
+                <div className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-200/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-xs font-bold">
+                  <span className="text-slate-600">{selectedProject.metricLabel}:</span>
+                  <span className="text-emerald-700 text-sm font-extrabold flex items-center">
+                    <Sparkles className="w-4 h-4 mr-1 text-amber-500 fill-amber-500 shrink-0" />
+                    {selectedProject.metricValue}
+                  </span>
+                </div>
+              </div>
+
+              {/* Full Detailed Description */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
+                  Project Overview & Scope
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  {selectedProject.fullDesc}
+                </p>
+              </div>
+
+              {/* Key Deliverables Checklist */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2.5">
+                  Key Technical Deliverables & Features
+                </h4>
+                <div className="space-y-2">
+                  {selectedProject.highlights.map((item, idx) => (
+                    <div key={idx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-slate-700">
+                      <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </div>
+                      <span className="leading-snug">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech Stack Chips */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
+                  Technology Architecture Used
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tags.map((t, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 flex items-center space-x-2 text-xs text-slate-600">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Client Code Guarantee: 100% source code ownership and full intellectual property handover.</span>
+              </div>
+
+            </div>
+
+            {/* Modal Sticky Bottom Action Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 p-4 sm:p-6 flex flex-col sm:flex-row gap-2.5 z-10">
+              {selectedProject.isExternal && selectedProject.link && (
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm transition flex items-center justify-center space-x-2 shadow-sm"
+                >
+                  <Download className="w-4 h-4 shrink-0" />
+                  <span>{selectedProject.actionText}</span>
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                </a>
+              )}
+
+              <button
+                type="button"
+                onClick={() => {
+                  handleCloseDetail();
+                  onOpenEnquiry(selectedProject.enquiryText);
+                }}
+                className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2"
+              >
+                <span>Request Similar Solution</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
+
+              <a
+                href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20saw%20your%20past%20work%20"${encodeURIComponent(selectedProject.title)}"%20and%20want%20to%20discuss%20a%20similar%20project.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm shrink-0"
+                title="Chat on WhatsApp about this project"
+              >
+                <MessageCircle className="w-4 h-4 fill-white shrink-0" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }
