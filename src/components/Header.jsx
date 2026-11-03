@@ -38,8 +38,8 @@ export default function Header({
   };
 
   return (
-    /* Locked Sticky Header - Zero shift, permanently fixed at top */
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs py-2 sm:py-2.5 transition-colors">
+    /* Locked Fixed Header - Stays permanently pinned at the top on phone and desktop */
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs py-2 sm:py-2.5 transition-colors">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
@@ -182,7 +182,7 @@ export default function Header({
 
       {/* Mobile Dropdown Navigation Drawer with Services Highlight */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3.5 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3.5 shadow-xl animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-64px)] overflow-y-auto">
           
           {/* Mobile Currency Switcher */}
           <div className="flex md:hidden items-center justify-between p-2 bg-slate-50 rounded-xl border border-slate-200">

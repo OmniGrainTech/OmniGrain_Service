@@ -84,7 +84,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-bg text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white w-full max-w-full overflow-x-hidden">
       
-      {/* Top Sticky Header with Active Page and Services Highlighting */}
+      {/* Top Fixed Header with Active Page and Services Highlighting */}
       <Header 
         currency={currency} 
         setCurrency={setCurrency} 
@@ -92,6 +92,9 @@ export default function App() {
         activePage={activePage}
         onNavigate={handleNavigate}
       />
+
+      {/* Spacer to prevent fixed header from overlapping top page content */}
+      <div className="h-[56px] sm:h-[64px] shrink-0" aria-hidden="true" />
 
       {/* Subpage Breadcrumb Navigation Bar (Visible on non-home pages) */}
       {activePage !== 'home' && (
