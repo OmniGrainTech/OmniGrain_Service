@@ -69,7 +69,7 @@ export default function Footer({ onOpenEnquiry }) {
             <ul className="space-y-2">
               <li><a href="#services" className="hover:text-blue-400 transition">Android & iOS Mobile Apps</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition">E-Commerce Business Setup</a></li>
-              <li><a href="#billing-software" className="hover:text-blue-400 transition">Custom Billing & POS Software</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition">Custom Billing & POS Software</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition">Tech Consulting Services</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition">Web Apps, SaaS & CRM</a></li>
               <li><a href="#services" className="hover:text-blue-400 transition">High-Speed Websites</a></li>
@@ -93,7 +93,7 @@ export default function Footer({ onOpenEnquiry }) {
                 </a>
               </li>
               <li><a href="#past-work" className="hover:text-blue-400 transition">AuraFit E-Commerce Setup</a></li>
-              <li><a href="#billing-software" className="hover:text-blue-400 transition">OmniBilling POS Demo</a></li>
+              <li><a href="#past-work" className="hover:text-blue-400 transition">OmniBilling POS Software</a></li>
               <li><a href="#calculator" className="hover:text-blue-400 transition">Instant Cost Estimator</a></li>
               <li><a href="#reviews" className="hover:text-blue-400 transition">Verified Client Reviews</a></li>
             </ul>

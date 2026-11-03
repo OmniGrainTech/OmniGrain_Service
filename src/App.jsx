@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import PastWork from './components/PastWork';
-import BillingShowcase from './components/BillingShowcase';
 import ProductRedPdf from './components/ProductRedPdf';
 import WhyUs from './components/WhyUs';
 import QuoteCalculator from './components/QuoteCalculator';
@@ -50,12 +49,6 @@ export default function App() {
 
         {/* Past Work Showcase (RedPDF, E-Commerce Setup, Custom Billing, Tech Consulting) */}
         <PastWork 
-          onOpenEnquiry={handleOpenEnquiry} 
-        />
-
-        {/* Dedicated Solution Deep Dive: Custom Billing & POS Software */}
-        <BillingShowcase 
-          currency={currency} 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
