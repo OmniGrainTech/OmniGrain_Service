@@ -7,7 +7,6 @@ import ProductRedPdf from './components/ProductRedPdf';
 import WhyUs from './components/WhyUs';
 import QuoteCalculator from './components/QuoteCalculator';
 import Reviews from './components/Reviews';
-import FaqSection from './components/FaqSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import StickyConversionBar from './components/StickyConversionBar';
@@ -70,11 +69,6 @@ export default function App() {
 
         {/* Verified Client Reviews & Ratings */}
         <Reviews 
-          onOpenEnquiry={handleOpenEnquiry} 
-        />
-
-        {/* FAQ Section addressing customer questions */}
-        <FaqSection 
           onOpenEnquiry={handleOpenEnquiry} 
         />
 
