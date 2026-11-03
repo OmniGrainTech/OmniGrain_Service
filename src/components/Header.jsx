@@ -80,11 +80,8 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black tracking-wider text-white group-hover:text-brand-accent transition flex items-center">
+                <span className="text-xl font-black tracking-wider text-white group-hover:text-brand-accent transition">
                   OMNIGRAIN
-                  <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded bg-brand-accent/15 text-brand-accent border border-brand-accent/30 font-bold tracking-normal">
-                    LLP
-                  </span>
                 </span>
                 <span className="text-[10px] text-brand-muted tracking-[0.22em] font-semibold uppercase">
                   TECH SOLUTIONS
