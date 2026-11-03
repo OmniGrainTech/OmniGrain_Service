@@ -80,7 +80,7 @@ export default function WhyUs({ onOpenEnquiry }) {
               Ready to bring your Mobile App or E-Commerce vision to life?
             </h4>
             <p className="text-xs sm:text-sm text-slate-300">
-              Speak directly with our Tech Lead on WhatsApp or Call: <strong className="text-white underline">{companyInfo.phoneDisplay}</strong>
+              Speak directly with our Tech Lead on WhatsApp or Call for instant scoping and proposal.
             </p>
           </div>
           

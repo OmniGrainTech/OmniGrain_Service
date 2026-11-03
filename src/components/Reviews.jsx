@@ -93,7 +93,7 @@ export default function Reviews({ onOpenEnquiry }) {
               Ready to be our next client success story?
             </h4>
             <p className="text-xs sm:text-sm text-slate-600">
-              Join 150+ satisfied businesses who scale with Omnigrain Tech. Call or WhatsApp: <strong>{companyInfo.phoneDisplay}</strong>
+              Join 150+ satisfied businesses who scale with Omnigrain Tech. Contact our team on Call or WhatsApp.
             </p>
           </div>
           <button

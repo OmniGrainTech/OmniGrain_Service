@@ -224,16 +224,27 @@ export default function Services({ currency, onOpenEnquiry }) {
               Not sure which tech architecture fits your budget?
             </h4>
             <p className="text-sm text-slate-600">
-              Speak directly with our Lead Tech Consultant for a free 15-minute scoping call. Call or WhatsApp at <strong>{companyInfo.phoneDisplay}</strong>.
+              Speak directly with our Lead Tech Consultant for a free 15-minute scoping call. Reach out on Call or WhatsApp.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
             <a
               href={`tel:${companyInfo.phone}`}
               className="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
+              title="Click to Call Directly"
             >
-              <Phone className="w-4 h-4" />
-              <span>Call: {companyInfo.phoneDisplay}</span>
+              <Phone className="w-4 h-4 text-blue-400" />
+              <span>Call Tech Lead</span>
+            </a>
+            <a
+              href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20would%20like%20to%20discuss%20a%20project.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
+              title="Click to Chat on WhatsApp"
+            >
+              <Phone className="hidden" />
+              <span>WhatsApp Us</span>
             </a>
             <button
               type="button"

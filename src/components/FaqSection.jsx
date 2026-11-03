@@ -66,17 +66,19 @@ export default function FaqSection({ onOpenEnquiry }) {
             target="_blank"
             rel="noopener noreferrer"
             className="text-emerald-700 hover:underline font-bold flex items-center"
+            title="Click to Chat on WhatsApp"
           >
             <MessageCircle className="w-3.5 h-3.5 mr-1" />
-            WhatsApp us directly ({companyInfo.phoneDisplay})
+            WhatsApp us directly
           </a>
           <span>or</span>
           <a
             href={`tel:${companyInfo.phone}`}
             className="text-blue-600 hover:underline font-bold flex items-center"
+            title="Click to Call Tech Lead"
           >
             <Phone className="w-3.5 h-3.5 mr-1" />
-            Call: {companyInfo.phoneDisplay}
+            Call our Tech Lead
           </a>
         </div>
 

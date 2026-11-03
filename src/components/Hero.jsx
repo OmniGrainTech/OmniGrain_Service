@@ -109,20 +109,20 @@ export default function Hero({ onOpenEnquiry, currency }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-emerald-600/30 transition duration-200 flex items-center justify-center space-x-2"
-                title="Direct WhatsApp Chat"
+                title="Click to Chat on WhatsApp"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
-                <span>WhatsApp: {companyInfo.phoneDisplay}</span>
+                <span>Chat on WhatsApp</span>
               </a>
 
               {/* Direct Phone Call Button */}
               <a
                 href={`tel:${companyInfo.phone}`}
                 className="px-5 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm sm:text-base border border-slate-300 shadow-sm transition duration-200 flex items-center justify-center space-x-2"
-                title="Call Immediately"
+                title="Click to Call Immediately"
               >
                 <Phone className="w-4 h-4 text-blue-600" />
-                <span>Call Now</span>
+                <span>Call Us Directly</span>
               </a>
             </div>
 

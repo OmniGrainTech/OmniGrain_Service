@@ -8,7 +8,6 @@ import BillingShowcase from './components/BillingShowcase';
 import ProductRedPdf from './components/ProductRedPdf';
 import WhyUs from './components/WhyUs';
 import QuoteCalculator from './components/QuoteCalculator';
-import Pricing from './components/Pricing';
 import Reviews from './components/Reviews';
 import FaqSection from './components/FaqSection';
 import ContactSection from './components/ContactSection';
@@ -76,12 +75,6 @@ export default function App() {
 
         {/* Interactive Instant Project Cost & Timeline Calculator */}
         <QuoteCalculator 
-          currency={currency} 
-          onOpenEnquiry={handleOpenEnquiry} 
-        />
-
-        {/* Minimum Transparent Pricing Packages */}
-        <Pricing 
           currency={currency} 
           onOpenEnquiry={handleOpenEnquiry} 
         />

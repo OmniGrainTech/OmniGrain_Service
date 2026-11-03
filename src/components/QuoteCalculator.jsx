@@ -269,7 +269,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Lock Estimate via WhatsApp ({companyInfo.phoneDisplay})</span>
+                  <span>Lock Estimate via WhatsApp</span>
                 </a>
 
                 <button

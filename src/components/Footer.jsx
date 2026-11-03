@@ -95,7 +95,6 @@ export default function Footer({ onOpenEnquiry }) {
               <li><a href="#past-work" className="hover:text-blue-400 transition">AuraFit E-Commerce Setup</a></li>
               <li><a href="#billing-software" className="hover:text-blue-400 transition">OmniBilling POS Demo</a></li>
               <li><a href="#calculator" className="hover:text-blue-400 transition">Instant Cost Estimator</a></li>
-              <li><a href="#pricing" className="hover:text-blue-400 transition">Transparent Pricing Plans</a></li>
               <li><a href="#reviews" className="hover:text-blue-400 transition">Verified Client Reviews</a></li>
             </ul>
           </div>
@@ -110,8 +109,8 @@ export default function Footer({ onOpenEnquiry }) {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <a href={`tel:${companyInfo.phone}`} className="hover:text-white font-bold transition">
-                  {companyInfo.phoneDisplay} (Call Direct)
+                <a href={`tel:${companyInfo.phone}`} className="hover:text-white font-bold transition" title="Click to Call Tech Lead">
+                  Click to Call Tech Lead
                 </a>
               </li>
               <li className="flex items-center space-x-2">
@@ -121,8 +120,9 @@ export default function Footer({ onOpenEnquiry }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-300 text-emerald-400 font-bold transition"
+                  title="Click to Chat on WhatsApp"
                 >
-                  WhatsApp: {companyInfo.phoneDisplay}
+                  Chat on WhatsApp Directly
                 </a>
               </li>
               <li className="flex items-center space-x-2">

@@ -499,6 +499,6 @@ export const faqs = [
   },
   {
     q: "How do I get an instant quote or speak with a tech lead right now?",
-    a: "Simply fill the quick quote form below or message/call us directly on WhatsApp at +91 8850164531. Our Senior Tech Lead will review your requirements and provide a detailed scope and fixed-price quotation within 2 hours."
+    a: "Simply fill the quick quote form below or click Call / WhatsApp. Our Senior Tech Lead will review your requirements and provide a detailed scope and fixed-price quotation within 2 hours."
   }
 ];

@@ -216,7 +216,7 @@ export default function ContactSection({ currency, initialService }) {
                       id="client-phone"
                       type="tel"
                       required
-                      placeholder="e.g. +91 8850164531"
+                      placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition"
@@ -368,41 +368,49 @@ export default function ContactSection({ currency, initialService }) {
               <div className="space-y-3">
                 
                 {/* Direct Phone Call */}
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between shadow-xs">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
+                        Direct Call Desk
+                      </span>
+                      <span className="text-xs text-slate-600 font-medium">Click to connect instantly</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
-                      Direct Hotline (Call Us)
-                    </span>
-                    <a 
-                      href={`tel:${companyInfo.phone}`}
-                      className="text-sm font-black text-slate-900 hover:text-blue-600 transition block"
-                    >
-                      {companyInfo.phoneDisplay}
-                    </a>
-                  </div>
+                  <a 
+                    href={`tel:${companyInfo.phone}`}
+                    className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition shadow-sm"
+                    title="Click to Call Tech Lead"
+                  >
+                    Call Us Now
+                  </a>
                 </div>
 
                 {/* WhatsApp Chat */}
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center space-x-3.5 shadow-xs">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-5 h-5 fill-emerald-600" />
+                <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between shadow-xs">
+                  <div className="flex items-center space-x-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-5 h-5 fill-emerald-600" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
+                        WhatsApp Desk
+                      </span>
+                      <span className="text-xs text-slate-600 font-medium">Instant proposal chat</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">
-                      WhatsApp Directly
-                    </span>
-                    <a 
-                      href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20would%20like%20to%20discuss%20a%20project.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-black text-emerald-700 hover:text-emerald-800 transition block"
-                    >
-                      {companyInfo.phoneDisplay} (Instant Chat)
-                    </a>
-                  </div>
+                  <a 
+                    href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20would%20like%20to%20discuss%20a%20project.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm"
+                    title="Click to Chat on WhatsApp"
+                  >
+                    Chat on WhatsApp
+                  </a>
                 </div>
 
                 {/* Email Desk */}

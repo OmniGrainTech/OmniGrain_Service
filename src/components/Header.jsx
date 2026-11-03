@@ -23,12 +23,11 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Clean, focused navigation links without cluttered duplicates
+  // Clean, focused navigation links (Pricing section removed as requested)
   const navLinks = [
     { name: 'Services', href: '#services' },
     { name: 'Past Work', href: '#past-work' },
     { name: 'Why Us', href: '#why-us' },
-    { name: 'Pricing', href: '#pricing' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -50,24 +49,25 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
             </strong>
           </div>
 
+          {/* Quick Call & WhatsApp with hidden mobile number digits */}
           <div className="flex items-center space-x-4 text-xs font-semibold">
             <a 
               href={`tel:${companyInfo.phone}`}
               className="hidden md:flex items-center space-x-1 text-white hover:text-amber-200 transition"
-              title="Call Tech Lead Directly"
+              title="Click to Call Tech Lead"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Call: {companyInfo.phoneDisplay}</span>
+              <span>Call Tech Lead</span>
             </a>
             <a 
               href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20am%20looking%20for%20a%20project%20quote.`}
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center space-x-1 text-emerald-200 hover:text-white transition"
-              title="Chat on WhatsApp"
+              title="Click to Chat on WhatsApp"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-emerald-400" />
-              <span>WhatsApp: {companyInfo.phoneDisplay}</span>
+              <span>Chat on WhatsApp</span>
             </a>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* Logo with explicit shrink-0 and generous right margin so it never collides */}
+            {/* Logo */}
             <a href="#" className="flex items-center space-x-3 shrink-0 mr-6 lg:mr-10 group">
               <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-indigo-600 p-[1.5px] shadow-sm group-hover:shadow-blue-500/25 transition shrink-0">
                 <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-1">
@@ -120,7 +120,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
               ))}
             </nav>
 
-            {/* Streamlined Header Right Actions (Removed cluttered duplicate buttons) */}
+            {/* Streamlined Header Right Actions */}
             <div className="flex items-center space-x-3 shrink-0">
               
               {/* Currency Selector */}
@@ -200,7 +200,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                 className="w-full flex items-center justify-center space-x-2 bg-slate-900 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
               >
                 <Phone className="w-4 h-4 text-blue-400" />
-                <span>Direct Call: {companyInfo.phoneDisplay}</span>
+                <span>Call Tech Lead</span>
               </a>
 
               <a
@@ -210,7 +210,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                 className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>WhatsApp: {companyInfo.phoneDisplay}</span>
+                <span>Chat on WhatsApp</span>
               </a>
 
               <button

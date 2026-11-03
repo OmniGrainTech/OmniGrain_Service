@@ -22,11 +22,11 @@ export default function StickyConversionBar({ onOpenEnquiry }) {
         <a
           href={`tel:${companyInfo.phone}`}
           className="hidden sm:flex items-center bg-white hover:bg-slate-50 text-slate-800 px-3.5 py-2.5 rounded-full shadow-lg border border-slate-200 transition-all duration-200 transform hover:scale-105"
-          title={`Call Tech Lead Directly: ${companyInfo.phoneDisplay}`}
+          title="Click to Call Tech Lead Directly"
         >
           <Phone className="w-4 h-4 text-blue-600 mr-2" />
           <span className="text-xs font-bold text-slate-800">
-            Call: {companyInfo.phoneDisplay}
+            Call Tech Lead
           </span>
         </a>
 
@@ -36,13 +36,13 @@ export default function StickyConversionBar({ onOpenEnquiry }) {
           target="_blank"
           rel="noopener noreferrer"
           className="relative flex items-center bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-xl shadow-emerald-700/30 transition-all duration-200 transform hover:scale-105 border border-emerald-400"
-          title={`Chat with Tech Lead on WhatsApp: ${companyInfo.phoneDisplay}`}
+          title="Click to Chat on WhatsApp"
         >
           <span className="absolute -inset-1 rounded-full bg-emerald-500 opacity-30 animate-ping"></span>
           
           <MessageCircle className="w-6 h-6 fill-white relative z-10" />
           <span className="hidden sm:inline ml-2 text-xs font-black relative z-10">
-            WhatsApp: {companyInfo.phoneDisplay}
+            Chat on WhatsApp
           </span>
         </a>
       </aside>

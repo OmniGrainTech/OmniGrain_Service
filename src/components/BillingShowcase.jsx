@@ -19,7 +19,7 @@ import {
 import { companyInfo } from '../data/websiteData';
 
 export default function BillingShowcase({ currency, onOpenEnquiry }) {
-  const [customerPhone, setCustomerPhone] = useState('8850164531');
+  const [customerPhone, setCustomerPhone] = useState('9876543210');
   const [billSent, setBillSent] = useState(false);
 
   const price = currency === 'INR' ? '₹19,999' : '$279';
