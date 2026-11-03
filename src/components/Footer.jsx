@@ -5,10 +5,10 @@ import {
   Phone, 
   MapPin, 
   ExternalLink, 
-  ShieldCheck, 
-  MessageCircle
+  ShieldCheck
 } from 'lucide-react';
 import { companyInfo, redPdfProduct } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer({ onOpenEnquiry, onNavigate }) {
   const scrollToTop = () => {
@@ -164,7 +164,7 @@ export default function Footer({ onOpenEnquiry, onNavigate }) {
                 </a>
               </li>
               <li className="flex items-center space-x-2">
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <WhatsAppIcon className="w-3.5 h-3.5 shrink-0" />
                 <a 
                   href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech`}
                   target="_blank"

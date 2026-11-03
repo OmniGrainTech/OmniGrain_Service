@@ -12,10 +12,10 @@ import {
   Sparkles, 
   X,
   Check,
-  MessageCircle,
   Eye
 } from 'lucide-react';
 import { pastWorkShowcase, companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const iconMap = {
   Smartphone: Smartphone,
@@ -224,7 +224,7 @@ export default function PastWork({ onOpenEnquiry }) {
                 className="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center space-x-1"
                 title="Chat on WhatsApp"
               >
-                <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                <WhatsAppIcon className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
               </a>
             </div>

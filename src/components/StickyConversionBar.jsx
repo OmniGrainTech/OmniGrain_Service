@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Zap, Phone, Sparkles } from 'lucide-react';
+import { Zap, Phone, Sparkles } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function StickyConversionBar({ onOpenEnquiry }) {
   const [visible, setVisible] = useState(false);
@@ -40,7 +41,7 @@ export default function StickyConversionBar({ onOpenEnquiry }) {
         >
           <span className="absolute -inset-1 rounded-full bg-emerald-500 opacity-30 animate-ping"></span>
           
-          <MessageCircle className="w-6 h-6 fill-white relative z-10" />
+          <WhatsAppIcon className="w-6 h-6 relative z-10" />
           <span className="hidden sm:inline ml-2 text-xs font-black relative z-10">
             Chat on WhatsApp
           </span>
@@ -63,9 +64,9 @@ export default function StickyConversionBar({ onOpenEnquiry }) {
               href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hi%20Omnigrain%20Tech,%20I%20would%20like%20to%20discuss%20a%20project.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2.5 px-2 rounded-xl bg-emerald-600 text-white font-extrabold text-[11px] flex items-center justify-center space-x-1 shadow-sm"
+              className="py-2.5 px-2 rounded-xl bg-emerald-600 text-white font-extrabold text-[11px] flex items-center justify-center space-x-1.5 shadow-sm"
             >
-              <MessageCircle className="w-3.5 h-3.5 fill-white" />
+              <WhatsAppIcon className="w-4 h-4" />
               <span>WhatsApp</span>
             </a>
 

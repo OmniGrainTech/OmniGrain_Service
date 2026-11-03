@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Send, MessageCircle, ShieldCheck, CheckCircle2, Clock, Check, Phone } from 'lucide-react';
+import { X, Send, ShieldCheck, CheckCircle2, Clock, Check, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function EnquiryModal({ isOpen, onClose, initialSubject, currency }) {
   if (!isOpen) return null;
@@ -76,7 +77,7 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
                 rel="noopener noreferrer"
                 className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center space-x-1.5 shadow"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
+                <WhatsAppIcon className="w-4 h-4" />
                 <span>Continue on WhatsApp Now</span>
               </a>
               <button
@@ -190,7 +191,7 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
                   rel="noopener noreferrer"
                   className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition flex items-center justify-center space-x-1"
                 >
-                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
                   <span>WhatsApp Directly</span>
                 </a>
               </div>

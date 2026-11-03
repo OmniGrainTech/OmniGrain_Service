@@ -13,10 +13,10 @@ import {
   TrendingUp,
   FileSpreadsheet,
   AlertCircle,
-  Phone,
-  MessageCircle
+  Phone
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function BillingShowcase({ currency, onOpenEnquiry }) {
   const [customerPhone, setCustomerPhone] = useState('9876543210');
@@ -286,7 +286,7 @@ export default function BillingShowcase({ currency, onOpenEnquiry }) {
                   rel="noopener noreferrer"
                   className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   <span>WhatsApp Specs</span>
                 </a>
               </div>

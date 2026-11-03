@@ -7,10 +7,10 @@ import {
   ShieldCheck, 
   Headphones,
   Sparkles,
-  ArrowRight,
-  MessageCircle
+  ArrowRight
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function WhyUs({ onOpenEnquiry }) {
   const pillars = [
@@ -114,7 +114,7 @@ export default function WhyUs({ onOpenEnquiry }) {
               className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition flex items-center justify-center space-x-1.5 shadow-xs"
               title="Click to Chat on WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 fill-white" />
+              <WhatsAppIcon className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
             </a>
 

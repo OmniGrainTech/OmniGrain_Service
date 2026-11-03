@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle, Sparkles, MessageCircle, Phone } from 'lucide-react';
+import { ChevronDown, ChevronUp, HelpCircle, Sparkles, Phone } from 'lucide-react';
 import { faqs, companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function FaqSection({ onOpenEnquiry }) {
   const [openIdx, setOpenIdx] = useState(0);
@@ -68,7 +69,7 @@ export default function FaqSection({ onOpenEnquiry }) {
             className="text-emerald-700 hover:underline font-bold flex items-center"
             title="Click to Chat on WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 mr-1" />
+            <WhatsAppIcon className="w-3.5 h-3.5 mr-1" />
             WhatsApp us directly
           </a>
           <span>or</span>

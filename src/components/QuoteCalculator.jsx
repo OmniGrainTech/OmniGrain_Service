@@ -6,7 +6,6 @@ import {
   ArrowRight, 
   Clock, 
   ShieldCheck, 
-  MessageCircle,
   Smartphone,
   ShoppingBag,
   Receipt,
@@ -16,6 +15,7 @@ import {
   Cpu
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function QuoteCalculator({ currency, onOpenEnquiry }) {
   const [serviceType, setServiceType] = useState('mobile');
@@ -268,7 +268,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                   rel="noopener noreferrer"
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   <span>Lock Estimate via WhatsApp</span>
                 </a>
 

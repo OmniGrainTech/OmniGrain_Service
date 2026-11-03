@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   Phone, 
-  MessageCircle, 
   Menu, 
   X, 
   ChevronRight, 
@@ -10,6 +9,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Header({ 
   currency, 
@@ -283,7 +283,7 @@ export default function Header({
               className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs sm:text-sm shadow transition"
               title="Click to Chat on WhatsApp"
             >
-              <MessageCircle className="w-4 h-4 fill-white" />
+              <WhatsAppIcon className="w-4 h-4" />
               <span>Chat on WhatsApp</span>
             </a>
 

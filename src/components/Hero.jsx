@@ -4,7 +4,6 @@ import {
   Sparkles, 
   Smartphone,
   ChevronRight,
-  MessageCircle,
   ShoppingBag,
   Receipt,
   Zap,
@@ -12,6 +11,7 @@ import {
   Lock
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Hero({ onOpenEnquiry, currency, onNavigate }) {
   const minWebPrice = currency === 'INR' ? '₹9,999' : '$149';
@@ -67,7 +67,7 @@ export default function Hero({ onOpenEnquiry, currency, onNavigate }) {
                 className="px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-xs transition duration-150 flex items-center justify-center space-x-2"
                 title="Chat on WhatsApp"
               >
-                <MessageCircle className="w-4 h-4 fill-white shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 shrink-0" />
                 <span>Chat on WhatsApp</span>
               </a>
             </div>

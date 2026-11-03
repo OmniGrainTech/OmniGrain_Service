@@ -3,7 +3,6 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  MessageCircle, 
   Send, 
   Clock, 
   ShieldCheck, 
@@ -18,6 +17,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function ContactSection({ currency, initialService }) {
   const [formData, setFormData] = useState({
@@ -99,7 +99,7 @@ export default function ContactSection({ currency, initialService }) {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-extrabold uppercase tracking-wider mb-3">
-            <MessageCircle className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5" />
             <span>High-Priority Lead Intake Desk</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
@@ -156,7 +156,7 @@ export default function ContactSection({ currency, initialService }) {
                     rel="noopener noreferrer"
                     className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center space-x-2"
                   >
-                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <WhatsAppIcon className="w-4 h-4" />
                     <span>Speed Up: Continue on WhatsApp</span>
                   </a>
                   <button
@@ -336,7 +336,7 @@ export default function ContactSection({ currency, initialService }) {
                     className="py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-sm transition flex items-center justify-center space-x-2"
                     title="Send via WhatsApp directly"
                   >
-                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <WhatsAppIcon className="w-4 h-4" />
                     <span>WhatsApp Directly</span>
                   </a>
                 </div>
@@ -392,8 +392,8 @@ export default function ContactSection({ currency, initialService }) {
                 {/* WhatsApp Chat */}
                 <div className="p-3.5 rounded-2xl bg-white border border-slate-200 flex items-center justify-between shadow-xs">
                   <div className="flex items-center space-x-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                      <MessageCircle className="w-5 h-5 fill-emerald-600" />
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 p-1.5">
+                      <WhatsAppIcon className="w-6 h-6" />
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold block">

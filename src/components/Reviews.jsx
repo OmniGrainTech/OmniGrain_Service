@@ -5,8 +5,7 @@ import {
   CheckCircle2, 
   Building2, 
   Sparkles,
-  Phone,
-  MessageCircle
+  Phone
 } from 'lucide-react';
 import { clientReviews, companyInfo } from '../data/websiteData';
 
