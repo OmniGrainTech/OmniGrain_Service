@@ -6,23 +6,29 @@ import {
   MapPin, 
   ExternalLink, 
   ShieldCheck, 
-  Smartphone,
-  Heart,
   MessageCircle
 } from 'lucide-react';
 import { companyInfo, redPdfProduct } from '../data/websiteData';
 
-export default function Footer({ onOpenEnquiry }) {
+export default function Footer({ onOpenEnquiry, onNavigate }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNav = (pageId) => {
+    if (onNavigate) {
+      onNavigate(pageId);
+    } else {
+      scrollToTop();
+    }
   };
 
   return (
     <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 text-xs">
       
       {/* Top Footer Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-9">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           
           {/* Brand Col (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
@@ -65,21 +71,44 @@ export default function Footer({ onOpenEnquiry }) {
 
           {/* Col 2: Services */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Services</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Our Services</h4>
             <ul className="space-y-2">
-              <li><a href="#services" className="hover:text-blue-400 transition">Android & iOS Mobile Apps</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">E-Commerce Business Setup</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">Custom Billing & POS Software</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">Tech Consulting Services</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">Web Apps, SaaS & CRM</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">High-Speed Websites</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition">Cloud & DevOps Hosting</a></li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  Android & iOS Mobile Apps
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  E-Commerce Business Setup
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  Custom Billing & POS Software
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  Tech Consulting Services
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  Web Apps, SaaS & CRM
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('services')} className="hover:text-blue-400 transition text-left">
+                  High-Speed Websites
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Col 3: Past Work & Products */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Products & Work</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5">Products & Pages</h4>
             <ul className="space-y-2">
               <li>
                 <a 
@@ -92,10 +121,31 @@ export default function Footer({ onOpenEnquiry }) {
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
-              <li><a href="#past-work" className="hover:text-blue-400 transition">AuraFit E-Commerce Setup</a></li>
-              <li><a href="#past-work" className="hover:text-blue-400 transition">OmniBilling POS Software</a></li>
-              <li><a href="#calculator" className="hover:text-blue-400 transition">Instant Cost Estimator</a></li>
-              <li><a href="#reviews" className="hover:text-blue-400 transition">Verified Client Reviews</a></li>
+              <li>
+                <button type="button" onClick={() => handleNav('past-work')} className="hover:text-blue-400 transition text-left">
+                  AuraFit E-Commerce Case
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('past-work')} className="hover:text-blue-400 transition text-left">
+                  OmniBilling POS Software
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('why-us')} className="hover:text-blue-400 transition text-left">
+                  Why Choose Omnigrain Tech
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('reviews')} className="hover:text-blue-400 transition text-left">
+                  Verified Client Reviews
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => handleNav('contact')} className="hover:text-blue-400 transition text-left">
+                  Get Free Scope & Quote
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -139,18 +189,24 @@ export default function Footer({ onOpenEnquiry }) {
       <div className="border-t border-slate-800 bg-black/40 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
           <div>
-            © {new Date().getFullYear()} <strong>Omnigrain Tech</strong>. All rights reserved. Registered Technology Partnership.
+            © {new Date().getFullYear()} <strong>Omnigrain Tech</strong>. All rights reserved.
           </div>
           
-          <div className="flex items-center space-x-5">
-            <span className="hover:text-slate-300 transition">Privacy Policy</span>
-            <span className="hover:text-slate-300 transition">Terms of Service</span>
-            <span className="hover:text-slate-300 transition">Mutual NDA Guarantee</span>
+          <div className="flex items-center space-x-4">
+            <button type="button" onClick={() => handleNav('home')} className="hover:text-slate-300 transition">
+              Home
+            </button>
+            <button type="button" onClick={() => handleNav('services')} className="hover:text-slate-300 transition">
+              Services
+            </button>
+            <button type="button" onClick={() => handleNav('contact')} className="hover:text-slate-300 transition">
+              Contact
+            </button>
             
             <button
               type="button"
               onClick={scrollToTop}
-              className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700"
+              className="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700 ml-2"
               title="Scroll back to top"
             >
               <ArrowUp className="w-3.5 h-3.5" />
@@ -158,7 +214,6 @@ export default function Footer({ onOpenEnquiry }) {
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

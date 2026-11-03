@@ -6,30 +6,49 @@ import {
   X, 
   ChevronRight, 
   ShieldCheck, 
-  Zap 
+  Zap,
+  Sparkles
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
 
-export default function Header({ currency, setCurrency, onOpenEnquiry }) {
+export default function Header({ 
+  currency, 
+  setCurrency, 
+  onOpenEnquiry, 
+  activePage = 'home', 
+  onNavigate 
+}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Clean, focused navigation links
+  // Clean, focused navigation links with special emphasis on Services
   const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Past Work', href: '#past-work' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'Contact', href: '#contact' },
+    { id: 'home', name: 'Home' },
+    { id: 'services', name: 'Services', isSpecial: true },
+    { id: 'past-work', name: 'Past Work' },
+    { id: 'why-us', name: 'Why Us' },
+    { id: 'reviews', name: 'Reviews' },
+    { id: 'contact', name: 'Contact' },
   ];
 
+  const handleLinkClick = (pageId) => {
+    if (onNavigate) {
+      onNavigate(pageId);
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
-    /* Locked Sticky Header - Zero shift, never moves or jumps when scrolling up or down */
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs py-2.5 sm:py-3 transition-colors">
+    /* Locked Sticky Header - Zero shift, permanently fixed at top */
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs py-2 sm:py-2.5 transition-colors">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Logo */}
-          <a href="#" className="flex items-center space-x-2.5 sm:space-x-3 shrink-0 mr-2 sm:mr-6 lg:mr-10 group">
+          {/* Logo with 1-Click Back to Home */}
+          <button 
+            type="button" 
+            onClick={() => handleLinkClick('home')} 
+            className="flex items-center space-x-2.5 sm:space-x-3 shrink-0 mr-2 sm:mr-4 lg:mr-8 group text-left"
+          >
             <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-indigo-600 p-[1.5px] shadow-sm group-hover:shadow-blue-500/25 transition shrink-0">
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-1">
                 <img 
@@ -44,30 +63,67 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-black tracking-wider text-slate-900 group-hover:text-blue-600 transition leading-tight">
+              <span className="text-base sm:text-xl font-black tracking-wider text-slate-900 group-hover:text-blue-600 transition leading-tight">
                 OMNIGRAIN
               </span>
-              <span className="text-[9px] sm:text-[10px] text-slate-500 tracking-[0.22em] font-bold uppercase">
+              <span className="text-[8px] sm:text-[10px] text-slate-500 tracking-[0.2em] font-bold uppercase">
                 TECH SOLUTIONS
               </span>
             </div>
-          </a>
+          </button>
 
-          {/* Clean Desktop Navigation with whitespace-nowrap */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 text-sm font-semibold text-slate-600">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="hover:text-blue-600 transition-colors py-1 whitespace-nowrap"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Desktop Navigation with Prominent Active & Services Highlight */}
+          <nav className="hidden lg:flex items-center space-x-1.5 xl:space-x-2 text-sm font-semibold">
+            {navLinks.map((link) => {
+              const isActive = activePage === link.id;
+
+              // Services Tab Highlight so users immediately notice and know where to check services
+              if (link.isSpecial) {
+                return (
+                  <button
+                    key={link.id}
+                    type="button"
+                    onClick={() => handleLinkClick(link.id)}
+                    className={`relative py-1.5 px-3.5 rounded-xl text-xs sm:text-sm transition-all whitespace-nowrap flex items-center space-x-1.5 ${
+                      isActive
+                        ? 'bg-blue-600 text-white font-black shadow-md shadow-blue-500/20'
+                        : 'bg-blue-50 hover:bg-blue-100 text-blue-700 font-black border border-blue-200'
+                    }`}
+                    title="Explore our full technology services catalog"
+                  >
+                    <span className="flex h-2 w-2 relative shrink-0">
+                      <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isActive ? 'bg-white opacity-75' : 'bg-blue-600 opacity-75'}`}></span>
+                      <span className={`relative inline-flex rounded-full h-2 w-2 ${isActive ? 'bg-white' : 'bg-blue-600'}`}></span>
+                    </span>
+                    <span>{link.name}</span>
+                    <span className={`text-[9px] px-1.5 py-0.2 rounded-full uppercase tracking-wider font-extrabold ${
+                      isActive ? 'bg-white/20 text-white' : 'bg-blue-200/80 text-blue-800'
+                    }`}>
+                      Explore
+                    </span>
+                  </button>
+                );
+              }
+
+              return (
+                <button
+                  key={link.id}
+                  type="button"
+                  onClick={() => handleLinkClick(link.id)}
+                  className={`py-1.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap ${
+                    isActive
+                      ? 'bg-slate-900 text-white shadow-xs font-black'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                  }`}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Header Right Actions - Mobile Friendly & Responsive */}
-          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
             
             {/* Currency Selector (Desktop & Tablet) */}
             <div className="hidden md:flex items-center bg-slate-100 border border-slate-200 rounded-lg p-0.5 text-xs font-bold">
@@ -101,7 +157,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
             <button
               type="button"
               onClick={() => onOpenEnquiry('Header Instant Quote Button')}
-              className="relative group overflow-hidden px-2.5 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-blue-500/25 transition duration-150 transform hover:-translate-y-0.5 whitespace-nowrap"
+              className="relative group overflow-hidden px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-blue-500/25 transition duration-150 transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               <span className="flex items-center space-x-1 sm:space-x-1.5">
                 <Zap className="w-3.5 h-3.5 fill-amber-300 text-amber-300 shrink-0" />
@@ -124,13 +180,13 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
         </div>
       </div>
 
-      {/* Mobile Dropdown Navigation Drawer */}
+      {/* Mobile Dropdown Navigation Drawer with Services Highlight */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3.5 shadow-xl animate-in slide-in-from-top-2 duration-200">
           
           {/* Mobile Currency Switcher */}
-          <div className="flex md:hidden items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200">
-            <span className="text-xs font-bold text-slate-600">Select Pricing Currency:</span>
+          <div className="flex md:hidden items-center justify-between p-2 bg-slate-50 rounded-xl border border-slate-200">
+            <span className="text-xs font-bold text-slate-600">Currency:</span>
             <div className="flex items-center bg-white border border-slate-200 rounded-lg p-0.5 text-xs font-bold">
               <button
                 type="button"
@@ -157,26 +213,63 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links with Highlighted Services */}
           <div className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition flex items-center justify-between"
-              >
-                <span>{link.name}</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activePage === link.id;
+
+              if (link.isSpecial) {
+                return (
+                  <button
+                    key={link.id}
+                    type="button"
+                    onClick={() => handleLinkClick(link.id)}
+                    className={`px-3.5 py-2.5 rounded-xl text-sm font-black transition flex items-center justify-between text-left ${
+                      isActive
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-blue-50 text-blue-700 border border-blue-200'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="flex h-2 w-2 relative shrink-0">
+                        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isActive ? 'bg-white opacity-75' : 'bg-blue-600 opacity-75'}`}></span>
+                        <span className={`relative inline-flex rounded-full h-2 w-2 ${isActive ? 'bg-white' : 'bg-blue-600'}`}></span>
+                      </span>
+                      <span>{link.name}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold ${
+                        isActive ? 'bg-white/20 text-white' : 'bg-blue-200 text-blue-800'
+                      }`}>
+                        🔥 Explore Services
+                      </span>
+                    </div>
+                    <ChevronRight className={`w-4 h-4 ${isActive ? 'text-white' : 'text-blue-600'}`} />
+                  </button>
+                );
+              }
+
+              return (
+                <button
+                  key={link.id}
+                  type="button"
+                  onClick={() => handleLinkClick(link.id)}
+                  className={`px-3.5 py-2.5 rounded-xl text-sm font-bold transition flex items-center justify-between text-left ${
+                    isActive
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'text-slate-700 hover:bg-slate-50 hover:text-blue-600'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  <ChevronRight className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                </button>
+              );
+            })}
           </div>
 
           {/* Direct Mobile Quick Actions */}
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2.5">
+          <div className="pt-2 border-t border-slate-200 flex flex-col gap-2">
             <a
               href={`tel:${companyInfo.phone}`}
-              className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
+              className="w-full flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs sm:text-sm shadow transition"
               title="Click to Call Directly"
             >
               <Phone className="w-4 h-4 text-blue-400" />
@@ -187,7 +280,7 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
               href={`https://wa.me/${companyInfo.whatsappRaw}?text=Hello%20Omnigrain%20Tech,%20I%20am%20looking%20for%20software%20and%20app%20development%20services.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-sm shadow transition"
+              className="w-full flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs sm:text-sm shadow transition"
               title="Click to Chat on WhatsApp"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
@@ -200,15 +293,15 @@ export default function Header({ currency, setCurrency, onOpenEnquiry }) {
                 setMobileMenuOpen(false);
                 onOpenEnquiry('Mobile Menu Quote');
               }}
-              className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-3 rounded-xl text-sm shadow-md"
+              className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black py-2.5 rounded-xl text-xs sm:text-sm shadow-md"
             >
               <span>Request Instant Quote & Scope</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="pt-1 text-center text-xs text-slate-500 flex items-center justify-center space-x-1.5 font-medium">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <div className="pt-1 text-center text-[11px] text-slate-500 flex items-center justify-center space-x-1.5 font-medium">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
             <span>100% Source Code Ownership • Strict Mutual NDA</span>
           </div>
         </div>

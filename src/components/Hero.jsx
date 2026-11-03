@@ -2,16 +2,8 @@ import React from 'react';
 import { 
   ArrowRight, 
   Sparkles, 
-  ShieldCheck, 
-  Star, 
-  CheckCircle2, 
-  Download, 
-  Cpu, 
-  Zap, 
-  Lock, 
   Smartphone,
   ChevronRight,
-  TrendingUp,
   MessageCircle,
   Phone,
   ShoppingBag,
@@ -21,7 +13,7 @@ import {
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
 
-export default function Hero({ onOpenEnquiry, currency }) {
+export default function Hero({ onOpenEnquiry, currency, onNavigate }) {
   const minWebPrice = currency === 'INR' ? '₹9,999' : '$149';
   const minAppPrice = currency === 'INR' ? '₹24,999' : '$349';
   const minEcomPrice = currency === 'INR' ? '₹14,999' : '$199';
@@ -62,24 +54,44 @@ export default function Hero({ onOpenEnquiry, currency }) {
               We engineer revenue-generating <strong>Android & iOS Mobile Applications</strong>, complete <strong>E-Commerce Business Setups</strong>, custom <strong>Billing & POS Software</strong>, and provide direct <strong>Tech Consulting</strong> at the best price in the market.
             </p>
 
-            {/* Highlighted Services Quick Tags */}
+            {/* Highlighted Clickable Services Quick Tags - Jumps to Services Page */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 pt-1">
-              <span className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg">
-                <Smartphone className="w-3.5 h-3.5 mr-1 shrink-0" /> All Android & iOS Apps
-              </span>
-              <span className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2.5 py-1 rounded-lg">
-                <ShoppingBag className="w-3.5 h-3.5 mr-1 shrink-0" /> E-Commerce Business Setup
-              </span>
-              <span className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg">
-                <Receipt className="w-3.5 h-3.5 mr-1 shrink-0" /> Custom GST Billing & POS
-              </span>
-              <span className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200/80 px-2.5 py-1 rounded-lg">
-                <Compass className="w-3.5 h-3.5 mr-1 shrink-0" /> Tech Consulting Services
-              </span>
+              <button 
+                type="button"
+                onClick={() => onNavigate && onNavigate('services')}
+                className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-lg transition"
+              >
+                <Smartphone className="w-3.5 h-3.5 mr-1 shrink-0" /> All Android & iOS Apps →
+              </button>
+              <button 
+                type="button"
+                onClick={() => onNavigate && onNavigate('services')}
+                className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/80 px-2.5 py-1 rounded-lg transition"
+              >
+                <ShoppingBag className="w-3.5 h-3.5 mr-1 shrink-0" /> E-Commerce Business Setup →
+              </button>
+              <button 
+                type="button"
+                onClick={() => onNavigate && onNavigate('services')}
+                className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 px-2.5 py-1 rounded-lg transition"
+              >
+                <Receipt className="w-3.5 h-3.5 mr-1 shrink-0" /> Custom GST Billing & POS →
+              </button>
+              <button 
+                type="button"
+                onClick={() => onNavigate && onNavigate('services')}
+                className="inline-flex items-center text-[10px] sm:text-xs font-bold bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200/80 px-2.5 py-1 rounded-lg transition"
+              >
+                <Compass className="w-3.5 h-3.5 mr-1 shrink-0" /> Tech Consulting Services →
+              </button>
             </div>
 
-            {/* Starting Price Pill */}
-            <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 bg-white border border-slate-200 px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-[11px] sm:text-sm text-slate-700 shadow-xs max-w-full">
+            {/* Starting Price Pill - Clickable to View Services */}
+            <button
+              type="button"
+              onClick={() => onNavigate && onNavigate('services')}
+              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 bg-white hover:bg-slate-50 border border-slate-200 px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-[11px] sm:text-sm text-slate-700 shadow-xs max-w-full text-left transition group cursor-pointer"
+            >
               <span className="text-amber-600 font-extrabold flex items-center shrink-0">
                 <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 text-amber-500 fill-amber-500 shrink-0" /> Transparent Pricing:
               </span>
@@ -87,8 +99,8 @@ export default function Hero({ onOpenEnquiry, currency }) {
               <span className="text-slate-300 hidden xs:inline">•</span>
               <span className="whitespace-nowrap">E-Commerce from <strong className="text-slate-900 font-bold">{minEcomPrice}</strong></span>
               <span className="text-slate-300 hidden xs:inline">•</span>
-              <span className="whitespace-nowrap">Mobile Apps from <strong className="text-blue-600 font-bold">{minAppPrice}</strong></span>
-            </div>
+              <span className="whitespace-nowrap text-blue-600 font-bold group-hover:underline">Mobile Apps from {minAppPrice} →</span>
+            </button>
 
             {/* High-Converting CTA Button Cluster */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-2">
@@ -101,6 +113,16 @@ export default function Hero({ onOpenEnquiry, currency }) {
               >
                 <span>Get Free Quote & SOW</span>
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              {/* View Services Dedicated Page Button */}
+              <button
+                type="button"
+                onClick={() => onNavigate && onNavigate('services')}
+                className="px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-base shadow-xs transition duration-200 flex items-center justify-center space-x-2"
+              >
+                <span>Explore All Services</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
               {/* Direct WhatsApp Call-to-Action */}
@@ -191,70 +213,82 @@ export default function Hero({ onOpenEnquiry, currency }) {
                   </span>
                 </div>
 
-                {/* 4 Core Pillars Showcase */}
+                {/* 4 Core Pillars Showcase - Clickable to Services */}
                 <div className="space-y-2.5">
                   
                   {/* Item 1: Mobile Apps */}
-                  <div className="p-3 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2">
+                  <div 
+                    onClick={() => onNavigate && onNavigate('services')}
+                    className="p-3 bg-slate-50 hover:bg-blue-50/70 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2 cursor-pointer group/item"
+                  >
                     <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
                         <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-slate-900 truncate">Android & iOS Applications</div>
+                        <div className="text-xs font-bold text-slate-900 truncate group-hover/item:text-blue-600 transition-colors">Android & iOS Applications</div>
                         <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Flutter • React Native • Native Swift/Kotlin</div>
                       </div>
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold text-blue-700 bg-blue-100/60 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">
-                      Best Price
+                      Best Price →
                     </span>
                   </div>
 
                   {/* Item 2: E-Commerce Store */}
-                  <div className="p-3 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2">
+                  <div 
+                    onClick={() => onNavigate && onNavigate('services')}
+                    className="p-3 bg-slate-50 hover:bg-emerald-50/70 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2 cursor-pointer group/item"
+                  >
                     <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors">
                         <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-slate-900 truncate">E-Commerce Business Setup</div>
+                        <div className="text-xs font-bold text-slate-900 truncate group-hover/item:text-emerald-700 transition-colors">E-Commerce Business Setup</div>
                         <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Shopify • Custom MERN • Razorpay UPI</div>
                       </div>
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">
-                      High ROI
+                      High ROI →
                     </span>
                   </div>
 
                   {/* Item 3: Custom Billing Software */}
-                  <div className="p-3 bg-slate-50 hover:bg-amber-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2">
+                  <div 
+                    onClick={() => onNavigate && onNavigate('services')}
+                    className="p-3 bg-slate-50 hover:bg-amber-50/70 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2 cursor-pointer group/item"
+                  >
                     <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors">
                         <Receipt className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-slate-900 truncate">Custom Billing & POS Software</div>
+                        <div className="text-xs font-bold text-slate-900 truncate group-hover/item:text-amber-700 transition-colors">Custom Billing & POS Software</div>
                         <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">GST Invoice • Thermal Printer • Barcode</div>
                       </div>
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold text-amber-700 bg-amber-100/60 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">
-                      One-Time
+                      One-Time →
                     </span>
                   </div>
 
                   {/* Item 4: Tech Consulting */}
-                  <div className="p-3 bg-slate-50 hover:bg-purple-50/50 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2">
+                  <div 
+                    onClick={() => onNavigate && onNavigate('services')}
+                    className="p-3 bg-slate-50 hover:bg-purple-50/70 rounded-2xl border border-slate-200/70 transition flex items-center justify-between gap-2 cursor-pointer group/item"
+                  >
                     <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
                         <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-slate-900 truncate">Tech Consulting Services</div>
+                        <div className="text-xs font-bold text-slate-900 truncate group-hover/item:text-purple-700 transition-colors">Tech Consulting Services</div>
                         <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">Architecture • Code Audit • Cloud Scaling</div>
                       </div>
                     </div>
                     <span className="text-[10px] sm:text-[11px] font-bold text-purple-700 bg-purple-100/60 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">
-                      Expert Lead
+                      Expert Lead →
                     </span>
                   </div>
 
