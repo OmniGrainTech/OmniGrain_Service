@@ -36,7 +36,7 @@ export default function Footer({ onOpenEnquiry, onNavigate }) {
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 p-[1px]">
                 <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center p-1">
                   <img 
-                    src="/logo.png" 
+                    src={`${import.meta.env.BASE_URL}logo.png`} 
                     alt="Omnigrain Tech - Software, Apps & Tech Consulting Agency" 
                     className="w-full h-full object-contain"
                     onError={(e) => {

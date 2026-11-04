@@ -52,7 +52,7 @@ export default function Header({
             <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 via-cyan-500 to-indigo-600 p-[1.5px] shadow-sm group-hover:shadow-blue-500/25 transition shrink-0">
               <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-1">
                 <img 
-                  src="/logo.png" 
+                  src={`${import.meta.env.BASE_URL}logo.png`} 
                   alt="Omnigrain Tech - Mobile App & Custom Software Development Agency" 
                   className="w-full h-full object-contain filter group-hover:scale-105 transition-transform"
                   onError={(e) => {
