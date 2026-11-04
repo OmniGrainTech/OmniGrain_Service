@@ -1,0 +1,9 @@
+# Omnigrain Tech robots.txt
+User-agent: *
+Allow: /
+
+# Crawl-delay for optimal indexing
+Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://omnigrain.in/sitemap.xml
