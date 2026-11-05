@@ -18,6 +18,7 @@ import {
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
 import WhatsAppIcon from './WhatsAppIcon';
+import { saveLead } from '../services/tracker';
 
 export default function ContactSection({ currency, initialService }) {
   const [formData, setFormData] = useState({
@@ -62,7 +63,7 @@ export default function ContactSection({ currency, initialService }) {
     '$5,000+'
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) {
       setErrorMsg('Please enter your Name and Mobile/WhatsApp number.');
@@ -72,7 +73,16 @@ export default function ContactSection({ currency, initialService }) {
     setErrorMsg('');
     setLoading(true);
 
-    setTimeout(() => {
+    saveLead({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      company: formData.company,
+      service: formData.need,
+      budget: formData.budget,
+      details: `${formData.details || ''} (Timeline: ${formData.timeline})`,
+      sourceForm: 'Contact Section Form'
+    }).finally(() => {
       setLoading(false);
       setSubmitted(true);
 
@@ -83,7 +93,7 @@ export default function ContactSection({ currency, initialService }) {
           origin: { y: 0.6 }
         });
       } catch (err) {}
-    }, 500);
+    });
   };
 
   const getWhatsAppDirectLink = () => {

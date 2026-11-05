@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Send, ShieldCheck, CheckCircle2, Clock, Check, Phone } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { companyInfo } from '../data/websiteData';
 import WhatsAppIcon from './WhatsAppIcon';
+import { saveLead, recordInteraction } from '../services/tracker';
 
 export default function EnquiryModal({ isOpen, onClose, initialSubject, currency }) {
   if (!isOpen) return null;
@@ -15,6 +16,10 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
   const [details, setDetails] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    recordInteraction('quote_modal_opened', { subject: initialSubject || 'General Quote' });
+  }, [initialSubject]);
 
   const needOptions = [
     'Android & iOS Mobile Application',
@@ -34,13 +39,21 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
     if (!name.trim() || !phone.trim()) return;
 
     setLoading(true);
-    setTimeout(() => {
+    saveLead({
+      name,
+      phone,
+      email,
+      company,
+      service: need,
+      details,
+      sourceForm: 'Enquiry Modal Popup'
+    }).finally(() => {
       setLoading(false);
       setSubmitted(true);
       try {
         confetti({ particleCount: 85, spread: 65, origin: { y: 0.5 } });
       } catch (err) {}
-    }, 450);
+    });
   };
 
   const getWhatsAppLink = () => {

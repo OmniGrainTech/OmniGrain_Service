@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAnalytics, isSupported, logEvent } from "firebase/analytics";
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "firebase/firestore";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDRMpvG3ri5aEe2b0CpK0zj-3aH7UV7Gmo",
   authDomain: "omintech.firebaseapp.com",
@@ -17,7 +17,10 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-// Initialize Analytics safely (supports browser environments and avoids crashes if blocked)
+// Initialize Cloud Firestore for Lead Database & Click Logs
+export const db = getFirestore(app);
+
+// Initialize Google Analytics safely
 export let analytics = null;
 if (typeof window !== "undefined") {
   isSupported().then((supported) => {
@@ -29,4 +32,18 @@ if (typeof window !== "undefined") {
   });
 }
 
+/**
+ * Log custom analytics event to Firebase / GA4
+ */
+export const trackAnalyticsEvent = (eventName, eventParams = {}) => {
+  try {
+    if (analytics) {
+      logEvent(analytics, eventName, eventParams);
+    }
+  } catch (err) {
+    // Fail silently in development or when blocked
+  }
+};
+
+export { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit };
 export default app;

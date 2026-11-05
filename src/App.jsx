@@ -11,6 +11,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import StickyConversionBar from './components/StickyConversionBar';
 import EnquiryModal from './components/EnquiryModal';
+import LeadAnalyticsModal from './components/LeadAnalyticsModal';
 import { 
   ChevronRight, 
   ArrowLeft, 
@@ -31,6 +32,7 @@ export default function App() {
   const [currency, setCurrency] = useState('INR');
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSubject, setModalSubject] = useState('Android & iOS Mobile Application');
+  const [leadAnalyticsOpen, setLeadAnalyticsOpen] = useState(false);
 
   // Multi-Page SPA Hash Router
   const getInitialPage = () => {
@@ -56,6 +58,25 @@ export default function App() {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Admin Lead Desk Shortcut: Ctrl+Shift+L or ?admin=leads
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.search.includes('admin=leads') || window.location.hash === '#admin-leads') {
+        setLeadAnalyticsOpen(true);
+      }
+
+      const handleKeyDown = (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'L' || e.key === 'l')) {
+          e.preventDefault();
+          setLeadAnalyticsOpen((prev) => !prev);
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+    }
   }, []);
 
   const handleNavigate = (pageId) => {
@@ -91,6 +112,7 @@ export default function App() {
         onOpenEnquiry={handleOpenEnquiry} 
         activePage={activePage}
         onNavigate={handleNavigate}
+        onOpenLeadDesk={() => setLeadAnalyticsOpen(true)}
       />
 
       {/* Spacer to prevent fixed header from overlapping top page content */}
@@ -138,6 +160,7 @@ export default function App() {
               currency={currency} 
               onOpenEnquiry={handleOpenEnquiry} 
               onNavigate={handleNavigate}
+        onOpenLeadDesk={() => setLeadAnalyticsOpen(true)}
             />
 
             {/* Quick Service Gateway Section (Invites user to visit Services page) */}
@@ -342,11 +365,18 @@ export default function App() {
       <Footer 
         onOpenEnquiry={handleOpenEnquiry} 
         onNavigate={handleNavigate}
+        onOpenLeadDesk={() => setLeadAnalyticsOpen(true)}
       />
 
       {/* Sticky Conversion Triggers (Floating WhatsApp/Call & Mobile Bar) */}
       <StickyConversionBar 
         onOpenEnquiry={handleOpenEnquiry} 
+      />
+
+      {/* Real-time Lead Optimization & Attribution Desk (Live Firestore) */}
+      <LeadAnalyticsModal 
+        isOpen={leadAnalyticsOpen} 
+        onClose={() => setLeadAnalyticsOpen(false)} 
       />
 
       {/* Instant Proposal Popup Modal */}

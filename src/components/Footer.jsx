@@ -10,7 +10,7 @@ import {
 import { companyInfo, redPdfProduct } from '../data/websiteData';
 import WhatsAppIcon from './WhatsAppIcon';
 
-export default function Footer({ onOpenEnquiry, onNavigate }) {
+export default function Footer({ onOpenEnquiry, onNavigate, onOpenLeadDesk }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -190,6 +190,16 @@ export default function Footer({ onOpenEnquiry, onNavigate }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
           <div>
             © {new Date().getFullYear()} <strong>Omnigrain Tech</strong>. All rights reserved.
+            {onOpenLeadDesk && (
+              <button
+                type="button"
+                onClick={onOpenLeadDesk}
+                className="ml-2 text-slate-600 hover:text-slate-300 transition"
+                title="Lead Optimization & Attribution Desk (Shortcut: Ctrl+Shift+L)"
+              >
+                • Live Lead Desk
+              </button>
+            )}
           </div>
           
           <div className="flex items-center space-x-4">

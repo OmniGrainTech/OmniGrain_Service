@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { companyInfo } from '../data/websiteData';
 import WhatsAppIcon from './WhatsAppIcon';
+import { recordInteraction } from '../services/tracker';
 
 export default function QuoteCalculator({ currency, onOpenEnquiry }) {
   const [serviceType, setServiceType] = useState('website');
@@ -266,6 +267,7 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
                   href={generateWhatsAppMessage()}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => recordInteraction('calculator_estimate_locked', { service: serviceLabels[serviceType], scale, estimate: displayTotal })}
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center justify-center space-x-2"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
@@ -274,7 +276,10 @@ export default function QuoteCalculator({ currency, onOpenEnquiry }) {
 
                 <button
                   type="button"
-                  onClick={() => onOpenEnquiry(`Calculator Estimate: ${serviceLabels[serviceType]} (${displayTotal})`)}
+                  onClick={() => {
+                    recordInteraction('calculator_proposal_clicked', { service: serviceLabels[serviceType], scale, estimate: displayTotal });
+                    onOpenEnquiry(`Calculator Estimate: ${serviceLabels[serviceType]} (${displayTotal})`);
+                  }}
                   className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center space-x-1.5"
                 >
                   <span>Request Written SOW Proposal</span>
