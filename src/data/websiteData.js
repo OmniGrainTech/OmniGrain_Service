@@ -14,7 +14,7 @@ export const companyInfo = {
   teamSize: "25+ Engineers & Consultants",
   hoursResponse: "< 15 Mins",
   websiteUrl: "https://omnigrain.in",
-  googleSheetWebhookUrl: "", // Paste your Google Apps Script Web App URL here
+  googleSheetWebhookUrl: "https://script.google.com/macros/s/AKfycbxL0dGuT06TsTdaP_gFTiXRas5PzzLvsKz8Co0Qe9jOdOsB5ApQ9CRdAnFedf5KBPTUyA/exec",
 };
 
 export const servicesData = [
