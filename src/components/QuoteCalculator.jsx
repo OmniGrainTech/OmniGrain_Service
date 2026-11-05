@@ -18,9 +18,9 @@ import { companyInfo } from '../data/websiteData';
 import WhatsAppIcon from './WhatsAppIcon';
 
 export default function QuoteCalculator({ currency, onOpenEnquiry }) {
-  const [serviceType, setServiceType] = useState('mobile');
-  const [scale, setScale] = useState('pro');
-  const [selectedAddons, setSelectedAddons] = useState(['auth', 'payment']);
+  const [serviceType, setServiceType] = useState('website');
+  const [scale, setScale] = useState('starter');
+  const [selectedAddons, setSelectedAddons] = useState([]);
 
   // Base pricing maps in INR
   const baseRatesINR = {
