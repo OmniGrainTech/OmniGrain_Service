@@ -1,4 +1,5 @@
 import { db, trackAnalyticsEvent, collection, addDoc, serverTimestamp } from '../firebase';
+import { companyInfo } from '../data/websiteData';
 
 // Storage keys for persisting attribution throughout user session
 const UTM_STORAGE_KEY = 'og_traffic_attribution';
@@ -128,6 +129,40 @@ export function recordPageView(pageId) {
 }
 
 /**
+ * Send real-time lead payload to Google Sheets Webhook
+ */
+export async function sendLeadToGoogleSheet(leadPayload) {
+  if (typeof window === 'undefined') return { success: false };
+
+  // Prioritize custom webhook saved in browser settings, then fallback to config
+  const customUrl = localStorage.getItem('og_google_sheet_webhook_url');
+  const webhookUrl = (customUrl && customUrl.trim()) 
+    ? customUrl.trim() 
+    : (companyInfo.googleSheetWebhookUrl || '').trim();
+
+  if (!webhookUrl || !webhookUrl.startsWith('https://script.google.com/')) {
+    return { success: false, reason: 'No Google Sheet Webhook configured yet' };
+  }
+
+  try {
+    // Mode 'no-cors' allows browser to submit to Google Apps Script without CORS preflight block
+    await fetch(webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(leadPayload)
+    });
+    return { success: true };
+  } catch (err) {
+    console.warn('Google Sheet auto-dispatch notice:', err);
+    return { success: false, error: err.message };
+  }
+}
+
+/**
  * Save complete lead data to Cloud Firestore & trigger GA4 Lead Event
  */
 export async function saveLead(leadData) {
@@ -177,7 +212,23 @@ export async function saveLead(leadData) {
     traffic_source: attribution.utm_source
   });
 
-  // 2. Persist directly to Firebase Firestore `leads` collection
+  // 2. Dispatch instantly to connected Google Sheet
+  sendLeadToGoogleSheet({
+    submittedAt: fullLeadPayload.userJourney.submittedAtLocal,
+    name: fullLeadPayload.name,
+    phone: fullLeadPayload.phone,
+    email: fullLeadPayload.email,
+    company: fullLeadPayload.company,
+    service: fullLeadPayload.service,
+    budget: fullLeadPayload.budget,
+    details: fullLeadPayload.details,
+    sourceForm: fullLeadPayload.sourceForm,
+    device: fullLeadPayload.device,
+    attribution: fullLeadPayload.attribution,
+    userJourney: fullLeadPayload.userJourney
+  });
+
+  // 3. Persist directly to Firebase Firestore `leads` collection
   try {
     const docRef = await addDoc(collection(db, 'leads'), fullLeadPayload);
     return { success: true, id: docRef.id };
