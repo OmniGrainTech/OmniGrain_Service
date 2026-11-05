@@ -34,12 +34,13 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
     'Other (Custom Requirement)'
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
 
     setLoading(true);
-    saveLead({
+    try {
+      await saveLead({
       name,
       phone,
       email,
@@ -47,13 +48,16 @@ export default function EnquiryModal({ isOpen, onClose, initialSubject, currency
       service: need,
       details,
       sourceForm: 'Enquiry Modal Popup'
-    }).finally(() => {
+      });
+    } catch (err) {
+      console.warn('Submission notice:', err);
+    } finally {
       setLoading(false);
       setSubmitted(true);
       try {
         confetti({ particleCount: 85, spread: 65, origin: { y: 0.5 } });
       } catch (err) {}
-    });
+    }
   };
 
   const getWhatsAppLink = () => {
